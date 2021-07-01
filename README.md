@@ -1,2 +1,3 @@
 # InventorySystem
-awit
+
+This is the Inventory system collab repository
