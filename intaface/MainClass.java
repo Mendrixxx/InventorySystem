@@ -1,34 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package intaface;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;  
-import java.sql.SQLException;  
-
-
+import java.sql.SQLException;
+/**
+ *
+ * @author KRcsa
+ */
 public class MainClass {
-	
-	private static void insert(String name,String desc) {
-		Connection conn = DbConnection.connect();
-		PreparedStatement pstmt =  null;
-		
-		try {
-			String sql = "INSERT INTO item(item_name,item_desc) VALUES(?,?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2,desc);
-			pstmt.execute();
-			System.out.println("napasok ko na lods!");
-			
-		}catch(SQLException e){
-			System.out.println(e.getMessage());
-		}
-		
-	}
-	
-	public static void main(String[] args) {
-		Connection conn = DbConnection.connect();
-		if(conn != null) {
-			insert("pipi","mo");
-		}
-	}
-
+    public static void main(String [] args){
+        dbconn.connect();
+    }
+    private static void insert(String Name, String Pass){
+    Connection con = dbconn.connect();
+    PreparedStatement ps = null;
+    try{
+        String sql = "INSERT INTO data(Name, Pass) VALUES(?,?) ";
+        ps = con.prepareStatement(sql);
+        ps.setString(1, Name);
+        ps.setString(2, Pass);
+        ps.execute();
+        System.out.println("Data has been inserted!");
+    } catch(SQLException e){
+        System.out.println(e.toString());
+  }
+}
 }
