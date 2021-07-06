@@ -5,16 +5,11 @@
  */
 package intaface;
 
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.GroupLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JFrame;
 /**
  *
  * @author AMIGO
@@ -25,13 +20,9 @@ public class AddRowJFrame extends javax.swing.JFrame {
      * Creates new form AddJFrame
      */
     public AddRowJFrame() {
-    	getContentPane().setPreferredSize(new Dimension(10, 10));
-    	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	setPreferredSize(new Dimension(480, 580));
-    	setResizable(false);
         initComponents();
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,288 +34,281 @@ public class AddRowJFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        equipment_name = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel10.setText("Quantity per Property Card:");
-        jTextField10 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton3.setBackground(Color.WHITE);
-        jButton4 = new javax.swing.JButton();
-        jButton4.setBackground(Color.GRAY);
+        equipment_name = new javax.swing.JLabel();
+        equipment_name_field = new javax.swing.JTextField();
+        comp_specs = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        componentsAdded = new javax.swing.JTextArea();
+        addComp_button = new javax.swing.JButton();
+        prop_no = new javax.swing.JLabel();
+        prop_no_field = new javax.swing.JTextField();
+        date = new javax.swing.JLabel();
+        date_field = new javax.swing.JTextField();
+        unit_measure = new javax.swing.JLabel();
+        unit_measure_field = new javax.swing.JTextField();
+        unit_value = new javax.swing.JLabel();
+        unit_value_field = new javax.swing.JTextField();
+        unit_php = new javax.swing.JLabel();
+        total_value = new javax.swing.JLabel();
+        total_value_field = new javax.swing.JTextField();
+        total_php = new javax.swing.JLabel();
+        quantity = new javax.swing.JLabel();
+        quantity_field = new javax.swing.JTextField();
+        remarks = new javax.swing.JLabel();
+        remarks_field = new javax.swing.JTextField();
+        add_equipment_button = new javax.swing.JButton();
+        cancel_equipment_button = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(155, 155));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("DESCRIPTION");
 
-        jLabel2.setText("EQUIPMENT NAME:");
+        equipment_name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        equipment_name.setText("Equiment Name:");
 
-        equipment_name.addActionListener(new java.awt.event.ActionListener() {
+        equipment_name_field.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        comp_specs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comp_specs.setText("Component(s)/Specs:");
+
+        componentsAdded.setColumns(20);
+        componentsAdded.setRows(5);
+        jScrollPane1.setViewportView(componentsAdded);
+
+        addComp_button.setText("Add");
+
+        prop_no.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        prop_no.setText("Property No.:");
+
+        date.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        date.setText("Date Acquired:");
+
+        unit_measure.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        unit_measure.setText("Unit of Measure:");
+
+        unit_measure_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                unit_measure_fieldActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("COMPONENT(S)/SPECS  ");
+        unit_value.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        unit_value.setText("Unit Value:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        unit_value_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                unit_value_fieldActionPerformed(evt);
             }
         });
 
-        jButton1.setText("ADD FIELD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        unit_php.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        unit_php.setText("Php");
+
+        total_value.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        total_value.setText("Total Value:");
+
+        total_value_field.setEditable(false);
+        total_value_field.setBackground(new java.awt.Color(204, 204, 204));
+        total_value_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                total_value_fieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("ADD FIELD");
+        total_php.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        total_php.setText("Php");
 
-        jCheckBox1.setText("add more");
+        quantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quantity.setText("Quantity per Physcal Count:");
 
-        jLabel4.setText("Property No.:");
-
-        jLabel5.setText("Date Acquired:");
-
-        jLabel6.setText("Unit of Measure:");
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        quantity_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                quantity_fieldActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Unit Value:");
+        remarks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        remarks.setText("Remarks:");
 
-        jLabel8.setText("Total Value:");
-
-        jLabel9.setText("Quantity per Physical Count:");
-
-        jButton3.setText("CANCEL");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        add_equipment_button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        add_equipment_button.setText("ADD");
+        add_equipment_button.setPreferredSize(new java.awt.Dimension(90, 30));
+        add_equipment_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                add_equipment_buttonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("ADD");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        cancel_equipment_button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancel_equipment_button.setText("CANCEL");
+        cancel_equipment_button.setPreferredSize(new java.awt.Dimension(90, 30));
+        cancel_equipment_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                cancel_equipment_buttonActionPerformed(evt);
             }
         });
-        
-        JLabel lblNewLabel = new JLabel("PHP");
-        
-        lblNewLabel_1 = new JLabel("PHP");
-        
-        lblNewLabel_2 = new JLabel("Remarks:");
-        
-        textField = new JTextField();
-        textField.setColumns(10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addComponent(textField, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
-        					.addContainerGap())
-        				.addComponent(jLabel3)
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(jTextField2, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-        								.addComponent(jTextField3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
-        							.addGap(18)
-        							.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
-        								.addComponent(jButton1)
-        								.addComponent(jButton2)))
-        						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-        							.addGap(18)
-        							.addComponent(equipment_name, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
-        						.addGroup(jPanel1Layout.createSequentialGroup()
-        							.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING, false)
-        								.addComponent(jLabel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        								.addComponent(jCheckBox1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(jTextField6, GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)))
-        					.addContainerGap())
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-        						.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING, false)
-        							.addGroup(jPanel1Layout.createSequentialGroup()
-        								.addComponent(lblNewLabel)
-        								.addPreferredGap(ComponentPlacement.RELATED)
-        								.addComponent(jTextField9))
-        							.addComponent(jTextField7, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-        							.addComponent(jTextField10))
-        						.addComponent(jLabel7)
-        						.addComponent(jLabel10, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE))
-        					.addGap(18)
-        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jTextField5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-        						.addComponent(jTextField8, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-        						.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-        							.addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-        						.addGroup(Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        								.addGroup(jPanel1Layout.createSequentialGroup()
-        									.addGap(10)
-        									.addComponent(jLabel9))
-        								.addGroup(jPanel1Layout.createSequentialGroup()
-        									.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-        									.addPreferredGap(ComponentPlacement.UNRELATED)
-        									.addComponent(jTextField4, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
-        								.addComponent(jLabel8)))
-        						.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
-        					.addContainerGap())
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-        					.addContainerGap())
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-        					.addContainerGap(352, Short.MAX_VALUE))))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comp_specs, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addComp_button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(date_field))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(equipment_name)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(equipment_name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(prop_no, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(prop_no_field))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(unit_measure)
+                                    .addComponent(quantity))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(unit_php)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(unit_value_field, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(total_php)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(total_value_field, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(unit_value)
+                                    .addComponent(total_value)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(remarks)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(remarks_field))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(unit_measure_field, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(quantity_field, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancel_equipment_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(add_equipment_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
-        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jLabel2)
-        				.addComponent(equipment_name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(jLabel3)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        			.addGap(3)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jButton2))
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(jCheckBox1)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addComponent(jTextField6, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-        				.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jLabel5)
-        				.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jTextField7, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jTextField8, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jLabel7)
-        				.addComponent(jLabel8, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jTextField9, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(lblNewLabel)
-        				.addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jLabel10)
-        				.addComponent(jLabel9))
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGap(6)
-        					.addComponent(jTextField5, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(jTextField10, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)))
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(lblNewLabel_2)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(textField, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-        			.addGap(18)
-        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-        			.addGap(203))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(equipment_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(equipment_name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addComp_button, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comp_specs)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(date_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prop_no)
+                    .addComponent(prop_no_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unit_measure)
+                    .addComponent(unit_value))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unit_measure_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unit_value_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unit_php))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(total_value)
+                    .addComponent(quantity))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(total_value_field, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(total_php)
+                    .addComponent(quantity_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remarks_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remarks))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancel_equipment_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_equipment_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
-        jPanel1.setLayout(jPanel1Layout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-        			.addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 526, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(24, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void unit_measure_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_measure_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_unit_measure_fieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void unit_value_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_value_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_unit_value_fieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void total_value_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_value_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+         total_value_field.setText("HELLO");   
+    }//GEN-LAST:event_total_value_fieldActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void quantity_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantity_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_quantity_fieldActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
-     Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
-    
+    private void add_equipment_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_equipment_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        AddRowJFrame s = new AddRowJFrame();
+        s.setVisible(true);
+    }//GEN-LAST:event_add_equipment_buttonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    AddRowJFrame s = new AddRowJFrame();
-    s.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void cancel_equipment_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_equipment_buttonActionPerformed
+        // TODO add your handling code here:
+        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    }//GEN-LAST:event_cancel_equipment_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,33 +347,31 @@ public class AddRowJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JButton addComp_button;
+    private javax.swing.JButton add_equipment_button;
+    private javax.swing.JButton cancel_equipment_button;
+    private javax.swing.JLabel comp_specs;
+    private javax.swing.JTextArea componentsAdded;
+    private javax.swing.JLabel date;
+    private javax.swing.JTextField date_field;
+    private javax.swing.JLabel equipment_name;
+    private javax.swing.JTextField equipment_name_field;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField equipment_name;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private JLabel lblNewLabel_1;
-    private JLabel lblNewLabel_2;
-    private JTextField textField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel prop_no;
+    private javax.swing.JTextField prop_no_field;
+    private javax.swing.JLabel quantity;
+    private javax.swing.JTextField quantity_field;
+    private javax.swing.JLabel remarks;
+    private javax.swing.JTextField remarks_field;
+    private javax.swing.JLabel total_php;
+    private javax.swing.JLabel total_value;
+    private javax.swing.JTextField total_value_field;
+    private javax.swing.JLabel unit_measure;
+    private javax.swing.JTextField unit_measure_field;
+    private javax.swing.JLabel unit_php;
+    private javax.swing.JLabel unit_value;
+    private javax.swing.JTextField unit_value_field;
+    // End of variables declaration//GEN-END:variables
 }
