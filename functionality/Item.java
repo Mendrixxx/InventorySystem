@@ -3,6 +3,7 @@ package functionality;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.*;
 
 public class Item {
 	String name;
@@ -17,7 +18,7 @@ public class Item {
 	String remarks;
 	private String[] choices = new String[] {"laboratory","office","IT"};
 	String classification;
-
+	List<Component> components = new LinkedList<Component>();
 	
 	//single setting of variables
 	public void setName(String name) {
@@ -165,8 +166,8 @@ public class Item {
 	    }
 	}
 	public static void delete(String value){
-            Connection conn = null; 
-            try{
+		Connection conn = null; 
+        try{
 	    	conn = dbconn.connect();
 	        String sql = "DELETE FROM item where item_id = "+ value;
                 PreparedStatement ps = conn.prepareStatement(sql);
@@ -175,5 +176,5 @@ public class Item {
 	    }catch(SQLException e){
 	        System.out.println(e.toString());
         }
-}
+	}
 }
