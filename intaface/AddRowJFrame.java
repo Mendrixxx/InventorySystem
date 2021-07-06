@@ -78,6 +78,11 @@ public class AddRowJFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(componentsAdded);
 
         addComp_button.setText("Add");
+        addComp_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addComp_buttonActionPerformed(evt);
+            }
+        });
 
         prop_no.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         prop_no.setText("Property No.:");
@@ -309,6 +314,10 @@ public class AddRowJFrame extends javax.swing.JFrame {
         WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }//GEN-LAST:event_cancel_equipment_buttonActionPerformed
+
+    private void addComp_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addComp_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addComp_buttonActionPerformed
 
     /**
      * @param args the command line arguments
