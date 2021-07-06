@@ -393,7 +393,8 @@ public class SAMPLE1 extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         int srow = invT.getSelectedRow();
-        String value = invT.getModel().getValueAt(0, 0).toString();
+        String value = invT.getModel().getValueAt(srow, 0).toString();
+        System.out.println(value);
         Item execdel = new Item();
         execdel.delete(value);
     }//GEN-LAST:event_deleteActionPerformed
