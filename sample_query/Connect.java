@@ -1,18 +1,14 @@
-package db_connect;
+package sample_query;
 
 import java.sql.Connection;  
 import java.sql.DriverManager;  
 import java.sql.SQLException; 
 
-/**
- *
- * @author sqlitetutorial.net
- */
 public class Connect {
      /**
      * Connect to a sample database
      */
-    public static void connect() {
+    public static Connection connect() {
         Connection conn = null;
         try {
         	try {
@@ -30,20 +26,8 @@ public class Connect {
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
+		return conn;
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        connect();
-    }
+   
 }
