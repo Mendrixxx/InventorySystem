@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Item {
+        int itemid;
         String name;
 	String description;
 	int propertyNum;
@@ -20,7 +21,8 @@ public class Item {
 	String classification;
 	List<Component> components = new LinkedList<Component>();
 
-        public Item(String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum) {
+        public Item(int id, String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum) {
+                itemid = id;
                 name = na;
 		description = de;
 		propertyNum = pn;
@@ -35,6 +37,9 @@ public class Item {
     }
 	
 	//single setting of variables
+        public void setid(int itemid) {
+		this.itemid = itemid;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -81,8 +86,9 @@ public class Item {
 	
 	
 	//set all variables in one method 
-	public void setAll(String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum){
-		name = na;
+	public void setAll(int id, String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum){
+		itemid = id;
+                name = na;
 		description = de;
 		propertyNum = pn;
 		dateAq = da;
@@ -96,6 +102,9 @@ public class Item {
 	}
 	
 	//get variables
+        public int getid() {
+		return itemid;
+	}
 	public String getName() {
 		return name;
 	}

@@ -18,7 +18,7 @@ public class operations {
 		Connection conn = null; 
         try{
 	    	conn = dbconn.connect();
-	        String sql = "DELETE FROM item where item_name = '"+value+"'";
+	        String sql = "DELETE FROM item where item_id = "+value;
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.execute();
 	        System.out.println("Data has been deleted!"); 

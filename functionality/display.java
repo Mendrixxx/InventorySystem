@@ -28,7 +28,7 @@ public class display {
              rs = ps.executeQuery(sql);
              Item itm;
              while(rs.next()){
-                 itm = new Item(rs.getString("item_name"),rs.getString("item_desc"),rs.getInt("property_num"),rs.getInt("date_aq"),rs.getInt("unit_meas"),rs.getDouble("unit_val"),rs.getDouble("total_val"),rs.getInt("quant_propcar"),rs.getInt("quant_phycou"),rs.getString("remarks"),1);
+                 itm = new Item(rs.getInt("item_id"),rs.getString("item_name"),rs.getString("item_desc"),rs.getInt("property_num"),rs.getInt("date_aq"),rs.getInt("unit_meas"),rs.getDouble("unit_val"),rs.getDouble("total_val"),rs.getInt("quant_propcar"),rs.getInt("quant_phycou"),rs.getString("remarks"),rs.getInt("classification"));
                  array.add(itm);
              }
             }catch(SQLException e){
