@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Item {
-	String name;
+        String name;
 	String description;
 	int propertyNum;
 	int dateAq;
@@ -19,6 +19,20 @@ public class Item {
 	private String[] choices = new String[] {"laboratory","office","IT"};
 	String classification;
 	List<Component> components = new LinkedList<Component>();
+
+        public Item(String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum) {
+                name = na;
+		description = de;
+		propertyNum = pn;
+		dateAq = da;
+		unitMeas = um;
+		unitVal = uv;
+		totalVal = tv;
+		quantPropCar = qpcr;
+		quantPhyCou = qpcu;
+		remarks = re;
+		classification = choices[clNum];
+    }
 	
 	//single setting of variables
 	public void setName(String name) {
@@ -42,7 +56,7 @@ public class Item {
 	}
 	 
 	public void setUnitVal(double unitVal) {
-		this.unitVal= unitVal;
+                this.unitVal= unitVal;
 	}
 	
 	public void setTotalVal (double totalVal) {
@@ -165,16 +179,8 @@ public class Item {
 	    	}
 	    }
 	}
-	public static void delete(String value){
-		Connection conn = null; 
-        try{
-	    	conn = dbconn.connect();
-	        String sql = "DELETE FROM item where item_id = "+ value;
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ps.execute();
-	        System.out.println("Data has been deleted!"); 
-	    }catch(SQLException e){
-	        System.out.println(e.toString());
-        }
-	}
+
+        
+       
+        
 }
