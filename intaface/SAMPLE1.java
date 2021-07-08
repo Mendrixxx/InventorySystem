@@ -11,7 +11,7 @@ import functionality.*;
  */
 import java.awt.event.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.table.DefaultTableModel;
@@ -375,11 +375,30 @@ public class SAMPLE1 extends javax.swing.JFrame {
         System.out.println(value);
         operations execdel = new operations();
         execdel.delete(value);
+        display ld = new display();
+        LinkedList<Item> array = ld.loadinv();
+        DefaultTableModel model = (DefaultTableModel)invT.getModel();
+        model.setRowCount(0);
+        Object [] row = new Object [11];
+        for(int i=0;i<array.size();i++){
+            row[0]=array.get(i).getName();
+            row[1]=array.get(i).getDescription();
+            row[2]=array.get(i).getPropertyNum();
+            row[3]=array.get(i).getDateAq();
+            row[4]=array.get(i).getUnitMeas();
+            row[5]=array.get(i).getUnitVal();
+            row[6]=array.get(i).getTotalVal();
+            row[7]=array.get(i).getQuantPropCar();
+            row[8]=array.get(i).getQuantPhyCou();
+            row[9]=array.get(i).getRemarks();
+            row[10]=array.get(i).getClassification();
+            model.addRow(row);
+        }
     }//GEN-LAST:event_deleteActionPerformed
 
     private void launch(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_launch
         display ld = new display();
-        ArrayList<Item> array = ld.loadinv();
+        LinkedList<Item> array = ld.loadinv();
         DefaultTableModel model = (DefaultTableModel)invT.getModel();
         Object [] row = new Object [11];
         for(int i=0;i<array.size();i++){

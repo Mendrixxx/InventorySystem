@@ -10,15 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
  * @author KRcsa
  */
 public class display {
-     public static ArrayList<Item> loadinv(){
-            ArrayList<Item> array = new ArrayList<>();
+     public static LinkedList<Item> loadinv(){
+            LinkedList<Item> array = new LinkedList<>();
             Connection conn = null;
             ResultSet rs = null;
          try{
