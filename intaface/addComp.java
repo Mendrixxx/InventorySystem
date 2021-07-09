@@ -16,9 +16,8 @@ public class addComp extends javax.swing.JFrame {
      */
     public addComp() {
         initComponents();
-   
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,88 +28,104 @@ public class addComp extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField6 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        compUnitMeasure = new javax.swing.JLabel();
+        compTotalValue = new javax.swing.JLabel();
+        compUnitMeasure_field = new javax.swing.JTextField();
+        compUnitValue = new javax.swing.JLabel();
+        compQuantity_field = new javax.swing.JTextField();
+        compDate = new javax.swing.JLabel();
+        compDate_field = new javax.swing.JTextField();
+        compQuantity_PropCard_field = new javax.swing.JTextField();
+        compRemarks = new javax.swing.JLabel();
+        compRemarks_field = new javax.swing.JTextField();
+        compAdd_button = new javax.swing.JButton();
+        compClose_button = new javax.swing.JButton();
+        compUnitValue_field = new javax.swing.JTextField();
+        compTotalValue_field = new javax.swing.JTextField();
+        compQuantity_PropCard = new javax.swing.JLabel();
+        compQuantity = new javax.swing.JLabel();
+        comp_specs = new javax.swing.JLabel();
+        comp_specs_field = new javax.swing.JTextField();
 
         jTextField6.setText("jTextField6");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(160, 160));
         setResizable(false);
 
-        jLabel2.setText("Unit of Measure:");
+        compUnitMeasure.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compUnitMeasure.setText("Unit of Measure:");
 
-        jLabel3.setText("Unit Value:       PHP");
+        compTotalValue.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compTotalValue.setText("Total Value:    PHP");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        compUnitMeasure_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                compUnitMeasure_fieldActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Total Value:     PHP");
+        compUnitValue.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compUnitValue.setText("Unit Value:     PHP");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        compQuantity_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                compQuantity_fieldActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Date Aquired:");
+        compDate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compDate.setText("Date Aquired:");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        compQuantity_PropCard_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                compQuantity_PropCard_fieldActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Remarks: ");
+        compRemarks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compRemarks.setText("Remarks: ");
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        compRemarks_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                compRemarks_fieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Add");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        compAdd_button.setText("ADD");
+        compAdd_button.setPreferredSize(new java.awt.Dimension(90, 30));
+        compAdd_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                compAdd_buttonActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        compClose_button.setText("DONE");
+        compClose_button.setPreferredSize(new java.awt.Dimension(90, 30));
+        compClose_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                compClose_buttonActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Quantity per Property Card:");
-
-        jLabel10.setText("Quantity per Physical Count:");
-
-        jLabel7.setText("Component(s)/SPECS");
-
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        compTotalValue_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                compTotalValue_fieldActionPerformed(evt);
+            }
+        });
+
+        compQuantity_PropCard.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compQuantity_PropCard.setText("Quantity per Property Card:");
+
+        compQuantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        compQuantity.setText("Quantity per Physical Count:");
+
+        comp_specs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comp_specs.setText("Component(s)/SPECS");
+
+        comp_specs_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comp_specs_fieldActionPerformed(evt);
             }
         });
 
@@ -122,47 +137,47 @@ public class addComp extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(comp_specs)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField11))
+                        .addComponent(comp_specs_field))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                    .addComponent(jTextField7)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
+                                    .addComponent(compQuantity_PropCard)
+                                    .addComponent(compQuantity))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                                    .addComponent(jTextField4))))
-                        .addGap(18, 18, 18)
+                                    .addComponent(compQuantity_PropCard_field, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                    .addComponent(compQuantity_field)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(compUnitMeasure, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(compDate, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(compUnitMeasure_field, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                    .addComponent(compDate_field))))
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
+                                    .addComponent(compTotalValue)
+                                    .addComponent(compUnitValue))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField10)
-                                    .addComponent(jTextField3)))
+                                    .addComponent(compUnitValue_field)
+                                    .addComponent(compTotalValue_field)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(compRemarks)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 45, Short.MAX_VALUE)
-                                        .addComponent(jButton1)
+                                        .addGap(0, 1, Short.MAX_VALUE)
+                                        .addComponent(compAdd_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton2))
-                                    .addComponent(jTextField9))))))
+                                        .addComponent(compClose_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(compRemarks_field))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,66 +185,71 @@ public class addComp extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comp_specs)
+                    .addComponent(comp_specs_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(compUnitValue, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(compDate)
+                        .addComponent(compDate_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(compUnitValue_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(compUnitMeasure)
+                    .addComponent(compUnitMeasure_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compTotalValue)
+                    .addComponent(compTotalValue_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(compQuantity_PropCard)
+                    .addComponent(compQuantity_PropCard_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compRemarks)
+                    .addComponent(compRemarks_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(compQuantity)
+                    .addComponent(compQuantity_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compAdd_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compClose_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void compUnitMeasure_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compUnitMeasure_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_compUnitMeasure_fieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void compTotalValue_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compTotalValue_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_compTotalValue_fieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void compAdd_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compAdd_buttonActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_compAdd_buttonActionPerformed
+
+    private void compQuantity_PropCard_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compQuantity_PropCard_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_compQuantity_PropCard_fieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void compQuantity_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compQuantity_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_compQuantity_fieldActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void comp_specs_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comp_specs_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_comp_specs_fieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void compClose_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compClose_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_compClose_buttonActionPerformed
+
+    private void compRemarks_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compRemarks_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compRemarks_fieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,24 +287,24 @@ public class addComp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton compAdd_button;
+    private javax.swing.JButton compClose_button;
+    private javax.swing.JLabel compDate;
+    private javax.swing.JTextField compDate_field;
+    private javax.swing.JLabel compQuantity;
+    private javax.swing.JLabel compQuantity_PropCard;
+    private javax.swing.JTextField compQuantity_PropCard_field;
+    private javax.swing.JTextField compQuantity_field;
+    private javax.swing.JLabel compRemarks;
+    private javax.swing.JTextField compRemarks_field;
+    private javax.swing.JLabel compTotalValue;
+    private javax.swing.JTextField compTotalValue_field;
+    private javax.swing.JLabel compUnitMeasure;
+    private javax.swing.JTextField compUnitMeasure_field;
+    private javax.swing.JLabel compUnitValue;
+    private javax.swing.JTextField compUnitValue_field;
+    private javax.swing.JLabel comp_specs;
+    private javax.swing.JTextField comp_specs_field;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
