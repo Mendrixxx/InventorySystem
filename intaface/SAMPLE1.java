@@ -16,7 +16,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.table.DefaultTableModel;
 public class SAMPLE1 extends javax.swing.JFrame {
-  
+  int cbsi;
     
     /**
      * Creates new form SAMPLE1
@@ -69,6 +69,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 launch(evt);
@@ -445,15 +446,18 @@ public class SAMPLE1 extends javax.swing.JFrame {
     private void changetab(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_changetab
         if(tbp.getSelectedIndex() == 1){
         display ld = new display();
-        LinkedList<Archive> array = ld.loadsumm(0);
+        LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
         dispsumm(array);
         }
     }//GEN-LAST:event_changetab
 
     private void classificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationActionPerformed
+            if(classification.getSelectedIndex() != cbsi){
             display ld = new display();
             LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
             dispsumm(array);
+            cbsi = classification.getSelectedIndex();
+            }
     }//GEN-LAST:event_classificationActionPerformed
 
     /**
