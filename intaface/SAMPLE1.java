@@ -25,7 +25,6 @@ public class SAMPLE1 extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
     }
-    AddRowJFrame addRow = new AddRowJFrame();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,20 +39,20 @@ public class SAMPLE1 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         tbp = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        search = new javax.swing.JLabel();
+        search_field = new javax.swing.JTextField();
+        generatePDF_button = new javax.swing.JButton();
+        addEquipment_button = new javax.swing.JButton();
+        editEquipment_button = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         invT = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         summ = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        searchSumm = new javax.swing.JLabel();
+        searchSumm_field = new javax.swing.JTextField();
+        summaryPDF_button = new javax.swing.JButton();
         classification = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -82,29 +81,29 @@ public class SAMPLE1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("SEARCH:");
+        search.setText("SEARCH:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        search_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                search_fieldActionPerformed(evt);
             }
         });
 
-        jButton1.setText("GENERATE PDF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        generatePDF_button.setText("GENERATE PDF");
+        generatePDF_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                generatePDF_buttonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("ADD EQUIPMENT ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addEquipment_button.setText("ADD EQUIPMENT ");
+        addEquipment_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                addEquipment_buttonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("EDIT EQUIPMENT");
+        editEquipment_button.setText("EDIT EQUIPMENT");
 
         delete.setText("DELETE EQUIPMENT");
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -163,15 +162,15 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(search)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(search_field, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(generatePDF_button))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(addEquipment_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
+                        .addComponent(editEquipment_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 694, Short.MAX_VALUE)
                         .addComponent(delete)))
                 .addContainerGap())
@@ -181,15 +180,15 @@ public class SAMPLE1 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(search)
+                    .addComponent(search_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(generatePDF_button, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
+                    .addComponent(addEquipment_button)
+                    .addComponent(editEquipment_button)
                     .addComponent(delete))
                 .addContainerGap())
         );
@@ -251,18 +250,18 @@ public class SAMPLE1 extends javax.swing.JFrame {
             summ.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel2.setText("SEARCH:");
+        searchSumm.setText("SEARCH:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        searchSumm_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                searchSumm_fieldActionPerformed(evt);
             }
         });
 
-        jButton6.setText("GENERATE PDF");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        summaryPDF_button.setText("GENERATE PDF");
+        summaryPDF_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                summaryPDF_buttonActionPerformed(evt);
             }
         });
 
@@ -281,13 +280,13 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(searchSumm)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchSumm_field, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(classification, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6))
+                        .addComponent(summaryPDF_button))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -297,10 +296,10 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchSumm)
+                        .addComponent(searchSumm_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(classification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(summaryPDF_button, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                 .addContainerGap())
@@ -364,7 +363,8 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1108, 577));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -374,26 +374,27 @@ public class SAMPLE1 extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        addRow.setVisible(true);
+    private void addEquipment_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEquipment_buttonActionPerformed
+        AddEquipmentForm form = new AddEquipmentForm(this, true);
+        form.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_addEquipment_buttonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void generatePDF_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generatePDF_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_generatePDF_buttonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void search_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_search_fieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void searchSumm_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchSumm_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_searchSumm_fieldActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void summaryPDF_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryPDF_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_summaryPDF_buttonActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         int srow = invT.getSelectedRow();
@@ -491,16 +492,13 @@ public class SAMPLE1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addEquipment_button;
     private javax.swing.JComboBox<String> classification;
     private javax.swing.JButton delete;
+    private javax.swing.JButton editEquipment_button;
+    private javax.swing.JButton generatePDF_button;
     private javax.swing.JTable invT;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -514,9 +512,12 @@ public class SAMPLE1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel search;
+    private javax.swing.JLabel searchSumm;
+    private javax.swing.JTextField searchSumm_field;
+    private javax.swing.JTextField search_field;
     private javax.swing.JTable summ;
+    private javax.swing.JButton summaryPDF_button;
     private javax.swing.JTabbedPane tbp;
     // End of variables declaration//GEN-END:variables
 	private class SwingAction extends AbstractAction {
