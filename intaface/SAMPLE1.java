@@ -38,7 +38,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tbp = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -50,10 +50,11 @@ public class SAMPLE1 extends javax.swing.JFrame {
         invT = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        summ = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        classification = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -72,6 +73,12 @@ public class SAMPLE1 extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 launch(evt);
+            }
+        });
+
+        tbp.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                changetab(evt);
             }
         });
 
@@ -187,10 +194,10 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("INVENTORY", jPanel1);
+        tbp.addTab("INVENTORY", jPanel1);
 
-        jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        summ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        summ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -235,13 +242,13 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setMinimumSize(new java.awt.Dimension(105, 480));
-        jTable2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setResizable(false);
-            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        summ.setMinimumSize(new java.awt.Dimension(105, 480));
+        summ.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        summ.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(summ);
+        if (summ.getColumnModel().getColumnCount() > 0) {
+            summ.getColumnModel().getColumn(0).setResizable(false);
+            summ.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jLabel2.setText("SEARCH:");
@@ -259,6 +266,13 @@ public class SAMPLE1 extends javax.swing.JFrame {
             }
         });
 
+        classification.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "Laboratory", "Office" }));
+        classification.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classificationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -270,6 +284,8 @@ public class SAMPLE1 extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classification, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE))
@@ -282,14 +298,15 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(classification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("SUMMARY", jPanel2);
+        tbp.addTab("SUMMARY", jPanel2);
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
@@ -313,7 +330,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("LOGS", jPanel3);
+        tbp.addTab("LOGS", jPanel3);
 
         jMenu1.setText("File");
 
@@ -338,12 +355,12 @@ public class SAMPLE1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tbp)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
+                .addComponent(tbp)
                 .addContainerGap())
         );
 
@@ -385,16 +402,25 @@ public class SAMPLE1 extends javax.swing.JFrame {
         execdel.delete(value);
         display ld = new display();
         LinkedList<Item> array = ld.loadinv();
-        disp(array);
+        dispinv(array);
     }//GEN-LAST:event_deleteActionPerformed
     
     private void launch(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_launch
         display ld = new display();
         LinkedList<Item> array = ld.loadinv();
-        disp(array);
+        dispinv(array);
         }
-
-    private void disp(LinkedList<Item> array) {
+    private void dispsumm(LinkedList<Archive> array){
+        DefaultTableModel model = (DefaultTableModel)summ.getModel();
+        model.setRowCount(0);
+        Object [] row = new Object [2];
+        for(int i=0;i<array.size();i++){
+            row[0]=array.get(i).getclass()+" EQUIPMENT "+ array.get(i).getyear();
+            row[1]="Php "+array.get(i).gettotal();
+            model.addRow(row);
+         }
+    }
+    private void dispinv(LinkedList<Item> array) {
          DefaultTableModel model = (DefaultTableModel)invT.getModel();
          model.setRowCount(0);
          Object [] row = new Object [12];
@@ -414,6 +440,20 @@ public class SAMPLE1 extends javax.swing.JFrame {
             model.addRow(row);
          }
     }//GEN-LAST:event_launch
+    
+    private void changetab(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_changetab
+        if(tbp.getSelectedIndex() == 1){
+        display ld = new display();
+        LinkedList<Archive> array = ld.loadsumm(0);
+        dispsumm(array);
+        }
+    }//GEN-LAST:event_changetab
+
+    private void classificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationActionPerformed
+            display ld = new display();
+            LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
+            dispsumm(array);
+    }//GEN-LAST:event_classificationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,6 +491,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> classification;
     private javax.swing.JButton delete;
     private javax.swing.JTable invT;
     private javax.swing.JButton jButton1;
@@ -471,12 +512,12 @@ public class SAMPLE1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable summ;
+    private javax.swing.JTabbedPane tbp;
     // End of variables declaration//GEN-END:variables
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {

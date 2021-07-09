@@ -37,5 +37,27 @@ public class display {
          return array;
      
         }
+     
+     public static LinkedList<Archive> loadsumm(int cls){
+            LinkedList<Archive> array = new LinkedList<>();
+            Connection conn = null;
+            ResultSet rs = null;
+            String sql = null;
+         try{
+             conn = dbconn.connect();
+             sql = "Select * from archive where Classification = "+cls; 
+             Statement ps = conn.createStatement();
+             rs = ps.executeQuery(sql);
+             Archive arch;
+             while(rs.next()){
+                 arch = new Archive(rs.getInt("Year"),rs.getDouble("Total"),rs.getInt("Classification"));
+                 array.add(arch);
+             }
+            }catch(SQLException e){
+             System.out.println(e.toString());
+            }
+         return array;
+     
+        }
       
 }
