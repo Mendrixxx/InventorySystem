@@ -6,24 +6,28 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Item {
-        int itemid;
-        String name;
+    int itemid;
+    String name;
 	String description;
 	int propertyNum;
 	int dateAq;
-	int unitMeas;
+	String unitMeas;
 	double unitVal;
 	double totalVal;
 	int quantPropCar;
 	int quantPhyCou;
 	String remarks;
-	private String[] choices = new String[] {"laboratory","office","IT"};
+	private String[] choices = new String[] {"IT","LABORATORY","OFFICE"};
 	String classification;
+	int SOquan;
+	double SOval;
 	List<Component> components = new LinkedList<Component>();
-
-        public Item(int id, String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum) {
-                itemid = id;
-                name = na;
+	
+	Item(){}
+	
+	Item(int id, String na,String de,int pn,int da,String um,double uv,double tv,int qpcr,int qpcu,String re,int clNum,int soq,double soval) {
+		itemid = id;
+        name = na;
 		description = de;
 		propertyNum = pn;
 		dateAq = da;
@@ -34,10 +38,12 @@ public class Item {
 		quantPhyCou = qpcu;
 		remarks = re;
 		classification = choices[clNum];
+		SOquan = soq;
+		SOval = soval;
     }
 	
 	//single setting of variables
-        public void setid(int itemid) {
+    public void setid(int itemid) {
 		this.itemid = itemid;
 	}
 	public void setName(String name) {
@@ -56,7 +62,7 @@ public class Item {
 		this.dateAq = dateAq;
 	}
 	
-	public void setUnitMeas(int unitMeas) {
+	public void setUnitMeas(String unitMeas) {
 		this.unitMeas = unitMeas;
 	}
 	 
@@ -84,9 +90,16 @@ public class Item {
 		classification = choices[clNum];
 	}
 	
+	public void setSOquan(int SOquant) {
+		this.SOquan = SOquant;
+	}
+	
+	public void setSOval(double SOval) {
+		this.SOval = SOval;
+	}
 	
 	//set all variables in one method 
-	public void setAll(int id, String na,String de,int pn,int da,int um,double uv,double tv,int qpcr,int qpcu,String re,int clNum){
+	public void setAll(int id, String na,String de,int pn,int da,String um,double uv,double tv,int qpcr,int qpcu,String re,int clNum){
 		itemid = id;
                 name = na;
 		description = de;
@@ -99,6 +112,11 @@ public class Item {
 		quantPhyCou = qpcu;
 		remarks = re;
 		classification = choices[clNum];
+	}
+	
+	//add components
+	public void addComponents(Component comp) {
+		components.add(comp);
 	}
 	
 	//get variables
@@ -121,7 +139,7 @@ public class Item {
 		return dateAq;
 	}
 	
-	public int getUnitMeas() {
+	public String getUnitMeas() {
 		return unitMeas;
 	}
 	 
@@ -149,28 +167,60 @@ public class Item {
 		return classification;
 	}
 	
+	public int getSOquan(){
+		return SOquan;
+	}
 	
+	public double getSOval() {
+		return SOval;
+	}
+	
+	//get components
+	public List<Component> getComponents() {
+		return components;
+	}
+		
 	//insert to database 
 	public void insert() {
 		Connection conn = null; 
 	    PreparedStatement ps = null;
 	    
 	    try{
-	    	conn = dbconn.connect();
-	        String sql = "INSERT INTO data(item_name,item_desc,property_num,date_aq,unit_meas,unit_val,total_val,quant_propcar,quant_phycou,remarks,classification) VALUES(?,?,?,?,?,?,?,?,?,?,?) ";
+	    	conn = Dbconn.connect();
+	        String sql = "INSERT INTO item(item_name,item_desc,property_num,date_aq,unit_meas,unit_val,total_val,quant_propcar,quant_phycou,remarks,classification,SO_quant,SO_val) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 	        ps = conn.prepareStatement(sql);
 	        ps.setString(1, name);
 	        ps.setString(2, description);
 	        ps.setInt(3, propertyNum);
-	        ps.setInt(4, unitMeas);
+	        ps.setString(4, unitMeas);
 	        ps.setDouble(5, unitVal);
 	        ps.setDouble(6, totalVal);
 	        ps.setInt(7, quantPropCar);
 	        ps.setInt(8, quantPhyCou);
 	        ps.setString(9, remarks);
 	        ps.setString(10, classification);
+	        ps.setInt(11, SOquan);
+	        ps.setDouble(12, SOval);
 	        ps.execute();
-	       
+	        ps.close();
+	        
+	        if(!components.isEmpty()) {
+	        	for(Component temp : components) {
+	        		sql = "INSERT INTO component(item_id,comp_name,c_unit_meas,c_unit_val,c_total_val,c_quan_propcar,c_quan_phycou,c_SO_quan,c_SO_val)values(?,?,?,?,?,?,?,?,?)";
+	        		ps = conn.prepareStatement(sql);
+	        		ps.setInt(1, temp.getItemId());
+	        		ps.setString(2, temp.getCompName());
+	        		ps.setString(3,temp.getCompUnitMeas());
+	        		ps.setDouble(4,temp.getCompUnitValue());
+	        		ps.setDouble(5, temp.getCompTotalValue());
+	        		ps.setInt(6,temp.getCompQuantPhyCou());
+	        		ps.setInt(7,temp.getCompSOquan());
+	        		ps.setDouble(8, temp.getCompSOval());
+	        		
+	        		ps.execute();
+	        		ps.close();
+	        	}
+	        }
 	        System.out.println("Data has been inserted!");
 	        
 	    } catch(SQLException e){

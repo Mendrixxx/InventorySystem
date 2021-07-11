@@ -400,15 +400,15 @@ public class SAMPLE1 extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         int srow = invT.getSelectedRow();
         String value = invT.getModel().getValueAt(srow, 0).toString();
-        operations execdel = new operations();
+        Operations execdel = new Operations();
         execdel.delete(value);
-        display ld = new display();
+        Display ld = new Display();
         LinkedList<Item> array = ld.loadinv();
         dispinv(array);
     }//GEN-LAST:event_deleteActionPerformed
     
     private void launch(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_launch
-        display ld = new display();
+        Display ld = new Display();
         LinkedList<Item> array = ld.loadinv();
         dispinv(array);
         }
@@ -417,8 +417,8 @@ public class SAMPLE1 extends javax.swing.JFrame {
         model.setRowCount(0);
         Object [] row = new Object [2];
         for(int i=0;i<array.size();i++){
-            row[0]=array.get(i).getclass()+" EQUIPMENT "+ array.get(i).getyear();
-            row[1]="Php "+array.get(i).gettotal();
+            row[0]=array.get(i).getClassification()+" EQUIPMENT "+ array.get(i).getYear();
+            row[1]="Php "+array.get(i).getTotal();
             model.addRow(row);
          }
     }
@@ -445,7 +445,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
     
     private void changetab(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_changetab
         if(tbp.getSelectedIndex() == 1){
-        display ld = new display();
+        Display ld = new Display();
         LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
         dispsumm(array);
         }
@@ -453,7 +453,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
 
     private void classificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classificationActionPerformed
             if(classification.getSelectedIndex() != cbsi){
-            display ld = new display();
+            Display ld = new Display();
             LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
             dispsumm(array);
             cbsi = classification.getSelectedIndex();

@@ -4,10 +4,12 @@ public class Component{
 	int itemId;
 	String itemName;
 	String compName;
-	int compUnitMeas;
+	String compUnitMeas;
 	double compUnitValue;
 	double compTotalValue;
 	int compQuantPhyCou;
+	int compSOquan;
+	double compSOval;
 	
 	//set single variables
 	public void setItemId(int itemId) {
@@ -22,7 +24,7 @@ public class Component{
 		this.compName = compName;
 	}
 	
-	public void setCompUnitMeas(int compUnitMeas) {
+	public void setCompUnitMeas(String compUnitMeas) {
 		this.compUnitMeas = compUnitMeas;
 	}
 	
@@ -34,19 +36,31 @@ public class Component{
 		this.compTotalValue = compTotalValue;
 	}
 	
-	public void setcompQuantPhyCou(int compQuantPhyCou) {
+	public void setCompQuantPhyCou(int compQuantPhyCou) {
 		this.compQuantPhyCou = compQuantPhyCou;
 	}
 	
+	public void setCompSOquan(int compSOquan) {
+		this.compSOquan =  compSOquan;
+	}
+	
+	public void setCompSOval(double compSOval) {
+		this.compSOval = compSOval;
+	}
+	
 	//set all variables 
-	public void setAllCompInfo(int ii,String cn,int cum, double cuv,double ctv,int cqpc) {
+	public void setAllCompInfo(int ii,String cn,String cum, double cuv,double ctv,int cqpc,int csq,double csv) {
 		itemId = ii;
 		compName = cn;
 		compUnitMeas = cum;
 		compUnitValue = cuv;
 		compTotalValue = ctv;
 		compQuantPhyCou = cqpc;
+		compSOquan = csq;
+		compSOval = csv;
 	}
+	
+	//get variables
 	public int getItemId() {
 		return itemId;
 	}
@@ -59,7 +73,7 @@ public class Component{
 		return compName;
 	}
 	
-	public int getCompUnitMeas() {
+	public String getCompUnitMeas() {
 		return compUnitMeas;
 	}
 	
@@ -71,8 +85,17 @@ public class Component{
 		return compTotalValue;
 	}
 	
-	public int getcompQuantPhyCou() {
+	public int getCompQuantPhyCou() {
 		return compQuantPhyCou;
 	}
+	
+	public int getCompSOquan() {
+		return compSOquan;
+	}
+	
+	public double getCompSOval() {
+		return compSOquan;
+	}
+	
 	
 }
