@@ -3,6 +3,7 @@ package functionality;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Item {
@@ -10,7 +11,7 @@ public class Item {
     String name;
 	String description;
 	int propertyNum;
-	int dateAq;
+	LocalDate dateAq;
 	String unitMeas;
 	double unitVal;
 	double totalVal;
@@ -25,7 +26,7 @@ public class Item {
 	
 	Item(){}
 	
-	Item(int id, String na,String de,int pn,int da,String um,double uv,double tv,int qpcr,int qpcu,String re,int clNum,int soq,double soval) {
+	Item(int id, String na,String de,int pn,LocalDate da,String um,double uv,double tv,int qpcr,int qpcu,String re,int clNum,int soq,double soval) {
 		itemid = id;
         name = na;
 		description = de;
@@ -58,7 +59,7 @@ public class Item {
 		this.propertyNum = propertyNum;
 	}
 	
-	public void setDateAq (int dateAq) {
+	public void setDateAq (LocalDate dateAq) {
 		this.dateAq = dateAq;
 	}
 	
@@ -99,7 +100,7 @@ public class Item {
 	}
 	
 	//set all variables in one method 
-	public void setAll(int id, String na,String de,int pn,int da,String um,double uv,double tv,int qpcr,int qpcu,String re,int clNum){
+	public void setAll(int id, String na,String de,int pn,LocalDate da,String um,double uv,double tv,int qpcr,int qpcu,String re,int clNum){
 		itemid = id;
                 name = na;
 		description = de;
@@ -135,7 +136,7 @@ public class Item {
 		return propertyNum;
 	}
 	
-	public int getDateAq () {
+	public LocalDate getDateAq () {
 		return dateAq;
 	}
 	

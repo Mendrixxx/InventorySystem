@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
+import java.time.LocalDate;
 
 
 public class Display {
@@ -20,7 +21,8 @@ public class Display {
              rs = ps.executeQuery(sql);
              Item itm;
              while(rs.next()){
-                 itm = new Item(rs.getInt("item_id"),rs.getString("item_name"),rs.getString("item_desc"),rs.getInt("property_num"),rs.getInt("date_aq"),rs.getString("unit_meas"),rs.getDouble("unit_val"),rs.getDouble("total_val"),rs.getInt("quant_propcar"),rs.getInt("quant_phycou"),rs.getString("remarks"),rs.getInt("classification"),rs.getInt("SO_quant"),rs.getDouble("SO_val"));
+                 LocalDate lodas = LocalDate.parse(rs.getString("date_aq"));
+                 itm = new Item(rs.getInt("item_id"),rs.getString("item_name"),rs.getString("item_desc"),rs.getInt("property_num"),lodas,rs.getString("unit_meas"),rs.getDouble("unit_val"),rs.getDouble("total_val"),rs.getInt("quant_propcar"),rs.getInt("quant_phycou"),rs.getString("remarks"),rs.getInt("classification"),rs.getInt("SO_quant"),rs.getDouble("SO_val"));
                  array.add(itm);
              }
             }catch(SQLException e){
@@ -51,5 +53,25 @@ public class Display {
          return array;
      
         }
-      
+      public static LinkedList<Logs> loadlogs(){
+            LinkedList<Logs> array = new LinkedList<>();
+            Connection conn = null;
+            ResultSet rs = null;
+            String sql = null;
+         try{
+             conn = Dbconn.connect();
+             sql = "Select * from log"; 
+             Statement ps = conn.createStatement();
+             rs = ps.executeQuery(sql);
+             Logs log;
+             while(rs.next()){
+                 LocalDate loda = LocalDate.parse(rs.getString("date_action"));
+                 log = new Logs(rs.getString("item_name"),rs.getString("action"),loda);
+                 array.add(log);
+             }
+            }catch(SQLException e){
+             System.out.println(e.toString());
+            } 
+        return array;         
+      }
 }

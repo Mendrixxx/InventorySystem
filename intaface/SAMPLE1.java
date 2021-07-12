@@ -17,6 +17,7 @@ import javax.swing.Action;
 import javax.swing.table.DefaultTableModel;
 public class SAMPLE1 extends javax.swing.JFrame {
   int cbsi;
+  boolean swt = false;
     
     /**
      * Creates new form SAMPLE1
@@ -56,7 +57,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
         classification = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        logs = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -114,6 +115,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
         });
 
         invT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        invT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         invT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -136,20 +138,10 @@ public class SAMPLE1 extends javax.swing.JFrame {
         if (invT.getColumnModel().getColumnCount() > 0) {
             invT.getColumnModel().getColumn(0).setResizable(false);
             invT.getColumnModel().getColumn(0).setPreferredWidth(30);
-            invT.getColumnModel().getColumn(1).setResizable(false);
-            invT.getColumnModel().getColumn(2).setResizable(false);
-            invT.getColumnModel().getColumn(3).setResizable(false);
             invT.getColumnModel().getColumn(4).setResizable(false);
             invT.getColumnModel().getColumn(4).setPreferredWidth(100);
             invT.getColumnModel().getColumn(5).setResizable(false);
             invT.getColumnModel().getColumn(5).setPreferredWidth(100);
-            invT.getColumnModel().getColumn(6).setResizable(false);
-            invT.getColumnModel().getColumn(7).setResizable(false);
-            invT.getColumnModel().getColumn(8).setResizable(false);
-            invT.getColumnModel().getColumn(8).setPreferredWidth(150);
-            invT.getColumnModel().getColumn(9).setResizable(false);
-            invT.getColumnModel().getColumn(9).setPreferredWidth(160);
-            invT.getColumnModel().getColumn(10).setResizable(false);
             invT.getColumnModel().getColumn(11).setResizable(false);
             invT.getColumnModel().getColumn(11).setPreferredWidth(100);
         }
@@ -197,6 +189,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
         tbp.addTab("INVENTORY", jPanel1);
 
         summ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        summ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         summ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -308,10 +301,11 @@ public class SAMPLE1 extends javax.swing.JFrame {
 
         tbp.addTab("SUMMARY", jPanel2);
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        logs.setEditable(false);
+        logs.setColumns(20);
+        logs.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        logs.setRows(5);
+        jScrollPane4.setViewportView(logs);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -433,8 +427,8 @@ public class SAMPLE1 extends javax.swing.JFrame {
             row[3]=array.get(i).getPropertyNum();
             row[4]=array.get(i).getDateAq();
             row[5]=array.get(i).getUnitMeas();
-            row[6]=array.get(i).getUnitVal();
-            row[7]=array.get(i).getTotalVal();
+            row[6]="Php "+array.get(i).getUnitVal();
+            row[7]="Php "+array.get(i).getTotalVal();
             row[8]=array.get(i).getQuantPropCar();
             row[9]=array.get(i).getQuantPhyCou();
             row[10]=array.get(i).getRemarks();
@@ -444,10 +438,22 @@ public class SAMPLE1 extends javax.swing.JFrame {
     }//GEN-LAST:event_launch
     
     private void changetab(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_changetab
-        if(tbp.getSelectedIndex() == 1){
+        if(tbp.getSelectedIndex() == 1 && swt != true){
+                Display ld = new Display();
+                LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
+                dispsumm(array);
+                swt = true;
+        }
+        else if(tbp.getSelectedIndex() == 2){
         Display ld = new Display();
-        LinkedList<Archive> array = ld.loadsumm(classification.getSelectedIndex());
-        dispsumm(array);
+        LinkedList<Logs> array = ld.loadlogs();
+        String newLine = System.getProperty("line.separator");
+        logs.setText("");
+         for(int i=0;i<3;i++){
+            logs.append(array.get(i).getact()+" ITEM");
+            logs.append(" // "+array.get(i).getname());
+            logs.append(" // @ "+array.get(i).getdact()+newLine);
+         }
         }
     }//GEN-LAST:event_changetab
 
@@ -515,7 +521,7 @@ public class SAMPLE1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea logs;
     private javax.swing.JLabel search;
     private javax.swing.JLabel searchSumm;
     private javax.swing.JTextField searchSumm_field;
