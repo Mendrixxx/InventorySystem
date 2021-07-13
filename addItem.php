@@ -153,7 +153,7 @@
                                                                         <span class="d-none d-sm-block">Close</span>
                                                                     </button>
                                                                     <input type = "reset" value="Clear" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addcomp">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-backdrop="static" data-target="#addcomp">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Add a Component for this Item</span>
                                                                     </button>
