@@ -103,18 +103,15 @@
 
 <!-- Displays on dropdown the classifications from table item-->
         <select id = "classification" onchange="selectClassi()">
-       
-
-    
-       <option value="0">IT</option>
-        <option value="1">LABORATORY</option>
+        
+         <option value="0">IT</option>
+         <option value="1">LABORATORY</option>
          <option value="2">OFFICE</option>
       
- <?php while( $rows = mysqli_fetch_array($res) ){ ?>
-
-
-        <?php   } ?>
-        </select>										
+	 <?php while( $rows = mysqli_fetch_array($res) ){ ?>
+	 <?php   } ?>
+        
+	</select>										
 
                                             </div>
 										<div class="col-md-4">
@@ -138,23 +135,17 @@
                                                 
 <?php
 
-    $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='IT' group by YEAR(date_aq) order by date_aq desc ";
-    
+    $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='IT' group by YEAR(date_aq) order by date_aq desc ";    
     $res = mysqli_query($conn,$sql);
-    while ($rows = mysqli_fetch_array($res)) {
-    ?>  
+						    
+    while ($rows = mysqli_fetch_array($res)) { ?>  
     <tr>
         <td> <?php echo $rows['yearName'] ?> </td>
         <td> <?php echo $rows['total'] ?> </td>     
     </tr>
-    <?php
-        }?>
+<?php }?>
                                                
-                                               
-
-
-
-                                          
+                                                                                       
                                         </tbody>
                                     </table>
                                 </div>
