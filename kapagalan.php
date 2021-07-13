@@ -26,7 +26,32 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
-       $("#table1").DataTable();
+       $("#table1").DataTable({
+            "ajax":{
+                "url": "backend/itemTable.php",
+                "dataSrc":"",
+            },
+            "columns":[
+                {"data":"item_name"},
+                {"data":"item_desc"},
+                {"data":"property_num"},
+                {"data":"date_aq"},
+                {"data":"unit_meas"},
+                {"data":"unit_val"},
+                {"data":"total_val"},
+                {"data":"quant_propcar"},
+                {"data":"quant_phycou"},
+                {"data":"SO_quant"},
+                {"data":"SO_val"},
+                {"data":"classification"},
+                {"data":"remarks"},
+                {"data":null,
+                 "defaultContent":'<a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a>'
+                }
+            ],
+
+       });
+
     });
 
 
@@ -109,15 +134,16 @@
                                                         <thead>
                                                             <tr>
                                                                 <th rowspan="2">Name</th>
-                                                                <th rowspan="2">Unit</th>
                                                                 <th rowspan="2">Description</th>
                                                                 <th rowspan="2">Property Number</th>
                                                                 <th rowspan="2">Date Acquired</th>
                                                                 <th rowspan="2">Unit Of Measure</th>
                                                                 <th rowspan="2">Unit Value</th>
                                                                 <th rowspan="2">Total Value</th>
-                                                                <th rowspan="2">Quantity Per Physical Count</th>
+                                                                <th rowspan="2">Quantity Per Property Card</th>
+                                                                <th rowspan="2">Quantity Per Physical Count</th> 
                                                                 <th colspan="2">Shortage/Overage</th>
+                                                                <th rowspan="2">Classification</th>
                                                                 <th rowspan="2">Remarks</th>
                                                                 <th rowspan="2">Manage</th>
                                                             </tr>
@@ -127,8 +153,12 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            
-                    
+                                                            <td>
+                                                                 <!--    <a href="#" class="btn btn-primary">Edit</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="#" class="btn btn-primary">Delete</a>
+                                                                </td> -->
                                                         </tbody>
                                                         </table>
                                                     
