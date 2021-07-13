@@ -127,7 +127,7 @@
                                                                         <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
                                                                     </div> <label>Total value of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qPhysCount" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
                                                                     </div>
                                                                     <label>Remarks: </label>
                                                                     <div class="form-group">
