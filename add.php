@@ -76,9 +76,9 @@
                                                
                                             
                                                             </div>
-                                                            <form action="#">
+                                                            <form action="insert.php" method="POST">
                                                                 <div class="modal-body">
-                                                                <form action="insert.php" method="POST">    
+                                                                
                                                                     <label>Name: </label>
                                                                     <div class="form-group">
                                                                         <input name="iname" type="text" placeholder="Name" class="form-control" Required>
@@ -100,7 +100,7 @@
                                                                     </div>
                                                                     <label>Unit Measured: </label>
                                                                     <div class="form-group">
-                                                                        <input name="UoM" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                        <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
                                                                            
                                                                     </div>
                                                                     <label>Unit Value: </label>
@@ -157,12 +157,12 @@
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Add Components for this Item</span>
                                                                     </button>
-
-                                                                    <button  type="submit" class="btn btn-primary ml-1"
+                                                                    <button name = "add" type="submit" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Finish up</span>
-                                                                    </button></form>
+                                                                    </button>
+                                                
                                                                 </div>
                                                             </form>
                                                         </div>
