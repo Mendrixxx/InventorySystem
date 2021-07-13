@@ -78,60 +78,55 @@
                                                             </div>
                                                             <form action="#">
                                                                 <div class="modal-body">
+                                                                <form action="insert.php" method="POST">    
                                                                     <label>Name: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Name"
-                                                                            class="form-control">
-                                                                    </div>
-                                                                    <label>Unit: </label>
-                                                                    <div class="form-group">
-                                                                        <input require  type="text" placeholder="Unit"
-                                                                            class="form-control">
+                                                                        <input name="iname" type="text" placeholder="Name" class="form-control" Required>
                                                                     </div>
                                                                     <label>Description: </label>
                                                                     <div class="form-group">
-                                                                        <input require type="text" placeholder="Description"
-                                                                            class="form-control">
+                                                                        <input name="desc" type="text" placeholder="Description" class="form-control" Required>
+                                                                          
                                                                     </div>
                                                                     <label>Property Number: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Property Number"
-                                                                            class="form-control">
+                                                                        <input  name="pnum" type="text" placeholder="Property Number" class="form-control" Required>
+
                                                                     </div>
                                                                     <label>Date Acquired: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Date Acquired"
-                                                                            class="form-control">
+                                                                        <input  name="dateaq" type="date" class="form-control" Required>
+                                                                         
                                                                     </div>
-                                                                    <label>Unit Of Measure: </label>
+                                                                    <label>Unit Measured: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Unit Of Measure"
-                                                                            class="form-control">
+                                                                        <input name="UoM" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                           
                                                                     </div>
                                                                     <label>Unit Value: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Unit Value"
-                                                                            class="form-control">
+                                                                        <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                                                                         
                                                                     </div>
                                                                     <label>Total Value: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Total Value"
-                                                                            class="form-control">
+                                                                        <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                                                                          
                                                                     </div>
                                                                     <label>Quantity Per Property Card: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Quantity Per Property Card"
-                                                                            class="form-control">
+                                                                        <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                                                                          
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input require  type="text" placeholder="Quantity Per Physical Count"
-                                                                            class="form-control">
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
+                                                                            
                                                                     </div>
                                                                     <label>Remarks: </label>
                                                                     <div class="form-group">
-                                                                        <input require type="text" placeholder="Remarks"
-                                                                            class="form-control">
+                                                                        <input name="remarks" type="text" placeholder="Remarks"class="form-control" Required>
+                                                                           
                                                                     </div>
                                                                     <label>Classification: </label>
                                                                     <div class="form-group">
@@ -145,21 +140,23 @@
                                                                     
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-light-secondary"
+                                                                    <button onclick="window.location.href='inventory.php'" type="button" class="btn btn-light-secondary"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Close</span>
                                                                     </button>
-                                                                    <button type="button" class="btn btn-light-secondary"
-                                                                        data-bs-dismiss="modal">
-                                                                        <i class="bx bx-x d-block d-sm-none"></i>
-                                                                        <span class="d-none d-sm-block">Clear</span>
-                                                                    </button>
+                                                                    <input type = "reset" value="Clear" class="btn btn-light-secondary" data-bs-dismiss="modal">
                                                                     <button type="button" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
-                                                                        <span class="d-none d-sm-block">Add</span>
+                                                                        <span class="d-none d-sm-block">Add Components for this Item</span>
                                                                     </button>
+
+                                                                    <button  type="submit" class="btn btn-primary ml-1"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Finish up</span>
+                                                                    </button></form>
                                                                 </div>
                                                             </form>
                                                         </div>
