@@ -120,13 +120,19 @@
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
-                                                                            
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Quantity of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                    </div> <label>Total value of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qPhysCount" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
                                                                     </div>
                                                                     <label>Remarks: </label>
                                                                     <div class="form-group">
-                                                                        <input name="remarks" type="text" placeholder="Remarks"class="form-control" Required>
-                                                                           
+                                                                        <input name="remarks" type="text" placeholder="Remarks"class="form-control" Required>   
+
                                                                     </div>
                                                                     <label>Classification: </label>
                                                                     <div class="form-group">
