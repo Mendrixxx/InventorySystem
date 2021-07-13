@@ -35,7 +35,7 @@
                 
                 
                 <li class="sidebar-item active has-sub">
-                    <a href="kapagalan.html" class='sidebar-link'>
+                    <a href="kapagalan.php" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Inventory</span>
                           
