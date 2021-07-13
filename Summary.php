@@ -140,7 +140,7 @@
     while ($rows = mysqli_fetch_array($res)) { ?>  
     <tr>
         <td> <?php echo $rows['yearName'] ?> </td>
-        <td> <?php echo $rows['total'] ?> </td>     
+        <td> Php <?php echo $rows['total'] ?> </td>     
     </tr>
 <?php }?>
                                                
