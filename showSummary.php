@@ -8,10 +8,12 @@
 	
 	$res = mysqli_query($conn,$sql);
 	while ($rows = mysqli_fetch_array($res)) {
+		$total=$rows["total"];
+		$total=number_format($total);
 	?>	
 	<tr>
 		<td> <?php echo $rows['yearName'] ?> </td>
-		<td> Php <?php echo $rows['total'] ?> </td>		
+		<td>Php <?php echo $total ?> </td>		
 	</tr>
 	<?php
 		}?>
