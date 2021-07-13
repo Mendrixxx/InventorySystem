@@ -9,6 +9,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INVENTORY</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -161,7 +165,8 @@
                                                                 </td> -->
                                                         </tbody>
                                                         </table>
-                                                        <a href="addItem.php" class="btn btn-primary">Add</a>
+                                                        <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
+                                                        <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Add Component</button>
                                                                 
                                                 </div>
                                             </div>
@@ -187,6 +192,207 @@
                     <script src="assets/js/bootstrap.bundle.min.js"></script>
                     
                     <script src="assets/js/main.js"></script>
+
+
+<!--Add Item Modal -->
+<div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="insert.php" method="POST">
+                                                                <div class="modal-body">
+                                                                
+                                                                    <label>Name: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="iname" type="text" placeholder="Name" class="form-control" Required>
+                                                                    </div>
+                                                                    <label>Description: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="desc" type="text" placeholder="Description" class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Property Number: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="pnum" type="text" placeholder="Property Number" class="form-control" Required>
+
+                                                                    </div>
+                                                                    <label>Date Acquired: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="dateaq" type="date" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Unit Measured: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                           
+                                                                    </div>
+                                                                    <label>Unit Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Total Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Property Card: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Physical Count: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Quantity of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                    </div> <label>Total value of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Remarks: </label>
+                                                                    <div class="form-group">
+                                                                        <?php
+                                                                        $sql = "Select * from `employee`";
+                                                                        $result = mysqli_query($conn, $sql);
+                                                                        ?>
+                                                                        <select name="remarks" class="form-control">
+                                                                            <?php while($row = mysqli_fetch_array($result)){
+                                                                            echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>";
+                                                                            }?>
+                                                                        </select>   
+                                                                    </div>
+                                                                    <label>Classification: </label>
+                                                                    <div class="form-group">
+                                                                        <select name="classification" class="form-control">
+                                                                            <option value="0">IT</option>
+                                                                            <option value="1">LABORATORY</option>
+                                                                            <option value="2">OFFICE</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Cancel</span>
+                                                                    </button>
+                                                                    
+                                                                    <button name = "add" type="submit" class="btn btn-primary ml-1"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Add Item</span>
+                                                                    </button>
+                                                
+                                                                </div>
+                                                            </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Add Item Modal END-->
+<!--Add Component Modal -->
+<div class="modal fade" id="addcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Component</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+               <form action="#">
+                                                                <div class="modal-body">
+                                                                <label>Select Item to be added with this Component: </label> 
+                                                                <div class="form-group">
+                                                                    <?php
+                                                                    $sql = "Select * from `item`";
+                                                                    $result = mysqli_query($conn, $sql);
+                                                                    
+                                                                    ?>
+                                                                        <select name="itmname" class="form-control">
+                                                                            <?php while($row = mysqli_fetch_array($result)):; ?>
+                                                                            <option value = <?php echo $row[0]; ?>><?php echo $row[1]; ?></option>
+                                                                            <?php endwhile; ?>
+                                                                        </select>
+                                                                    </div>
+                                                                <label>Name: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="iname" type="text" placeholder="Name" class="form-control" Required>
+                                                                    </div>
+                                                                    
+                                                                    <label>Date Acquired: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="dateaq" type="date" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Unit Measured: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                           
+                                                                    </div>
+                                                                    <label>Unit Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Total Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Property Card: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Physical Count: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Quantity of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                    </div> <label>Total value of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Remarks: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="remarks" type="text" placeholder="Remarks"class="form-control" Required>   
+                                                                    </div>
+                                                                <div class="modal-footer">
+                                                                   
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Cancel</span>
+                                                                        
+                                                                    </button>
+                                                                   
+                                                                    <button type="button" class="btn btn-primary ml-1"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Add Component</span>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Add Component Modal END-->
+
+
                     </body>
                     
                     </html>
