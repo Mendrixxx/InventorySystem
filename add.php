@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Per Personnel</title>
+    <title>Add Item</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
                 
                 
                 <li class="sidebar-item active has-sub">
-                    <a href="kapagalan.php" class='sidebar-link'>
+                    <a href="kapagalan.html" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Inventory</span>
                           
@@ -130,7 +130,7 @@
                                                                     </div>
                                                                     <label>Classification: </label>
                                                                     <div class="form-group">
-                                                                        <select  placeholder="Classification" class="form-control">
+                                                                        <select name="classification" placeholder="Classification" class="form-control">
                                                                             <option value="0">IT</option>
                                                                             <option value="1">LABORATORY</option>
                                                                             <option value="2">OFFICE</option>
