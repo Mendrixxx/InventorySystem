@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 05:28 AM
+-- Generation Time: Jul 13, 2021 at 11:58 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -48,6 +48,16 @@ INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
 (7, '0000-00-00', 90000, 2),
 (8, '0000-00-00', 100000, 2),
 (9, '0000-00-00', 110000, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth`
+--
+
+CREATE TABLE `auth` (
+  `pass` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -271,7 +281,12 @@ CREATE TABLE `item` (
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
 (1, 'laptop', '', '123001', '2021-01-01', 'unit', 30000, 30000, 1, 1, '0', 1, 0, 0),
 (2, 'PC', '', '123002', '2021-01-01', 'unit', 60000, 60000, 1, 1, '0', 0, 0, 0),
-(3, 'Sound System', '', '123003', '2021-01-01', 'unit', 70000, 70000, 1, 1, '0', 2, 0, 0);
+(3, 'Sound System', '', '123003', '2021-01-01', 'unit', 70000, 70000, 1, 1, '0', 2, 0, 0),
+(11, '234', '78', '78', '0009-08-07', '789', 7, 123, 798, 789, '789', 0, 789, 789),
+(12, '123', '12312389', '89', '0009-08-07', '789', 789, 789, 789, 789, '789', 0, 789, 789),
+(13, '213', '123789', '789', '0009-08-07', '789', 789, 879, 789, 789, '789', 0, 789, 789),
+(14, '123', '789', '789', '0009-08-07', '789', 789, 789, 789, 978, '789', 0, 789, 978978),
+(15, '123', 'u8', '879', '0009-08-07', '789', 789789, 789, 789, 789, '978', 0, 789, 789);
 
 -- --------------------------------------------------------
 
@@ -377,7 +392,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `log`
