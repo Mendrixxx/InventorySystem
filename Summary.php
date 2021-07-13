@@ -135,6 +135,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody id = "ans">
+                                                
+<?php
+
+    $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='IT' group by YEAR(date_aq) order by date_aq desc ";
+    
+    $res = mysqli_query($conn,$sql);
+    while ($rows = mysqli_fetch_array($res)) {
+    ?>  
+    <tr>
+        <td> <?php echo $rows['yearName'] ?> </td>
+        <td> <?php echo $rows['total'] ?> </td>     
+    </tr>
+    <?php
+        }?>
                                                
                                                
 
