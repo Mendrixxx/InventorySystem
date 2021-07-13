@@ -40,20 +40,20 @@
                 </div>
                
                         <li class="sidebar-item  ">
-                            <a href="kapagalan.html" class='sidebar-link'>
+                            <a href="kapagalan.php" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Inventory</span>
                             </a>
                         </li>
                         <li class="sidebar-item active ">
-                            <a href="Summary.html" class='sidebar-link'>
+                            <a href="Summary.php" class='sidebar-link'>
                                 <i class="bi bi-grid-1x2-fill"></i>
                                 <span>Summary</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="Logs.html" class='sidebar-link'>
+                            <a href="logs.php" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Logs</span>
                             </a>
