@@ -18,14 +18,17 @@
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"  >
-    <script src="assets/js/jquery-3.6.0.min.js"></script>>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css">
+    <script type="text/javascript" src="DataTable/datatables.min.js"></script>
 
 <script type="text/javascript">
     
     $(document).ready(function(){
-        
-
+       $("#table1").DataTable();
     });
+
 
 </script>
 
@@ -105,44 +108,28 @@
                                                     <table class="table table-striped" id="table1">
                                                         <thead>
                                                             <tr>
-                                                                <th>Name</th>
-                                                                <th>Unit</th>
-                                                                <th>Description</th>
-                                                                <th>Property Number</th>
-                                                                <th>Date Acquired</th>
-                                                                <th>Unit Of Measure</th>
-                                                                <th>Unit Value</th>
-                                                                <th>Total Value</th>
-                                                                <th>Quantity Per Physical Count</th>
-                                                                <th>Remarks</th>
-                                                                
+                                                                <th rowspan="2">Name</th>
+                                                                <th rowspan="2">Unit</th>
+                                                                <th rowspan="2">Description</th>
+                                                                <th rowspan="2">Property Number</th>
+                                                                <th rowspan="2">Date Acquired</th>
+                                                                <th rowspan="2">Unit Of Measure</th>
+                                                                <th rowspan="2">Unit Value</th>
+                                                                <th rowspan="2">Total Value</th>
+                                                                <th rowspan="2">Quantity Per Physical Count</th>
+                                                                <th colspan="2">Shortage/Overage</th>
+                                                                <th rowspan="2">Remarks</th>
+                                                                <th rowspan="2">Manage</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Quantity</th>
+                                                                <th>Value</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <div class="buttons"></div>
-                                                            <tr>
-                                                                <td>Graiden</td>
-                                                                <td>1</td>
-                                                                <td>076 4820 8838</td>
-                                                                <td>Offenburg</td>
-                                                                <td> Description</td>
-                                                                <td>GDescription</td>
-                                                                <td>vDescription</td>
-                                                                <td>08Description</td>
-                                                                <td>ODescriptionf</td>
-                                                                <td> Description</td>
-                                                                <td>
-                                                                    <a href="#" class="btn btn-primary">Edit</a>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="#" class="btn btn-primary">Delete</a>
-                                                                </td>
                                                             
-                                                            </tr>
-                                                            <td>
-                                                                <a href="add.html" class="btn btn-primary">Add</a>
-                                                                </td>
-                                                            </tbody>
+                    
+                                                        </tbody>
                                                         </table>
                                                     
                                                 </div>
