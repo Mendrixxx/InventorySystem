@@ -4,7 +4,6 @@
 include "backend/conn.php"; //Connect to the Database
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,20 +103,7 @@ include "backend/conn.php"; //Connect to the Database
 										</tr>
 									</thead>
 									<tbody>
-										<?php 
-											$query = mysqli_query($conn,"SELECT * FROM log");	
-												while ($row = mysqli_fetch_assoc($query)) 
-												{
-										?>
-													<tr>
-														<td><?php echo $row['item_name'] ?></td>
-														<td><?php echo $row['action'] ?></td>
-														<td><?php echo $row['date_action']?></td>
-														</tr>
-										<?php
-												}
-										?>
-										</tbody>
+									</tbody>
 								</table> 
 								<!--Datatable End-->
                             </div>
@@ -142,10 +128,25 @@ include "backend/conn.php"; //Connect to the Database
    <script type = "text/javascript" src="Datatable/jquery-3.5.1.js"></script>
    <script type = "text/javascript"  src="Datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
 	
-	<script>
-		$(document).ready(function() {
-		$('#logs').DataTable();
-	} );
-	</script>
+	<script type="text/javascript">
+	
+	//Datatable 
+    $(document).ready(function(){
+       $("#logs").DataTable({
+            "ajax":{
+                "url": "backend/logData.php",
+                "dataSrc":"",
+            },
+            "columns":[
+                {"data":"item_name"},
+                {"data":"action"},
+                {"data":"date_action"},
+            ],
+
+       });
+
+    });
+</script>
+
 </body>
 </html>
