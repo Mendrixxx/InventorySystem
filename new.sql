@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 11:58 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Jul 13, 2021 at 03:04 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new`
+-- Database: `inventory`
 --
 
 -- --------------------------------------------------------
@@ -79,6 +80,26 @@ INSERT INTO `campuses` (`id`, `campus`) VALUES
 (2, 'East Campus'),
 (3, 'Daraga Campus'),
 (4, 'Outside Campuses');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classification`
+--
+
+CREATE TABLE `classification` (
+  `classification_id` int(11) NOT NULL,
+  `cl_name` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `classification`
+--
+
+INSERT INTO `classification` (`classification_id`, `cl_name`) VALUES
+(0, 'Equipment'),
+(1, 'IT'),
+(2, 'Laboratory');
 
 -- --------------------------------------------------------
 
@@ -310,6 +331,33 @@ INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
 (2, 'PC', 'Add', '2021-07-01'),
 (3, 'Sound Sytem', 'Add', '2021-07-01');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nbc`
+--
+
+CREATE TABLE `nbc` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(255) NOT NULL,
+  `plantilla_no` varchar(255) NOT NULL,
+  `position_id` int(255) NOT NULL,
+  `appointment_type` varchar(15) NOT NULL,
+  `salary_grade_id` int(255) NOT NULL,
+  `college_id` int(255) NOT NULL,
+  `deployment_id` int(100) NOT NULL,
+  `department_id` int(100) NOT NULL,
+  `circular_id` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nbc`
+--
+
+INSERT INTO `nbc` (`id`, `employee_id`, `plantilla_no`, `position_id`, `appointment_type`, `salary_grade_id`, `college_id`, `deployment_id`, `department_id`, `circular_id`) VALUES
+(2638, 899, 'BUB-AP4-7-2019', 26, 'Permanent', 916, 1, 1, 3, '3'),
+(2658, 162, 'BUB-APRO4-2-1998', 23, 'Permanent', 948, 1, 1, 3, '3');
+
 --
 -- Indexes for dumped tables
 --
@@ -326,6 +374,12 @@ ALTER TABLE `archive`
 --
 ALTER TABLE `campuses`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `classification`
+--
+ALTER TABLE `classification`
+  ADD PRIMARY KEY (`classification_id`);
 
 --
 -- Indexes for table `colleges`
@@ -358,13 +412,20 @@ ALTER TABLE `employee`
 --
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `item_id` (`item_id`);
+  ADD UNIQUE KEY `item_id` (`item_id`),
+  ADD KEY `classification` (`classification`);
 
 --
 -- Indexes for table `log`
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`log_id`);
+
+--
+-- Indexes for table `nbc`
+--
+ALTER TABLE `nbc`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -375,6 +436,12 @@ ALTER TABLE `log`
 --
 ALTER TABLE `campuses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `classification`
+--
+ALTER TABLE `classification`
+  MODIFY `classification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -399,6 +466,12 @@ ALTER TABLE `item`
 --
 ALTER TABLE `log`
   MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `nbc`
+--
+ALTER TABLE `nbc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3849;
 
 --
 -- Constraints for dumped tables
