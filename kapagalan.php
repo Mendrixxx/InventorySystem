@@ -161,7 +161,8 @@
                                                                 </td> -->
                                                         </tbody>
                                                         </table>
-                                                    
+                                                        <a href="addItem.php" class="btn btn-primary">Add</a>
+                                                                
                                                 </div>
                                             </div>
                                         </div>
