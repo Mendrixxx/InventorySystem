@@ -134,7 +134,6 @@
                                             <tbody id = "ans">
                                                 
 <?php
-
     $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='IT' group by YEAR(date_aq) order by date_aq desc ";    
     $res = mysqli_query($conn,$sql);
 						    
