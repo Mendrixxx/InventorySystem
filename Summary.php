@@ -139,7 +139,7 @@
 						    
     while ($rows = mysqli_fetch_array($res)) {
         $total=$rows["total"];
-        $total=number_format($total);
+        $total=number_format($total,2);
     ?>  
     <tr>
         <td> <?php echo $rows['yearName'] ?> </td>
