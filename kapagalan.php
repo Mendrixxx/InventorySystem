@@ -31,29 +31,12 @@
     
     $(document).ready(function(){
        $("#table1").DataTable({
+            "processing":true,
+            "serverside":true,
             "ajax":{
-                "url": "backend/itemTable.php",
-                "dataSrc":"",
-            },
-            "columns":[
-                {"data":"item_name"},
-                {"data":"item_desc"},
-                {"data":"property_num"},
-                {"data":"date_aq"},
-                {"data":"unit_meas"},
-                {"data":"unit_val"},
-                {"data":"total_val"},
-                {"data":"quant_propcar"},
-                {"data":"quant_phycou"},
-                {"data":"SO_quant"},
-                {"data":"SO_val"},
-                {"data":"classification"},
-                {"data":"remarks"},
-                {"data":null,
-                 "defaultContent":'<a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a>'
-                }
-            ],
-
+                url: "backend/itemTable.php",
+                dataType: "json"
+            }
        });
 
     });
