@@ -25,8 +25,35 @@
     
     <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css">
     <script type="text/javascript" src="DataTable/datatables.min.js"></script>
-    
 </head>
+	</style>
+
+<style>
+    
+    .table-striped thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .table-striped, td, tr,{
+        padding: 20px;
+        border: 1px solid lightgray;
+        border-collapse: collapse;
+        text-align: center; 
+    }
+    tr:nth-of-type(odd){
+        background-color: white;
+    }
+    tr:nth-of-type(odd):hover{
+        background-color: dodgerblue;
+        color: white;
+        transform: scale(1.0);
+        transition: transform 100ms ease-in;
+    }
+	</style>
+  
 
 <body>
     <div id="app">
