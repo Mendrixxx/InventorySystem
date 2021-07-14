@@ -96,7 +96,7 @@ CREATE TABLE `classification` (
 --
 
 INSERT INTO `classification` (`classification_id`, `cl_name`) VALUES
-(0, 'Equipment'),
+(0, 'Office'),
 (1, 'IT'),
 (2, 'Laboratory');
 

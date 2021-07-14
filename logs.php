@@ -109,7 +109,7 @@ include "backend/conn.php"; //Connect to the Database
                             </div>
                         </div>
 					</div>
-				<!-- Card Header Start-->
+				<!-- Card Header End-->
 					
             <footer>
                 <div class="footer clearfix mb-0 text-muted">

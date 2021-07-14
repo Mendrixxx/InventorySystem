@@ -31,29 +31,12 @@
     
     $(document).ready(function(){
        $("#table1").DataTable({
+            "processing":true,
+            "serverside":true,
             "ajax":{
-                "url": "backend/itemTable.php",
-                "dataSrc":"",
-            },
-            "columns":[
-                {"data":"item_name"},
-                {"data":"item_desc"},
-                {"data":"property_num"},
-                {"data":"date_aq"},
-                {"data":"unit_meas"},
-                {"data":"unit_val"},
-                {"data":"total_val"},
-                {"data":"quant_propcar"},
-                {"data":"quant_phycou"},
-                {"data":"SO_quant"},
-                {"data":"SO_val"},
-                {"data":"classification"},
-                {"data":"remarks"},
-                {"data":null,
-                 "defaultContent":'<a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-primary">Delete</a>'
-                }
-            ],
-
+                url: "backend/itemTable.php",
+                dataType: "json"
+            }
        });
 
     });
@@ -62,6 +45,33 @@
 </script>
 
 </head>
+    <style>
+.table-striped thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+.table-striped td {
+    padding: 12px 15px;
+  }
+  .table-striped tbody tr {
+    border-bottom: 1px solid lightgreen;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: white;
+  }
+  .table-striped tbody tr:nth-of-type(odd):hover {
+    background-color: dodgerblue;
+    color: white;
+    transform: scale(1.0);
+    transition: transform 100ms ease-in;
+  }
+</style>
+  
 <body>
 
     <div id="app">
