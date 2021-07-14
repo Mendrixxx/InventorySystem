@@ -205,10 +205,10 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action="insert.php" method="POST">
+      <form action="backend/insert.php" method="POST">
                                                                 <div class="modal-body">
                                                                 
-                                                                    <label>Name: </label>
+                                                                    <label>Name of Item: </label>
                                                                     <div class="form-group">
                                                                         <input name="iname" type="text" placeholder="Name" class="form-control" Required>
                                                                     </div>
@@ -227,7 +227,7 @@
                                                                         <input  name="dateaq" type="date" class="form-control" Required>
                                                                          
                                                                     </div>
-                                                                    <label>Unit Measured: </label>
+                                                                    <label>Unit of Measure: </label>
                                                                     <div class="form-group">
                                                                         <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
                                                                            
@@ -311,9 +311,9 @@
         </button>
       </div>
       <div class="modal-body">
-               <form action="#">
+      <form action="backend/insert.php" method="POST">
                                                                 <div class="modal-body">
-                                                                <label>Select Item to be added with this Component: </label> 
+                                                                <label>Select the Item that will receive this Component: </label> 
                                                                 <div class="form-group">
                                                                     <?php
                                                                     $sql = "Select * from `item`";
@@ -321,55 +321,51 @@
                                                                     
                                                                     ?>
                                                                         <select name="itmname" class="form-control">
-                                                                            <?php while($row = mysqli_fetch_array($result)):; ?>
-                                                                            <option value = <?php echo $row[0]; ?>><?php echo $row[1]; ?></option>
-                                                                            <?php endwhile; ?>
+                                                                            <?php while($row = mysqli_fetch_array($result)){
+                                                                            echo "<option value = '$row[0]'>$row[1]</option>";
+                                                                            }?>
                                                                         </select>
                                                                     </div>
-                                                                <label>Name: </label>
+                                                                <label>Name of Component: </label>
                                                                     <div class="form-group">
-                                                                        <input name="iname" type="text" placeholder="Name" class="form-control" Required>
+                                                                        <input name="cname" type="text" placeholder="Name" class="form-control" Required>
                                                                     </div>
                                                                     
                                                                     <label>Date Acquired: </label>
                                                                     <div class="form-group">
-                                                                        <input  name="dateaq" type="date" class="form-control" Required>
+                                                                        <input  name="cdateaq" type="date" class="form-control" Required>
                                                                          
                                                                     </div>
-                                                                    <label>Unit Measured: </label>
+                                                                    <label>Unit of Measure: </label>
                                                                     <div class="form-group">
-                                                                        <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                        <input name="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
                                                                            
                                                                     </div>
                                                                     <label>Unit Value: </label>
                                                                     <div class="form-group">
-                                                                        <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                                                                        <input name="cuvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
                                                                          
                                                                     </div>
                                                                     <label>Total Value: </label>
                                                                     <div class="form-group">
-                                                                        <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                                                                        <input name="ctvalue" type="number" placeholder="Total Value" class="form-control" Required>
                                                                           
                                                                     </div>
                                                                     <label>Quantity Per Property Card: </label>
                                                                     <div class="form-group">
-                                                                        <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                                                                        <input  name="cqPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
                                                                           
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                        <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
                                                                     </div>
                                                                     <label>Quantity of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
                                                                     </div> <label>Total value of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
-                                                                    </div>
-                                                                    <label>Remarks: </label>
-                                                                    <div class="form-group">
-                                                                        <input name="remarks" type="text" placeholder="Remarks"class="form-control" Required>   
+                                                                        <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
                                                                     </div>
                                                                 <div class="modal-footer">
                                                                    
@@ -379,7 +375,7 @@
                                                                         
                                                                     </button>
                                                                    
-                                                                    <button type="button" class="btn btn-primary ml-1"
+                                                                    <button name = "addc" type="sumbit" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Add Component</span>
