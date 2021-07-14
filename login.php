@@ -2,7 +2,7 @@
   //session_start();
 
   include 'backend/conn.php';
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -23,7 +23,7 @@
         <input type="submit" value="Login">
 
         <!--Modal-->
-            <a href="modal.html" class='sidebar-link'>
+            <a href="modal.php" class='sidebar-link'>
                 <span>Change Password?</span>
             </a>
 
