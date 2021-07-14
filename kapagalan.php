@@ -70,6 +70,7 @@
     transform: scale(1.0);
     transition: transform 100ms ease-in;
   }
+</style>
   
 <body>
 
