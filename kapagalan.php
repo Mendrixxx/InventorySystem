@@ -45,6 +45,32 @@
 </script>
 
 </head>
+    </style>
+.table-striped thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+.table-striped td {
+    padding: 12px 15px;
+  }
+  .table-striped tbody tr {
+    border-bottom: 1px solid lightgreen;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: white;
+  }
+  .table-striped tbody tr:nth-of-type(odd):hover {
+    background-color: dodgerblue;
+    color: white;
+    transform: scale(1.0);
+    transition: transform 100ms ease-in;
+  }
+  
 <body>
 
     <div id="app">
