@@ -45,7 +45,7 @@
 </script>
 
 </head>
-    </style>
+    <style>
 .table-striped thead tr {
       background-color: #009879;
       color: #ffffff;
