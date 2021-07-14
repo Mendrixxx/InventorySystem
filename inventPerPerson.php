@@ -178,13 +178,17 @@
                                 <input type="date" class="form-control">
                             </div>
                             
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="unitMeas" class="form-label">Unit of Meassure</label>
                                 <input type="text" value="unit_meas" class="form-control" id="unitMeas">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="unitVal" class="form-label">Unit Value</label>
                                 <input type="text" value="unit_val" class="form-control" id="unitVal">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="classification" class="form-label">Classification</label>
+                                <input type="text" value="classification" class="form-control" id="classification">
                             </div>
                         </div>
 
@@ -342,6 +346,7 @@
             
                 $('#unitMeas').val(itemData.unit_meas);
                 $('#unitVal').val(itemData.unit_val);
+                $('#classification').val(itemData.classification);
                 $('#qtyPhyCount').val(itemData.quant_phycou);
                 $('#qtyPropCard').val(itemData.quant_propcar);
                 $('#SO_quant').val(itemData.SO_quant);
