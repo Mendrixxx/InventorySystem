@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 05:04 AM
+-- Generation Time: Jul 14, 2021 at 07:48 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -107,7 +107,7 @@ INSERT INTO `classification` (`classification_id`, `cl_name`) VALUES
 --
 
 CREATE TABLE `colleges` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) NOT NULL,
   `college` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -309,9 +309,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
-(1, 'laptop', '', '123001', '2021-01-01', 'unit', 30000, 30000, 1, 1, 0, 1, 0, 0),
-(2, 'PC', '', '123002', '2021-01-01', 'unit', 60000, 60000, 1, 1, 0, 0, 0, 0),
-(3, 'Sound System', '', '123003', '2021-01-01', 'unit', 70000, 70000, 1, 1, 0, 2, 0, 0),
+(1, 'laptop', '', '123001', '2021-01-01', 'unit', 30000, 30000, 1, 1, 162, 1, 0, 0),
+(2, 'PC', '', '123002', '2021-01-01', 'unit', 60000, 60000, 1, 1, 162, 0, 0, 0),
+(3, 'Sound System', '', '123003', '2021-01-01', 'unit', 70000, 70000, 1, 1, 162, 2, 0, 0),
 (42, '123', '24', '234', '0003-02-02', '123', 123, 123, 123, 123, 162, 0, 123, 123);
 
 -- --------------------------------------------------------
@@ -372,7 +372,8 @@ INSERT INTO `nbc` (`id`, `employee_id`, `plantilla_no`, `position_id`, `appointm
 --
 ALTER TABLE `archive`
   ADD PRIMARY KEY (`archive_id`),
-  ADD UNIQUE KEY `archive_id` (`archive_id`);
+  ADD UNIQUE KEY `archive_id` (`archive_id`),
+  ADD KEY `classification` (`classification`);
 
 --
 -- Indexes for table `campuses`
@@ -390,7 +391,8 @@ ALTER TABLE `classification`
 -- Indexes for table `colleges`
 --
 ALTER TABLE `colleges`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `campus_id` (`campus_id`);
 
 --
 -- Indexes for table `component`
@@ -418,7 +420,8 @@ ALTER TABLE `employee`
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`),
   ADD UNIQUE KEY `item_id` (`item_id`),
-  ADD KEY `classification` (`classification`);
+  ADD KEY `classification` (`classification`),
+  ADD KEY `remarks` (`remarks`);
 
 --
 -- Indexes for table `log`
@@ -430,7 +433,10 @@ ALTER TABLE `log`
 -- Indexes for table `nbc`
 --
 ALTER TABLE `nbc`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`),
+  ADD KEY `college_id` (`college_id`),
+  ADD KEY `department_id` (`department_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -489,6 +495,18 @@ ALTER TABLE `nbc`
 --
 
 --
+-- Constraints for table `archive`
+--
+ALTER TABLE `archive`
+  ADD CONSTRAINT `archive_ibfk_1` FOREIGN KEY (`classification`) REFERENCES `classification` (`classification_id`);
+
+--
+-- Constraints for table `colleges`
+--
+ALTER TABLE `colleges`
+  ADD CONSTRAINT `colleges_ibfk_1` FOREIGN KEY (`campus_id`) REFERENCES `campuses` (`id`);
+
+--
 -- Constraints for table `component`
 --
 ALTER TABLE `component`
@@ -498,7 +516,16 @@ ALTER TABLE `component`
 -- Constraints for table `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`classification`) REFERENCES `classification` (`classification_id`);
+  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`classification`) REFERENCES `classification` (`classification_id`),
+  ADD CONSTRAINT `item_ibfk_2` FOREIGN KEY (`remarks`) REFERENCES `employee` (`id`);
+
+--
+-- Constraints for table `nbc`
+--
+ALTER TABLE `nbc`
+  ADD CONSTRAINT `nbc_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
+  ADD CONSTRAINT `nbc_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`),
+  ADD CONSTRAINT `nbc_ibfk_3` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
