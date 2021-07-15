@@ -216,6 +216,7 @@
                         <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Are you sure
                             you want to delete this Record?</div>
                         <input type="hidden" name="Delete_ID" id="Delete_ID">
+						<input type="hidden" name="item_name" id="item_name"> <!-- For logs -->
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
@@ -438,6 +439,16 @@
             var data = $(this).data('assigned-id');
             console.log(data);
             $('#Delete_ID').val(data);
+			
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+		//For logs feature. Wag pong tanggalin.
+			$tr = $(this).closest("tr");
+			var data_logs = $tr.children("td").map(function(){
+			return $(this).text();
+			}).get();
+		
+			$('#item_name').val(data_logs[0]);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
         function CloseModalPopup() {       
             $("#delete").modal('hide');
