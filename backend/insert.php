@@ -24,7 +24,26 @@ if(isset($_POST['add'])){
 	$add_logs = mysqli_query($db, $enter_logs);//
     $query_run = mysqli_query($db, $additem);
     if ($query_run &&  $add_logs)  {
-        header("location: kapagalan.php");
+        header("location: ../kapagalan.php");
+    }
+}
+if(isset($_POST['addc'])){
+    $db = mysqli_connect("localhost","root","","inventory");
+    $itmname = $_POST['itmname'];
+    $cname = $_POST['cname'];
+    $cdateaq  = $_POST['cdateaq'];
+    $cumeas = $_POST['cumeas'];
+    $cuvalue = $_POST['cuvalue'];
+    $ctvalue = $_POST['ctvalue'];
+    $cqPropCard = $_POST['cqPropCard'];
+    $cqPhysCount = $_POST['cqPhysCount'];
+    $cqSO = $_POST['cqSO'];
+    $cvSO = $_POST['cvSO'];
+    
+    $addcomp = "INSERT into component(item_id, comp_name, c_date_aq, c_unit_meas, c_unit_val, c_total_val, c_quan_propcar, c_quan_phycou, c_SO_quan, c_SO_val) values ('$itmname', '$cname', '$cdateaq', '$cumeas', '$cuvalue', '$ctvalue', '$cqPropCard', '$cqPhysCount', '$cqSO', '$cvSO')";
+    $query_run = mysqli_query($db, $addcomp);
+    if ($query_run)  {
+        header("location: ../kapagalan.php");
     }
 }
 ?>
