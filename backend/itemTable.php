@@ -21,7 +21,7 @@
 		$datarow[] = $row['SO_val'];
 		$datarow[] = $row['cl_name'];
 		$datarow[] = $row['last_name'];
-		$datarow[] = '<a href="#" editId="'.$row['item_id'].'" class="btn btn-primary">Edit</a> <a href="#" deleteId="'.$row['item_id'].'" class="btn btn-primary">Delete</a>';
+		$datarow[] = '<a href="#" editId="'.$row['item_id'].'" class="btn btn-primary">Edit</a> <button id ="dtbn" class="btn btn-danger btn-xs" data-assigned-id ='.$row['item_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
 
 		$rows[] = $datarow;
 	}

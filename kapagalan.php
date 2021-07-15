@@ -73,7 +73,6 @@
 </style>
   
 <body>
-
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -177,7 +176,7 @@
                                                         </table>
                                                         <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
                                                         <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Add Component</button>
-                                                                
+                                                 
                                                 </div>
                                             </div>
                                         </div>
@@ -203,6 +202,36 @@
                     
                     <script src="assets/js/main.js"></script>
 
+   <!--############################################################################################################################################################################################## -->
+    <!-- DELETE MODAL -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
+                    <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>     
+                </div>
+                <form action="backend/delete.php" method="POST">
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Are you sure
+                            you want to delete this Record?</div>
+                        <input type="hidden" name="Delete_ID" id="Delete_ID">
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
+                                class="fa fa-times-circle"></span> Cancel</button>
+                        <button type="submit" name="continue" class="btn btn-success" id="continue"><span
+                                class="fa fa-check-circle"></span> Continue</button>
+
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--############################################################################################################################################################################################## -->
+    
 
 <!--Add Item Modal -->
 <div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -396,9 +425,26 @@
     </div>
   </div>
 </div>
-<!--Add Component Modal END-->
+   <!--############################################################################################################################################################################################## -->
+    <!-- DELETE SCRIPT -->
+    <script>
+        $('#table1').on('click', '#dtbn', function() {
+            $('#delete').modal({
+    		backdrop: 'static',
+    		keyboard: false
+		    });
+            $('#delete').modal('show');
 
-
+            var data = $(this).data('assigned-id');
+            console.log(data);
+            $('#Delete_ID').val(data);
+        });
+        function CloseModalPopup() {       
+            $("#delete").modal('hide');
+    }
+    </script>
+    <!--############################################################################################################################################################################################## -->
+    <!-- EDIT SCRIPT -->
                     </body>
                     
                     </html>
