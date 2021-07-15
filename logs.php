@@ -97,8 +97,8 @@ include "backend/conn.php"; //Connect to the Database
 								<table id="logs" class="display" style="width:100%">
 									<thead>
 										<tr>
-											<th>Item Name</th>
 											<th>Action</th>
+											<th>Item/Component Name</th>
 											<th>Date of Action</th>
 										</tr>
 									</thead>
@@ -138,8 +138,8 @@ include "backend/conn.php"; //Connect to the Database
                 "dataSrc":"",
             },
             "columns":[
+				{"data":"action"},
                 {"data":"item_name"},
-                {"data":"action"},
                 {"data":"date_action"},
             ],
 

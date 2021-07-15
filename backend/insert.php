@@ -1,4 +1,11 @@
 <?php
+	
+//Wag po tangallin yung mga lines na may comment symbol. For logs po ito.
+	$added_item = "Added Item";//
+	$added_component = "Added Component";
+	$date = date("Y-m-d");//
+	
+	
 if(isset($_POST['add'])){
     $db = mysqli_connect("localhost","root","","inventory");
     $iname = $_POST['iname'];
@@ -14,16 +21,13 @@ if(isset($_POST['add'])){
     $classif = $_POST['classification'];
     $qSO = $_POST['qSO'];
     $vSO = $_POST['vSO'];
-	
-	//Wag po tangallin yung mga lines na may comment symbol. For logs po ito.
-	$added_item = "Added Item\" " .$iname. "\"";//
-	$date = date("Y-m-d");//
+
 
     $additem = "INSERT into item(item_name, item_desc, property_num, date_aq, unit_meas, unit_val, total_val, quant_propcar, quant_phycou, remarks, classification, SO_quant, SO_val) values ('$iname', '$desc', '$pnum', '$dateaq', '$umeas', '$uvalue', '$tvalue', '$qPropCard', '$qPhysCount', '$remarks', '$classif', '$qSO', '$vSO')";
-	$enter_logs = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', '$date')";//
-	$add_logs = mysqli_query($db, $enter_logs);//
+	$enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', '$date')";//
+	$query_logItem = mysqli_query($db, $enter_logItem);//
     $query_run = mysqli_query($db, $additem);
-    if ($query_run &&  $add_logs)  {
+    if ($query_run &&  $query_logItem)  {
         header("location: ../kapagalan.php");
     }
 }
@@ -41,8 +45,10 @@ if(isset($_POST['addc'])){
     $cvSO = $_POST['cvSO'];
     
     $addcomp = "INSERT into component(item_id, comp_name, c_date_aq, c_unit_meas, c_unit_val, c_total_val, c_quan_propcar, c_quan_phycou, c_SO_quan, c_SO_val) values ('$itmname', '$cname', '$cdateaq', '$cumeas', '$cuvalue', '$ctvalue', '$cqPropCard', '$cqPhysCount', '$cqSO', '$cvSO')";
+	$enter_logComp = "INSERT into log(item_name, action, date_action) VALUES ('$cname', '$added_component', '$date')";//
     $query_run = mysqli_query($db, $addcomp);
-    if ($query_run)  {
+	$query_logComp = mysqli_query($db, $enter_logComp);//
+    if ($query_run && $query_logComp)  {
         header("location: ../kapagalan.php");
     }
 }
