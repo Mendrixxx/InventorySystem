@@ -33,19 +33,56 @@
 
         function format ( d ) {
             // `d` is the original data object for the row
+            var temp,strTable =  '<table class="table" >'+
+            '<thead>'+
+                '<tr>'+
+                    '<th>Component Name</th>'+
+                    '<th>Date Aquired</th>'+
+                    '<th>Unit Of Measure</th>'+
+                    '<th>Unit Value</th>'+
+                    '<th>Total Value</th>'+
+                    '<th>Q.P. Property Card</th>'+
+                    '<th>Q.P. Physical Count</th>'+
+                    '<th>Shortage/Overage Q.</th>'+
+                    '<th>Shortage/Overage V.</th>'+
+                    '<th>Manage</th>'+
+                '</tr>'+
+            '</thead>';
+            for( temp in d ){
+                if(d[temp].comp_name !== undefined){
+                    strTable += ''+ 
+                    '<tbody>'+
+                        '<tr>'+
+                            '<td>'+d[temp].comp_name+'</td>'+
+                            '<td>'+d[temp].c_date_aq+'</td>'+
+                            '<td>'+d[temp].c_unit_meas+'</td>'+
+                            '<td>'+d[temp].c_unit_val+'</td>'+
+                            '<td>'+d[temp].c_total_val+'</td>'+
+                            '<td>'+d[temp].c_quan_propcar+'</td>'+
+                            '<td>'+d[temp].c_quan_phycou+'</td>'+
+                            '<td>'+d[temp].c_SO_quan+'</td>'+
+                            '<td>'+d[temp].c_SO_val+'</td>'+
+                            '<td>'+d[temp].button+'</td>'+
+                        '</tr>'
+                    '</tbody>';
+                }
+            }
+            strTable += '</table>';
+            return strTable;
+           /*
             return '<table class="table table-striped">'+
                 '<tr>'+
-                    '<td>'+d.item_id+'</td>'+
+                    '<td>'+d.component.comp_name+'</td>'+
                 '</tr>'+
                 '<tr>'+
                     '<td>Extension number:</td>'+
-                    '<td>'+d.property_num+'</td>'+
+                    '<td>'+d.component_comp_id+'</td>'+
                 '</tr>'+
                 '<tr>'+
                     '<td>Extra info:</td>'+
                     '<td>And any further details here (images etc)...</td>'+
                 '</tr>'+
-            '</table>';
+            '</table>';*/
         }
 
         var table = $("#table1").DataTable({
@@ -91,8 +128,6 @@
                 // Open this row
                 // $( row.child() ).DataTable();
                 row.child( format(row.data()) ).show();
-                
-                console.log(row.data());
                 tr.addClass('shown');
             }
         } );
@@ -208,10 +243,10 @@ tr.shown td.details-control {
                                                     
                                                 </div>
                                                 <div class="card-body">
-                                                    <table class="table table-striped" id="table1">
+                                                    <table class="table" id="table1">
                                                         <thead>
                                                             <tr>
-                                                                <th rowspan="2">comp</th>
+                                                                <th rowspan="2">View Component</th>
                                                                 <th rowspan="2">Name</th>
                                                                 <th rowspan="2">Description</th>
                                                                 <th rowspan="2">Property Number</th>
