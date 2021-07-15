@@ -30,14 +30,72 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
-       $("#table1").DataTable({
+
+        function format ( d ) {
+            // `d` is the original data object for the row
+            return '<table class="table table-striped">'+
+                '<tr>'+
+                    '<td>'+d.item_id+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>Extension number:</td>'+
+                    '<td>'+d.property_num+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>Extra info:</td>'+
+                    '<td>And any further details here (images etc)...</td>'+
+                '</tr>'+
+            '</table>';
+        }
+
+        var table = $("#table1").DataTable({
             "processing":true,
             "serverside":true,
             "ajax":{
                 url: "backend/itemTable.php",
                 dataType: "json"
-            }
+            },
+            "columns":[
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
+                {"data":"item_name"},
+                {"data":"item_desc"},
+                {"data":"property_num"},
+                {"data":"date_aq"},
+                {"data":"unit_meas"},
+                {"data":"unit_val"},
+                {"data":"total_val"},
+                {"data":"quant_propcar"},
+                {"data":"quant_phycou"},
+                {"data":"SO_quant"},
+                {"data":"SO_val"},
+                {"data":"cl_name"},
+                {"data":"last_name"},
+                {"data":"button"}
+            ]    
        });
+        $('#table1 tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( this );
+ 
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                // $( row.child() ).DataTable();
+                row.child( format(row.data()) ).show();
+                
+                console.log(row.data());
+                tr.addClass('shown');
+            }
+        } );
 
     });
 
@@ -46,6 +104,13 @@
 
 </head>
     <style>
+td.details-control {
+    background: url('DataTable/DataTables-1.10.25/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('DataTable/DataTables-1.10.25/images/details_close.png') no-repeat center center;
+}
 .table-striped thead tr {
       background-color: #009879;
       color: #ffffff;
@@ -146,6 +211,7 @@
                                                     <table class="table table-striped" id="table1">
                                                         <thead>
                                                             <tr>
+                                                                <th rowspan="2">comp</th>
                                                                 <th rowspan="2">Name</th>
                                                                 <th rowspan="2">Description</th>
                                                                 <th rowspan="2">Property Number</th>
@@ -232,6 +298,202 @@
         <!-- /.modal-dialog -->
     </div>
     <!--############################################################################################################################################################################################## -->
+
+<!--Edit Item Modal -->
+<div class="modal fade" id="edititem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="backend/insert.php" method="POST">
+                                                                <div class="modal-body">
+                                                                
+                                                                    <label>Name of Item: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="iname" type="text" placeholder="Name" class="form-control" Required>
+                                                                    </div>
+                                                                    <label>Description: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="desc" type="text" placeholder="Description" class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Property Number: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="pnum" type="text" placeholder="Property Number" class="form-control" Required>
+
+                                                                    </div>
+                                                                    <label>Date Acquired: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="dateaq" type="date" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Unit of Measure: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                           
+                                                                    </div>
+                                                                    <label>Unit Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Total Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Property Card: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Physical Count: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Quantity of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                    </div> <label>Total value of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Remarks: </label>
+                                                                    <div class="form-group">
+                                                                        <?php
+                                                                        $sql = "Select * from `employee`";
+                                                                        $result = mysqli_query($conn, $sql);
+                                                                        ?>
+                                                                        <select name="remarks" class="form-control">
+                                                                            <?php while($row = mysqli_fetch_array($result)){
+                                                                            echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>";
+                                                                            }?>
+                                                                        </select>   
+                                                                    </div>
+                                                                    <label>Classification: </label>
+                                                                    <div class="form-group">
+                                                                        <select name="classification" class="form-control">
+                                                                            <option value="0">IT</option>
+                                                                            <option value="1">LABORATORY</option>
+                                                                            <option value="2">OFFICE</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Cancel</span>
+                                                                    </button>
+                                                                    
+                                                                    <button name = "add" type="submit" class="btn btn-primary ml-1"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Add Item</span>
+                                                                    </button>
+                                                
+                                                                </div>
+                                                            </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Edit Item Modal END-->
+<!--Edit Component Modal -->
+<div class="modal fade" id="editcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Component</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="backend/insert.php" method="POST">
+                                                                <div class="modal-body">
+                                                                <label>Select the Item that will receive this Component: </label> 
+                                                                <div class="form-group">
+                                                                    <?php
+                                                                    $sql = "Select * from `item`";
+                                                                    $result = mysqli_query($conn, $sql);
+                                                                    
+                                                                    ?>
+                                                                        <select name="itmname" class="form-control">
+                                                                            <?php while($row = mysqli_fetch_array($result)){
+                                                                            echo "<option value = '$row[0]'>$row[1]</option>";
+                                                                            }?>
+                                                                        </select>
+                                                                    </div>
+                                                                <label>Name of Component: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="cname" type="text" placeholder="Name" class="form-control" Required>
+                                                                    </div>
+                                                                    
+                                                                    <label>Date Acquired: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="cdateaq" type="date" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Unit of Measure: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                                                                           
+                                                                    </div>
+                                                                    <label>Unit Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="cuvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                                                                         
+                                                                    </div>
+                                                                    <label>Total Value: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="ctvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Property Card: </label>
+                                                                    <div class="form-group">
+                                                                        <input  name="cqPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                                                                          
+                                                                    </div>
+                                                                    <label>Quantity Per Physical Count: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                    </div>
+                                                                    <label>Quantity of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                    </div> <label>Total value of Shortage/Overage: </label>
+                                                                    <div class="form-group">
+                                                                        <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                    </div>
+                                                                <div class="modal-footer">
+                                                                   
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Cancel</span>
+                                                                        
+                                                                    </button>
+                                                                   
+                                                                    <button name = "addc" type="sumbit" class="btn btn-primary ml-1"
+                                                                        data-bs-dismiss="modal">
+                                                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                                                        <span class="d-none d-sm-block">Add Component</span>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end of edit modal  -->
+
     
 
 <!--Add Item Modal -->
@@ -426,6 +688,10 @@
     </div>
   </div>
 </div>
+<!-- Add Component Modal END -->
+
+
+
    <!--############################################################################################################################################################################################## -->
     <!-- DELETE SCRIPT -->
     <script>
