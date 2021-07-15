@@ -35,7 +35,8 @@
         </div>
 
         <input type="submit" value="Save">
-        <input type="submit" value="Cancel">
+        <a href="login.php">Return to login</a>
+
 
       </form>
     </div>
