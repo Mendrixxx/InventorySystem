@@ -1,7 +1,7 @@
 <?php
 	include "conn.php";
 
-	$sql = "SELECT * FROM log";
+	$sql = "SELECT * FROM log ORDER BY date_action DESC";
 	$result = mysqli_query($conn,$sql);
 
 	$rows = array();

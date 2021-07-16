@@ -347,7 +347,7 @@ tr.shown td.details-control {
                         <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Are you sure
                             you want to delete this Component?</div>
                         <input type="hidden" name="Delete_IDc" id="Delete_IDc">
-						<input type="hidden" name="item_name" id="item_name"> <!-- For logs -->
+						<input type="hidden" name="comp_name" id="comp_name"> <!-- For logs -->
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
@@ -775,11 +775,13 @@ tr.shown td.details-control {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 		//For logs feature. Wag pong tanggalin.
 			$tr = $(this).closest("tr");
-			var data_logs = $tr.children("td").map(function(){
+			var data_logsItem = $tr.children("td").map(function(){
 			return $(this).text();
 			}).get();
 		
-			$('#item_name').val(data_logs[0]);
+			console.log(data_logsItem);
+			
+			$('#item_name').val(data_logsItem[1]);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
         
@@ -798,11 +800,13 @@ tr.shown td.details-control {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 		//For logs feature. Wag pong tanggalin.
 			$tr = $(this).closest("tr");
-			var data_logs = $tr.children("td").map(function(){
+			var data_logsComp = $tr.children("td").map(function(){
 			return $(this).text();
 			}).get();
-		
-			$('#item_name').val(data_logs[0]);
+			
+			console.log(data_logsComp);
+			
+			$('#comp_name').val(data_logsComp[0]);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
         

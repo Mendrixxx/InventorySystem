@@ -6,9 +6,9 @@ include "conn.php";
 	$delete_item = "Deleted Item";//
  if (isset($_POST['continuec'])) {
         $id = $_POST['Delete_IDc'];
-        $item_name = $_POST['item_name'];
+        $item_name = $_POST['comp_name'];
         $sql = "DELETE FROM component where comp_id = $id";
-        $del_logs = "INSERT into log(item_name, action, date_action) VALUES ('$item_name', '$delete_item', NOW())";//
+        $del_logs = "INSERT into log(item_name, action, date_action) VALUES ('$comp_name', '$delete_item', NOW())";//
 
         $run = mysqli_query($conn, $sql);
         $log_del = mysqli_query($conn, $del_logs);//

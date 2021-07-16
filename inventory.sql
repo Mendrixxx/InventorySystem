@@ -323,8 +323,8 @@ INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_a
 CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
   `item_name` varchar(200) DEFAULT NULL,
-  `action` varchar(10) DEFAULT NULL,
-  `date_action` date DEFAULT NULL
+  `action` varchar(50) DEFAULT NULL,
+  `date_action` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

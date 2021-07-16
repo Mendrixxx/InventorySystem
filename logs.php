@@ -89,27 +89,24 @@ include "backend/conn.php"; //Connect to the Database
                     </div>
                 </div>
 				
-
+		
 				<!-- Card Header Start-->
                     <div class="card-header">
 						<div class="card-box mb-40">
 							<div class="pb-15">
-								<div id = "logs">
-								<?php
-									$sql = "SELECT * FROM log";
-									$result = mysqli_query($conn, $sql);
-					
-										if(mysqli_num_rows($result) > 0) {
-											while($row = mysqli_fetch_array($result)){
-												echo "<p>";
-												echo $row['action']. " | " .$row['item_name']. " | " .$row['date_action'] ;
-												echo "</p>";
-											}
-										}else{
-										echo "Logs are Empty";
-										}
-								?>
-								</div>
+								<!--Datatable Start-->
+								<table id="logs" class="display" style="width:100%">
+									<thead>
+										<tr>
+											<th>Action</th>
+											<th>Item/Component Name</th>
+											<th>Date of Action</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table> 
+								<!--Datatable End-->
                             </div>
                         </div>
 					</div>
@@ -131,6 +128,25 @@ include "backend/conn.php"; //Connect to the Database
 	<!-- JQuery and DataTable Plugin-->
    <script type = "text/javascript" src="Datatable/jquery-3.5.1.js"></script>
    <script type = "text/javascript"  src="Datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	//Datatable 
+    $(document).ready(function(){
+       $("#logs").DataTable({
+            "ajax":{
+                "url": "backend/logData.php",
+                "dataSrc":"",
+           },
+            "columns":[
+				{"data":"action"},
+                {"data":"item_name"},
+                {"data":"date_action"},
+            ],
+
+       });
+    });
+</script>
 
 </body>
 </html>
