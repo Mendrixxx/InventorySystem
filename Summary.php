@@ -145,11 +145,15 @@
         <td> <?php echo $rows['yearName'] ?> </td>
         <td>Php <?php echo $total ?> </td>      
     </tr>
+
 <?php }?>
-                                               
-                                                                                       
-                                        </tbody>
+                                                     
+                                        </tbody> 
                                     </table>
+                                                                <div>
+                                                                <a href="Summary.php" class="btn btn-primary">Reset</a>
+                                                              </div>
+                                                                             
                                 </div>
                             </div>
                         </div>
