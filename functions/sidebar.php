@@ -16,7 +16,13 @@
                         <li class="sidebar-item">
                             <a href="Inventory.php" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Inventory</span>
+                                <span>Inventory Per Classification</span>
+                            </a>
+                        </li>
+						<li class="sidebar-item">
+                            <a href="Inventory.php" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Inventory Per Personnel</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
