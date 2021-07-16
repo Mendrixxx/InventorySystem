@@ -179,7 +179,7 @@
                   </div>
                </div>
                <li class="sidebar-item active has-sub">
-                  <a href="kapagalan.html" class='sidebar-link'>
+                  <a href="kapagalan.php" class='sidebar-link'>
                      <i class="bi bi-stack"></i>
                      <span>Inventory</span>
                      <ul class="submenu active">
@@ -194,7 +194,7 @@
                   </a>
                </li>
                <li class="sidebar-item active ">
-                  <a href="Logs.php" class='sidebar-link'>
+                  <a href="logs.php" class='sidebar-link'>
                   <i class="bi bi-grid-1x2-fill"></i>
                   <span>Logs</span>
                   </a>

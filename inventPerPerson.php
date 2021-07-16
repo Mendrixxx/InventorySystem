@@ -55,7 +55,7 @@ if (isset($_SESSION['pass'])) {
                         </a>
                         <ul class="submenu active">
                             <li class="submenu-item active">
-                                <a href="mmm.html" class='sidebar-link'>Inventory Per Personnel</a>
+                                <a href="mmm.php" class='sidebar-link'>Inventory Per Personnel</a>
                             </li>
                             <li class="submenu-item active">
                                 <a href="way.html" class='sidebar-link'>Inventory Per Classification</a>
@@ -63,13 +63,13 @@ if (isset($_SESSION['pass'])) {
                         </ul>
                     </li>
                     <li class="sidebar-item active ">
-                        <a href="Summary.html" class='sidebar-link'>
+                        <a href="Summary.php" class='sidebar-link'>
                             <i class="bi bi-grid-1x2-fill"></i>
                             <span>Summary</span>
                         </a>
                     </li>
                     <li class="sidebar-item active ">
-                        <a href="Logs.html" class='sidebar-link'>
+                        <a href="logs.php" class='sidebar-link'>
                             <i class="bi bi-grid-1x2-fill"></i>
                             <span>Logs</span>
                         </a>
