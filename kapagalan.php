@@ -194,7 +194,7 @@
                   </a>
                </li>
                <li class="sidebar-item active ">
-                  <a href="Logs.html" class='sidebar-link'>
+                  <a href="Logs.php" class='sidebar-link'>
                   <i class="bi bi-grid-1x2-fill"></i>
                   <span>Logs</span>
                   </a>
