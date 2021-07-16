@@ -108,7 +108,7 @@
                                 <div class="card-content">
                                     <!-- table strip dark -->
                                     <div class="table-responsive">
-                                        <table id = "sam" class="table table-striped table-dark mb-0">
+                                        <table id = "sam" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Year</th>
