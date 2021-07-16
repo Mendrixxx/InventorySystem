@@ -33,7 +33,25 @@
     <link rel="stylesheet" type="text/css" href="DataTable/DataTables-1.10.25/css/jquery.dataTables.min.css">
 
 </head>
-
+<style>
+    
+      .table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      }
+      .table td {
+      padding: 12px 15px;
+      }
+      .table tbody tr {
+      border-bottom: 1px solid lightgreen;
+      }
+      .table tbody tr:nth-of-type(odd) {
+      background-color: white;
+      }
+   </style>
 <body>
    	<!--Sidebars-->
     <?php require_once "functions/sidebar.php" ?>
