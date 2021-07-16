@@ -2,6 +2,10 @@
     // TODO: change views to readable only, unless/untill edit option is available
     // TODO: form validations? maybe?
     // TODO: display components? maybe?
+
+session_start();
+include ("backend/conn.php");
+if (isset($_SESSION['pass'])) {
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +26,7 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"  >
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css">
     <script type="text/javascript" src="DataTable/datatables.min.js"></script>
 </head>
@@ -51,10 +55,10 @@
                         </a>
                         <ul class="submenu active">
                             <li class="submenu-item active">
-                                <a href="mmm.html" class='sidebar-link'>Inventory Per Personnel</a>              
+                                <a href="mmm.html" class='sidebar-link'>Inventory Per Personnel</a>
                             </li>
                             <li class="submenu-item active">
-                                <a href="way.html" class='sidebar-link'>Inventory Per Classification</a>                           
+                                <a href="way.html" class='sidebar-link'>Inventory Per Classification</a>
                             </li>
                         </ul>
                     </li>
@@ -71,11 +75,11 @@
                         </a>
                     </li>
                 </ul>
-                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>        
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
-        </div>    
+        </div>
         <div id="main">
-            <div class="page-heading"> 
+            <div class="page-heading">
                 <form action="" method="POST" id="formTable">
                     <section class="section">
                         <div class="row" id="table-inverse">
@@ -110,7 +114,7 @@
                                                 <tbody>
                                                     <!-- generate data through ajax -->
                                                 </tbody>
-                                            </table>   
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +130,7 @@
                     <p>2021 &copy; Bachelor of Science 3 - B</p>
                 </div>
                 <div class="float-end">
-                    
+
                 </div>
             </div>
         </footer>
@@ -142,7 +146,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="row g-3" action="" method="POST">
-                        
+
                         <div class="form-group row g-3">
                             <div class="col-12">
                                 <div class="mb-2 row">
@@ -167,7 +171,7 @@
                                 <label for="itemDesc" class="form-label">Description</label>
                                 <input type="text" value="item_desc" class="form-control" id="itemDesc">
                             </div>
-                            
+
                             <div class="col-md-8">
                                 <label for="propNo" class="form-label">Property Number</label>
                                 <input type="text" value="prop_num" class="form-control" id="propNo">
@@ -176,7 +180,7 @@
                                 <label for="dateAcq" class="form-label">Date Acquired</label>
                                 <input type="date" class="form-control">
                             </div>
-                            
+
                             <div class="col-md-4">
                                 <label for="unitMeas" class="form-label">Unit of Meassure</label>
                                 <input type="text" value="unit_meas" class="form-control" id="unitMeas">
@@ -216,7 +220,7 @@
                                 <input type="text" value="SO_totalVal" class="form-control" id="SO_totalVal">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row g-3">
                         <hr>
                             <div class="col-md-12">
@@ -258,7 +262,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            
+
             // getting the list of personel
             $.ajax({
                 type: "GET",
@@ -301,7 +305,7 @@
                     {"data":"item_desc"},
                     {"data":"property_num"},
                     {"data":"date_aq"},
-                    {   
+                    {
                         "data": null,
                         "defaultContent":
                             `<a class="view btn btn-outline-info btn-sm" href="#" role="button" data-target="#viewItem">
@@ -324,7 +328,7 @@
 			        searchPlaceholder: "Search",
                     paginate: {
                         next: '<i class="ion-chevron-right"></i>',
-                        previous: '<i class="ion-chevron-left"></i>'  
+                        previous: '<i class="ion-chevron-left"></i>'
                     }
 	        	},
             });
@@ -339,10 +343,10 @@
                 $('#itemName').val(itemData.item_name);
                 $('#itemDesc').val(itemData.item_desc);
                 $('#propNo').val(itemData.property_num);
-                
+
                 // TODO: how to display date in form input type date
                 $('#dateAcq').val(itemData.date_aq);
-            
+
                 $('#unitMeas').val(itemData.unit_meas);
                 $('#unitVal').val(itemData.unit_val);
                 $('#classification').val(itemData.classification);
@@ -352,7 +356,7 @@
                 $('#SO_totalVal').val(itemData.SO_val);
 
                 // TODO MAYBE: totalval should calc unit_val*qtyPhyCount
-                $('#totalVal').val(itemData.total_val);            
+                $('#totalVal').val(itemData.total_val);
 
                 $('#viewItem').modal('show');
             })
@@ -380,3 +384,10 @@
 
 </body>
 </html>
+
+<?php
+}else{
+      header("Location: login.php");
+      exit();
+}
+?>
