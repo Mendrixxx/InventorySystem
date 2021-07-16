@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 08:49 AM
+-- Generation Time: Jul 16, 2021 at 09:54 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -286,7 +286,7 @@ CREATE TABLE `item` (
   `date_aq` date DEFAULT NULL,
   `unit_meas` varchar(10) DEFAULT NULL,
   `unit_val` double DEFAULT NULL,
-  `total_val` double DEFAULT NULL,
+  `total_val` double NOT NULL,
   `quant_propcar` int(5) DEFAULT NULL,
   `quant_phycou` int(5) DEFAULT NULL,
   `remarks` int(255) NOT NULL,
@@ -300,7 +300,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
-(54, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 899, NULL, NULL, NULL);
+(56, 'asdasd', '213', '123', '2021-07-01', '312', 123, 0, 213, 123, 899, 1, 123, 123);
 
 -- --------------------------------------------------------
 
@@ -311,8 +311,8 @@ INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_a
 CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
   `item_name` varchar(200) DEFAULT NULL,
-  `action` varchar(50) DEFAULT NULL,
-  `date_action` datetime DEFAULT NULL
+  `action` varchar(10) DEFAULT NULL,
+  `date_action` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -362,6 +362,24 @@ CREATE TABLE `nbc` (
 INSERT INTO `nbc` (`id`, `employee_id`, `plantilla_no`, `position_id`, `appointment_type`, `salary_grade_id`, `college_id`, `deployment_id`, `department_id`, `circular_id`) VALUES
 (2638, 899, 'BUB-AP4-7-2019', 26, 'Permanent', 916, 1, 1, 3, '3'),
 (2658, 162, 'BUB-APRO4-2-1998', 23, 'Permanent', 948, 1, 1, 3, '3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `yearcosting`
+--
+
+CREATE TABLE `yearcosting` (
+  `item_id` int(11) NOT NULL,
+  `cost` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `yearcosting`
+--
+
+INSERT INTO `yearcosting` (`item_id`, `cost`) VALUES
+(56, 123);
 
 --
 -- Indexes for dumped tables
@@ -439,6 +457,12 @@ ALTER TABLE `nbc`
   ADD KEY `department_id` (`department_id`);
 
 --
+-- Indexes for table `yearcosting`
+--
+ALTER TABLE `yearcosting`
+  ADD PRIMARY KEY (`item_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -482,7 +506,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `log`
@@ -532,6 +556,12 @@ ALTER TABLE `nbc`
   ADD CONSTRAINT `nbc_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
   ADD CONSTRAINT `nbc_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`),
   ADD CONSTRAINT `nbc_ibfk_3` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`);
+
+--
+-- Constraints for table `yearcosting`
+--
+ALTER TABLE `yearcosting`
+  ADD CONSTRAINT `yearcosting_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
