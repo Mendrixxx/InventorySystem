@@ -1,7 +1,7 @@
 <?php
 include ("backend/conn.php");
 if (isset($_SESSION['pass'])) {
-  header("Location: kapagalan.php")
+  header("Location: kapagalan.php");
 }
 ?>
 
