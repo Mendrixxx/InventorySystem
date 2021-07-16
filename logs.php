@@ -59,7 +59,7 @@ if (isset($_SESSION['pass'])) {
                             </a>
                         </li>
 						<li class="sidebar-item  ">
-                            <a href="signin.php" class='sidebar-link'>
+                            <a href="logout.php" class='sidebar-link'>
                                 <i class="bi bi-x-octagon-fill"></i>
                                 <span>Sign Out</span>
                             </a>
