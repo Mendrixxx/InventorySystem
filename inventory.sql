@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 12:06 PM
+-- Generation Time: Jul 16, 2021 at 09:54 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `archive` (
   `archive_id` int(11) NOT NULL,
-  `year` year(4) DEFAULT NULL,
+  `year` date DEFAULT NULL,
   `total` double DEFAULT NULL,
   `classification` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,14 +39,14 @@ CREATE TABLE `archive` (
 --
 
 INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
-(1, 0000, 30000, 1),
-(2, 0000, 50000, 1),
-(3, 0000, 60000, 0),
-(4, 0000, 70000, 0),
-(5, 0000, 80000, 0),
-(7, 0000, 90000, 2),
-(8, 0000, 100000, 2),
-(9, 0000, 110000, 2),
+(1, '0000-00-00', 30000, 1),
+(2, '0000-00-00', 50000, 1),
+(3, '0000-00-00', 60000, 0),
+(4, '0000-00-00', 70000, 0),
+(5, '0000-00-00', 80000, 0),
+(7, '0000-00-00', 90000, 2),
+(8, '0000-00-00', 100000, 2),
+(9, '0000-00-00', 110000, 2),
 (10, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -58,13 +58,6 @@ INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
 CREATE TABLE `auth` (
   `pass` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `auth`
---
-
-INSERT INTO `auth` (`pass`) VALUES
-('password');
 
 -- --------------------------------------------------------
 
@@ -307,7 +300,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
-(1, '1', '1', '1', '2021-07-01', '1', 1, 1, 1, 1, 899, 0, 1, 1);
+(56, 'asdasd', '213', '123', '2021-07-01', '312', 123, 0, 213, 123, 899, 1, 123, 123);
 
 -- --------------------------------------------------------
 
@@ -341,16 +334,7 @@ INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
 (12, '', 'Deleted It', '2021-07-16'),
 (13, '', 'Deleted It', '2021-07-16'),
 (14, '', 'Deleted It', '2021-07-16'),
-(15, '', 'Deleted It', '2021-07-16'),
-(16, '123', 'Added Item', '2021-07-16'),
-(17, '1231231', 'Added Item', '2021-07-16'),
-(18, '1', 'Added Item', '2021-07-16'),
-(19, '2', 'Added Item', '2021-07-16'),
-(20, '1', 'Deleted It', '2021-07-16'),
-(21, '2', 'Deleted It', '2021-07-16'),
-(22, '1', 'Deleted It', '2021-07-16'),
-(23, '1', 'Deleted It', '2021-07-16'),
-(24, '1', 'Deleted It', '2021-07-16');
+(15, '', 'Deleted It', '2021-07-16');
 
 -- --------------------------------------------------------
 
@@ -386,8 +370,7 @@ INSERT INTO `nbc` (`id`, `employee_id`, `plantilla_no`, `position_id`, `appointm
 --
 
 CREATE TABLE `yearcosting` (
-  `id` int(11) NOT NULL,
-  `item_id` int(255) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `cost` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -395,8 +378,8 @@ CREATE TABLE `yearcosting` (
 -- Dumping data for table `yearcosting`
 --
 
-INSERT INTO `yearcosting` (`id`, `item_id`, `cost`) VALUES
-(1, 1, 1);
+INSERT INTO `yearcosting` (`item_id`, `cost`) VALUES
+(56, 123);
 
 --
 -- Indexes for dumped tables
@@ -477,7 +460,7 @@ ALTER TABLE `nbc`
 -- Indexes for table `yearcosting`
 --
 ALTER TABLE `yearcosting`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`item_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -523,25 +506,19 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `nbc`
 --
 ALTER TABLE `nbc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3849;
-
---
--- AUTO_INCREMENT for table `yearcosting`
---
-ALTER TABLE `yearcosting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -579,6 +556,12 @@ ALTER TABLE `nbc`
   ADD CONSTRAINT `nbc_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
   ADD CONSTRAINT `nbc_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`),
   ADD CONSTRAINT `nbc_ibfk_3` FOREIGN KEY (`college_id`) REFERENCES `colleges` (`id`);
+
+--
+-- Constraints for table `yearcosting`
+--
+ALTER TABLE `yearcosting`
+  ADD CONSTRAINT `yearcosting_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

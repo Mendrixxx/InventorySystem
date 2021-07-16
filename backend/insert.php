@@ -22,15 +22,11 @@ if(isset($_POST['add'])){
     $vSO = $_POST['vSO'];
 
 
-    $additem = "INSERT into item(item_name, item_desc, property_num, date_aq, unit_meas, unit_val, total_val, quant_propcar, quant_phycou, remarks, classification, SO_quant, SO_val) values ('$iname', '$desc', '$pnum', '$dateaq', '$umeas', '$uvalue', '$tvalue', '$qPropCard', '$qPhysCount', '$remarks', '$classif', '$qSO', '$vSO')";   
-    $query_run = mysqli_query($conn, $additem);
-    $lastid = $conn->insert_id;
-    $addtocost = "INSERT into yearcosting(item_id, cost) values ('$lastid', '$tvalue')";
-    $query_run = mysqli_query($conn, $addtocost);
-
-    $enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', NOW())";//
+    $additem = "INSERT into item(item_name, item_desc, property_num, date_aq, unit_meas, unit_val, total_val, quant_propcar, quant_phycou, remarks, classification, SO_quant, SO_val) values ('$iname', '$desc', '$pnum', '$dateaq', '$umeas', '$uvalue', '$tvalue', '$qPropCard', '$qPhysCount', '$remarks', '$classif', '$qSO', '$vSO')";
+	$enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', NOW())";//
 	$query_logItem = mysqli_query($conn, $enter_logItem);//
-    if ($query_run &&  $query_logItem && $addtocost)  {
+    $query_run = mysqli_query($conn, $additem);
+    if ($query_run &&  $query_logItem)  {
         header("location: ../kapagalan.php");
     }
 }
