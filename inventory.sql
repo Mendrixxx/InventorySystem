@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2021 at 07:48 AM
+-- Generation Time: Jul 16, 2021 at 08:49 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -39,7 +39,6 @@ CREATE TABLE `archive` (
 --
 
 INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
-(0, '0000-00-00', 40000, 1),
 (1, '0000-00-00', 30000, 1),
 (2, '0000-00-00', 50000, 1),
 (3, '0000-00-00', 60000, 0),
@@ -47,7 +46,8 @@ INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
 (5, '0000-00-00', 80000, 0),
 (7, '0000-00-00', 90000, 2),
 (8, '0000-00-00', 100000, 2),
-(9, '0000-00-00', 110000, 2);
+(9, '0000-00-00', 110000, 2),
+(10, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,7 @@ CREATE TABLE `classification` (
 --
 
 INSERT INTO `classification` (`classification_id`, `cl_name`) VALUES
-(0, 'Office'),
+(0, 'Equipment'),
 (1, 'IT'),
 (2, 'Laboratory');
 
@@ -162,15 +162,6 @@ CREATE TABLE `component` (
   `c_SO_quan` int(11) DEFAULT NULL,
   `c_SO_val` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `component`
---
-
-INSERT INTO `component` (`comp_id`, `item_id`, `comp_name`, `c_date_aq`, `c_unit_meas`, `c_unit_val`, `c_total_val`, `c_quan_propcar`, `c_quan_phycou`, `c_SO_quan`, `c_SO_val`) VALUES
-(1, 1, 'qwe', '0003-02-09', '70', 0, 88, 8, 908, 213, 9090),
-(2, 3, '213', '0001-09-08', '8', 90890, 80, 890, 890, 890, 80),
-(3, 42, '123', '0001-01-08', '89', 809, 890, 809, 8908, 8, 90);
 
 -- --------------------------------------------------------
 
@@ -309,10 +300,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
-(1, 'laptop', '', '123001', '2021-01-01', 'unit', 30000, 30000, 1, 1, 162, 1, 0, 0),
-(2, 'PC', '', '123002', '2021-01-01', 'unit', 60000, 60000, 1, 1, 162, 0, 0, 0),
-(3, 'Sound System', '', '123003', '2021-01-01', 'unit', 70000, 70000, 1, 1, 162, 2, 0, 0),
-(42, '123', '24', '234', '0003-02-02', '123', 123, 123, 123, 123, 162, 0, 123, 123);
+(54, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 899, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -323,8 +311,8 @@ INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_a
 CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
   `item_name` varchar(200) DEFAULT NULL,
-  `action` varchar(50) DEFAULT NULL,
-  `date_action` datetime DEFAULT NULL
+  `action` varchar(10) DEFAULT NULL,
+  `date_action` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -334,7 +322,19 @@ CREATE TABLE `log` (
 INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
 (1, 'Laptop', 'Add', '2021-07-01'),
 (2, 'PC', 'Add', '2021-07-01'),
-(3, 'Sound Sytem', 'Add', '2021-07-01');
+(3, 'Sound Sytem', 'Add', '2021-07-01'),
+(4, '213', 'Added Item', '2021-07-15'),
+(5, '213', 'Added Item', '2021-07-15'),
+(6, '213', 'Added Item', '2021-07-15'),
+(7, 'a', 'Added Item', '2021-07-15'),
+(8, '213', 'Deleted It', '2021-07-16'),
+(9, '', 'Deleted It', '2021-07-16'),
+(10, '', 'Deleted It', '2021-07-16'),
+(11, '', 'Deleted It', '2021-07-16'),
+(12, '', 'Deleted It', '2021-07-16'),
+(13, '', 'Deleted It', '2021-07-16'),
+(14, '', 'Deleted It', '2021-07-16'),
+(15, '', 'Deleted It', '2021-07-16');
 
 -- --------------------------------------------------------
 
@@ -443,6 +443,12 @@ ALTER TABLE `nbc`
 --
 
 --
+-- AUTO_INCREMENT for table `archive`
+--
+ALTER TABLE `archive`
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `campuses`
 --
 ALTER TABLE `campuses`
@@ -458,7 +464,7 @@ ALTER TABLE `classification`
 -- AUTO_INCREMENT for table `component`
 --
 ALTER TABLE `component`
-  MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -476,13 +482,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `nbc`
