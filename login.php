@@ -1,7 +1,9 @@
 <?php
 include ("backend/conn.php");
+session_start();
 if (isset($_SESSION['pass'])) {
   header("Location: kapagalan.php");
+  exit;
 }
 ?>
 
