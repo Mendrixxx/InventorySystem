@@ -55,7 +55,7 @@ if (isset($_SESSION['pass'])) {
                         </a>
                         <ul class="submenu active">
                             <li class="submenu-item active">
-                                <a href="mmm.php" class='sidebar-link'>Inventory Per Personnel</a>
+                                <a href="inventPerPerson.php" class='sidebar-link'>Inventory Per Personnel</a>
                             </li>
                         </ul>
                     </li>
