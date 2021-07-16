@@ -25,7 +25,25 @@ if (isset($_SESSION['pass'])) {
     <link rel="stylesheet" href="assets/css/app.css">
 	<link rel="stylesheet" type="text/css" href="DataTable/DataTables-1.10.25/css/jquery.dataTables.min.css">
 </head>
-
+<style>
+    
+      .display thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      }
+      .display td {
+      padding: 12px 15px;
+      }
+      .display tbody tr {
+      border-bottom: 1px solid lightgreen;
+      }
+      .display   tbody tr:nth-of-type(odd) {
+      background-color: white;
+      }
+   </style>
 <body>
 	<!--Sidebars-->
     <?php require_once "functions/sidebar.php" ?>
