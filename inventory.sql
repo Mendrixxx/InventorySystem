@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 12:06 PM
+-- Generation Time: Jul 16, 2021 at 05:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `archive` (
   `archive_id` int(11) NOT NULL,
-  `year` year(4) DEFAULT NULL,
+  `ayear` year(4) DEFAULT NULL,
   `total` double DEFAULT NULL,
   `classification` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `archive` (
 -- Dumping data for table `archive`
 --
 
-INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
+INSERT INTO `archive` (`archive_id`, `ayear`, `total`, `classification`) VALUES
 (1, 0000, 30000, 1),
 (2, 0000, 50000, 1),
 (3, 0000, 60000, 0),
@@ -47,7 +47,8 @@ INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
 (7, 0000, 90000, 2),
 (8, 0000, 100000, 2),
 (9, 0000, 110000, 2),
-(10, NULL, NULL, NULL);
+(10, NULL, NULL, NULL),
+(11, 2021, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -327,30 +328,30 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
-(1, 'Laptop', 'Add', '2021-07-01'),
-(2, 'PC', 'Add', '2021-07-01'),
-(3, 'Sound Sytem', 'Add', '2021-07-01'),
-(4, '213', 'Added Item', '2021-07-15'),
-(5, '213', 'Added Item', '2021-07-15'),
-(6, '213', 'Added Item', '2021-07-15'),
-(7, 'a', 'Added Item', '2021-07-15'),
-(8, '213', 'Deleted It', '2021-07-16'),
-(9, '', 'Deleted It', '2021-07-16'),
-(10, '', 'Deleted It', '2021-07-16'),
-(11, '', 'Deleted It', '2021-07-16'),
-(12, '', 'Deleted It', '2021-07-16'),
-(13, '', 'Deleted It', '2021-07-16'),
-(14, '', 'Deleted It', '2021-07-16'),
-(15, '', 'Deleted It', '2021-07-16'),
-(16, '123', 'Added Item', '2021-07-16'),
-(17, '1231231', 'Added Item', '2021-07-16'),
-(18, '1', 'Added Item', '2021-07-16'),
-(19, '2', 'Added Item', '2021-07-16'),
-(20, '1', 'Deleted It', '2021-07-16'),
-(21, '2', 'Deleted It', '2021-07-16'),
-(22, '1', 'Deleted It', '2021-07-16'),
-(23, '1', 'Deleted It', '2021-07-16'),
-(24, '1', 'Deleted It', '2021-07-16');
+(1, 'Laptop', 'Add', '2021-07-01 00:00:00'),
+(2, 'PC', 'Add', '2021-07-01 00:00:00'),
+(3, 'Sound Sytem', 'Add', '2021-07-01 00:00:00'),
+(4, '213', 'Added Item', '2021-07-15 00:00:00'),
+(5, '213', 'Added Item', '2021-07-15 00:00:00'),
+(6, '213', 'Added Item', '2021-07-15 00:00:00'),
+(7, 'a', 'Added Item', '2021-07-15 00:00:00'),
+(8, '213', 'Deleted It', '2021-07-16 00:00:00'),
+(9, '', 'Deleted It', '2021-07-16 00:00:00'),
+(10, '', 'Deleted It', '2021-07-16 00:00:00'),
+(11, '', 'Deleted It', '2021-07-16 00:00:00'),
+(12, '', 'Deleted It', '2021-07-16 00:00:00'),
+(13, '', 'Deleted It', '2021-07-16 00:00:00'),
+(14, '', 'Deleted It', '2021-07-16 00:00:00'),
+(15, '', 'Deleted It', '2021-07-16 00:00:00'),
+(16, '123', 'Added Item', '2021-07-16 00:00:00'),
+(17, '1231231', 'Added Item', '2021-07-16 00:00:00'),
+(18, '1', 'Added Item', '2021-07-16 00:00:00'),
+(19, '2', 'Added Item', '2021-07-16 00:00:00'),
+(20, '1', 'Deleted It', '2021-07-16 00:00:00'),
+(21, '2', 'Deleted It', '2021-07-16 00:00:00'),
+(22, '1', 'Deleted It', '2021-07-16 00:00:00'),
+(23, '1', 'Deleted It', '2021-07-16 00:00:00'),
+(24, '1', 'Deleted It', '2021-07-16 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -388,15 +389,9 @@ INSERT INTO `nbc` (`id`, `employee_id`, `plantilla_no`, `position_id`, `appointm
 CREATE TABLE `yearcosting` (
   `id` int(11) NOT NULL,
   `item_id` int(255) NOT NULL,
-  `cost` int(255) NOT NULL
+  `cost` int(255) NOT NULL,
+  `classification` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `yearcosting`
---
-
-INSERT INTO `yearcosting` (`id`, `item_id`, `cost`) VALUES
-(1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -487,7 +482,7 @@ ALTER TABLE `yearcosting`
 -- AUTO_INCREMENT for table `archive`
 --
 ALTER TABLE `archive`
-  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `campuses`
