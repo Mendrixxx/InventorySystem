@@ -25,7 +25,7 @@ if(isset($_POST['add'])){
     $additem = "INSERT into item(item_name, item_desc, property_num, date_aq, unit_meas, unit_val, total_val, quant_propcar, quant_phycou, remarks, classification, SO_quant, SO_val) values ('$iname', '$desc', '$pnum', '$dateaq', '$umeas', '$uvalue', '$tvalue', '$qPropCard', '$qPhysCount', '$remarks', '$classif', '$qSO', '$vSO')";   
     $query_run = mysqli_query($conn, $additem);
     $lastid = $conn->insert_id;
-    $addtocost = "INSERT into yearcosting(item_id, cost) values ('$lastid', '$tvalue')";
+    $addtocost = "INSERT into yearcosting(item_id, cost, classification) values ('$lastid', '$tvalue', '$classif')";
     $query_run = mysqli_query($conn, $addtocost);
 
     $enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', NOW())";//
