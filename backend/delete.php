@@ -16,4 +16,5 @@
         header("location: ../kapagalan.php");
     }
     }
+    
 ?>

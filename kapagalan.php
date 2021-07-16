@@ -304,7 +304,7 @@ tr.shown td.details-control {
                     <script src="assets/js/main.js"></script>
 
    <!--############################################################################################################################################################################################## -->
-    <!-- DELETE MODAL -->
+    <!-- DELETE item MODAL -->
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -315,7 +315,7 @@ tr.shown td.details-control {
                 <form action="backend/delete.php" method="POST">
                     <div class="modal-body">
                         <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Are you sure
-                            you want to delete this Record?</div>
+                            you want to delete this Item?</br>This will also delete ALL of the items components.</div>
                         <input type="hidden" name="Delete_ID" id="Delete_ID">
 						<input type="hidden" name="item_name" id="item_name"> <!-- For logs -->
                     </div>
@@ -323,6 +323,36 @@ tr.shown td.details-control {
                         <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
                                 class="fa fa-times-circle"></span> Cancel</button>
                         <button type="submit" name="continue" class="btn btn-success" id="continue"><span
+                                class="fa fa-check-circle"></span> Continue</button>
+
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--############################################################################################################################################################################################## -->
+ <!--############################################################################################################################################################################################## -->
+    <!-- DELETE component MODAL -->
+    <div class="modal fade" id="deletec" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
+                    <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>     
+                </div>
+                <form action="backend/deletec.php" method="POST">
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Are you sure
+                            you want to delete this Component?</div>
+                        <input type="hidden" name="Delete_IDc" id="Delete_IDc">
+						<input type="hidden" name="item_name" id="item_name"> <!-- For logs -->
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
+                                class="fa fa-times-circle"></span> Cancel</button>
+                        <button type="submit" name="continuec" class="btn btn-success" id="continuec"><span
                                 class="fa fa-check-circle"></span> Continue</button>
 
                     </div>
@@ -728,8 +758,9 @@ tr.shown td.details-control {
 
 
    <!--############################################################################################################################################################################################## -->
-    <!-- DELETE SCRIPT -->
+    
     <script>
+        //DELETE item SCRIPT
         $('#table1').on('click', '#dtbn', function() {
             $('#delete').modal({
     		backdrop: 'static',
@@ -751,8 +782,33 @@ tr.shown td.details-control {
 			$('#item_name').val(data_logs[0]);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
+        
+        //DELETE comp SCRIPT
+        $('#table1').on('click', '#dtbnc', function() {
+            $('#deletec').modal({
+    		backdrop: 'static',
+    		keyboard: false
+		    });
+            $('#deletec').modal('show');
+
+            var data = $(this).data('assigned-id');
+            console.log(data);
+            $('#Delete_IDc').val(data);
+			
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+		//For logs feature. Wag pong tanggalin.
+			$tr = $(this).closest("tr");
+			var data_logs = $tr.children("td").map(function(){
+			return $(this).text();
+			}).get();
+		
+			$('#item_name').val(data_logs[0]);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        });
+        
         function CloseModalPopup() {       
             $("#delete").modal('hide');
+            $("#deletec").modal('hide');
     }
     </script>
     <!--############################################################################################################################################################################################## -->
