@@ -193,12 +193,7 @@ tr.shown td.details-control {
                                             <a href="mmm.html" class='sidebar-link'>Inventory Per Personnel</a>
                                             
                                         </li>
-                                        <ul class="submenu active">
-                                            <li class="submenu-item active">
-                                            <a href="way.html" class='sidebar-link'>Inventory Per Classification</a>
-                                            
-                                           
-                                        </li>
+
                              
                         </ul>
                         <li class="sidebar-item active ">
