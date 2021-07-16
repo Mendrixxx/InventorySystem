@@ -12,6 +12,9 @@ if (isset($_SESSION['pass'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory System - Logs</title>
+	
+	<!--BU LOGO-->
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/bu.png">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -24,59 +27,10 @@ if (isset($_SESSION['pass'])) {
 </head>
 
 <body>
-    <div id="app">
-        <div id="sidebar" class="active">
-            <div class="sidebar-wrapper active">
-                <div class="sidebar-header">
-                    <div class="d-flex justify-content-between">
-                        <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
-                        </div>
-                        <div class="toggler">
-                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="sidebar-menu">
-                    <ul class="menu">
-                        <li class="sidebar-item  ">
-                            <a href="kapagalan.php" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Inventory</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="Summary.php" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Summary</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item active ">
-                            <a href="Logs.php" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                                <span>Logs</span>
-                            </a>
-                        </li>
-						<li class="sidebar-item  ">
-                            <a href="logout.php" class='sidebar-link'>
-                                <i class="bi bi-x-octagon-fill"></i>
-                                <span>Sign Out</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-            </div>
-        </div>
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-
-            <div class="page-heading">
+	<!--Sidebars-->
+    <?php require_once "functions/sidebar.php" ?>
+	
+	 <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
@@ -89,7 +43,6 @@ if (isset($_SESSION['pass'])) {
                         </div>
                     </div>
                 </div>
-
 
 				<!-- Card Header Start-->
                     <div class="card-header">
@@ -156,5 +109,5 @@ if (isset($_SESSION['pass'])) {
 <?php
 }else{
       header("Location: login.php");
-      exit();
+	exit();
 }

@@ -13,7 +13,7 @@ if (isset($_POST['password'])) {
   $pass = validate($_POST['password']);
 
   if (empty($pass)){
-    header("Location: login.php?error=PAssword is required");
+    header("Location: login.php?error=Password is required");
 
   }else{
     $sql = "SELECT * FROM `auth` WHERE `pass` = '$pass'";
@@ -24,10 +24,10 @@ if (isset($_POST['password'])) {
       $row = mysqli_fetch_assoc($result);
       if ($row['pass'] === $pass) {
         $_SESSION['pass'] = $row['pass'];
-        header("Location: kapagalan.php");
+        header("Location: Inventory.php");
         exit();
     }else{
-      header("Location: login.php?error=patalon kang hayop ka mali password mo");
+      header("Location: login.php?error= Wrong Password");
       exit();
     }
   }else{

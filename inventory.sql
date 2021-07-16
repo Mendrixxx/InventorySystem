@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 03:06 PM
+-- Generation Time: Jul 16, 2021 at 12:06 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `archive` (
   `archive_id` int(11) NOT NULL,
-  `ayear` year(4) DEFAULT NULL,
+  `year` year(4) DEFAULT NULL,
   `total` double DEFAULT NULL,
   `classification` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `archive` (
 -- Dumping data for table `archive`
 --
 
-INSERT INTO `archive` (`archive_id`, `ayear`, `total`, `classification`) VALUES
+INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
 (1, 0000, 30000, 1),
 (2, 0000, 50000, 1),
 (3, 0000, 60000, 0),
@@ -47,10 +47,7 @@ INSERT INTO `archive` (`archive_id`, `ayear`, `total`, `classification`) VALUES
 (7, 0000, 90000, 2),
 (8, 0000, 100000, 2),
 (9, 0000, 110000, 2),
-(55, NULL, 3, 0),
-(56, 2021, 3, 0),
-(57, 2021, 3, 0),
-(58, 2021, 246, 1);
+(10, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -310,8 +307,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
-(61, '2', '2', '2', '0002-02-02', '2', 2, 2, 2, 2, 162, 0, 2, 2),
-(62, '1', '1', '1', '0001-01-01', '1', 1, 1, 1, 1, 162, 0, 1, 1);
+(1, '1', '1', '1', '2021-07-01', '1', 1, 1, 1, 1, 899, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -322,8 +318,8 @@ INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_a
 CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
   `item_name` varchar(200) DEFAULT NULL,
-  `action` varchar(10) DEFAULT NULL,
-  `date_action` date DEFAULT NULL
+  `action` varchar(50) DEFAULT NULL,
+  `date_action` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -354,10 +350,7 @@ INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
 (21, '2', 'Deleted It', '2021-07-16'),
 (22, '1', 'Deleted It', '2021-07-16'),
 (23, '1', 'Deleted It', '2021-07-16'),
-(24, '1', 'Deleted It', '2021-07-16'),
-(25, '2', 'Added Item', '2021-07-16'),
-(26, '1', 'Deleted It', '2021-07-16'),
-(27, '1', 'Added Item', '2021-07-16');
+(24, '1', 'Deleted It', '2021-07-16');
 
 -- --------------------------------------------------------
 
@@ -395,9 +388,15 @@ INSERT INTO `nbc` (`id`, `employee_id`, `plantilla_no`, `position_id`, `appointm
 CREATE TABLE `yearcosting` (
   `id` int(11) NOT NULL,
   `item_id` int(255) NOT NULL,
-  `cost` double NOT NULL,
-  `classification` int(3) NOT NULL
+  `cost` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `yearcosting`
+--
+
+INSERT INTO `yearcosting` (`id`, `item_id`, `cost`) VALUES
+(1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -488,7 +487,7 @@ ALTER TABLE `yearcosting`
 -- AUTO_INCREMENT for table `archive`
 --
 ALTER TABLE `archive`
-  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `archive_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `campuses`
@@ -524,13 +523,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `nbc`
@@ -542,7 +541,7 @@ ALTER TABLE `nbc`
 -- AUTO_INCREMENT for table `yearcosting`
 --
 ALTER TABLE `yearcosting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

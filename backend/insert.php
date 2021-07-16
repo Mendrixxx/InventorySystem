@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include "conn.php";
+
 //Wag po tangallin yung mga lines na may comment symbol. For logs po ito.
 	$added_item = "Added Item";//
 	$added_component = "Added Component";
@@ -25,13 +26,13 @@ if(isset($_POST['add'])){
     $additem = "INSERT into item(item_name, item_desc, property_num, date_aq, unit_meas, unit_val, total_val, quant_propcar, quant_phycou, remarks, classification, SO_quant, SO_val) values ('$iname', '$desc', '$pnum', '$dateaq', '$umeas', '$uvalue', '$tvalue', '$qPropCard', '$qPhysCount', '$remarks', '$classif', '$qSO', '$vSO')";   
     $query_run = mysqli_query($conn, $additem);
     $lastid = $conn->insert_id;
-    $addtocost = "INSERT into yearcosting(item_id, cost, classification) values ('$lastid', '$tvalue', '$classif')";
+    $addtocost = "INSERT into yearcosting(item_id, cost) values ('$lastid', '$tvalue')";
     $query_run = mysqli_query($conn, $addtocost);
 
     $enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', NOW())";//
 	$query_logItem = mysqli_query($conn, $enter_logItem);//
     if ($query_run &&  $query_logItem && $addtocost)  {
-        header("location: ../kapagalan.php");
+        header("location: ../Inventory.php");
     }
 }
 if(isset($_POST['addc'])){
@@ -51,7 +52,7 @@ if(isset($_POST['addc'])){
     $query_run = mysqli_query($conn, $addcomp);
 	$query_logComp = mysqli_query($conn, $enter_logComp);//
     if ($query_run && $query_logComp)  {
-        header("location: ../kapagalan.php");
+        header("location: ../Inventory.php");
     }
 }
 ?>

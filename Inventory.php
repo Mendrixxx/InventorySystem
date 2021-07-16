@@ -8,21 +8,28 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>INVENTORY</title>
+      <title>Inventory System - Inventory</title>
+	  
+	  <!--BU LOGO-->
+	  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/bu.png">
+	  
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	  
       <link rel="stylesheet" href="assets/css/bootstrap.css">
       <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
       <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
       <link rel="stylesheet" href="assets/css/app.css">
       <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"  >
+	  
       <script src="assets/js/jquery-3.6.0.min.js"></script>
       <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css">
       <script type="text/javascript" src="DataTable/datatables.min.js"></script>
+	  
       <script type="text/javascript">
          $(document).ready(function(){
 
@@ -89,6 +96,7 @@
         var table = $("#table1").DataTable({
             "processing":true,
             "serverside":true,
+			"autoWidth":false,
             "ajax":{
                 url: "backend/itemTable.php",
                 dataType: "json"
@@ -116,6 +124,7 @@
                 {"data":"button"}
             ]
        });
+	   
         $('#table1 tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row( this );
@@ -165,45 +174,9 @@
       }
    </style>
    <body>
-      <div id="app">
-         <div id="sidebar" class="active">
-            <div class="sidebar-wrapper active">
-               <div class="sidebar-header">
-                  <div class="d-flex justify-content-between">
-                     <div class="logo">
-                        <a href="index.html"><img src="assets/images/logo/BU.gif" style="width: 150px; height: 150px" ></img></a>
-                     </div>
-                     <div class="toggler">
-                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <li class="sidebar-item active has-sub">
-                  <a href="kapagalan.php" class='sidebar-link'>
-                     <i class="bi bi-stack"></i>
-                     <span>Inventory</span>
-                     <ul class="submenu active">
-                        <li class="submenu-item active">
-                  <a href="inventPerPerson.php" class='sidebar-link'>Inventory Per Personnel</a>
-                  </li>
-                  </ul>
-               <li class="sidebar-item active ">
-                  <a href="Summary.php" class='sidebar-link'>
-                  <i class="bi bi-grid-1x2-fill"></i>
-                  <span>Summary</span>
-                  </a>
-               </li>
-               <li class="sidebar-item active ">
-                  <a href="logs.php" class='sidebar-link'>
-                  <i class="bi bi-grid-1x2-fill"></i>
-                  <span>Logs</span>
-                  </a>
-               </li>
-            </div>
-            <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-         </div>
-      </div>
-      <div id="main">
+   <!--Sidebars-->
+      <?php require_once "functions/sidebar.php" ?>
+	  
       <div class="page-heading">
          <section class="section">
             <div class="row" id="table-inverse">

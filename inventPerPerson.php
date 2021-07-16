@@ -14,7 +14,10 @@ if (isset($_SESSION['pass'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Per Personel</title>
+    <title>Inventory System - Inventory Per Personel</title>
+	
+	<!--BU LOGO-->
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/bu.png">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -31,51 +34,9 @@ if (isset($_SESSION['pass'])) {
     <script type="text/javascript" src="DataTable/datatables.min.js"></script>
 </head>
 <body>
-    <div id="app">
-        <!-- sidebar -->
-        <div id="sidebar" class="active">
-            <div class="sidebar-wrapper active">
-                <div class="sidebar-header">
-                    <div class="d-flex justify-content-between">
-                        <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/BU.gif" style="width: 150px; height: 150px" ></img></a>
-                        </div>
-                        <div class="toggler">
-                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- sidebar menu items -->
-                <ul>
-                    <li class="sidebar-item active has-sub">
-                        <a href="kapagalan.php" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span>Inventory</span>
-                        </a>
-                        <ul class="submenu active">
-                            <li class="submenu-item active">
-                                <a href="mmm.php" class='sidebar-link'>Inventory Per Personnel</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item active ">
-                        <a href="Summary.php" class='sidebar-link'>
-                            <i class="bi bi-grid-1x2-fill"></i>
-                            <span>Summary</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item active ">
-                        <a href="logs.php" class='sidebar-link'>
-                            <i class="bi bi-grid-1x2-fill"></i>
-                            <span>Logs</span>
-                        </a>
-                    </li>
-                </ul>
-                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-            </div>
-        </div>
-        <div id="main">
+   	<!--Sidebars-->
+    <?php require_once "functions/sidebar.php" ?>
+	
             <div class="page-heading">
                 <form action="" method="POST" id="formTable">
                     <section class="section">
@@ -120,7 +81,6 @@ if (isset($_SESSION['pass'])) {
                     </section>
                 </form>
             </div>
-        </div>
         <footer>
             <div class="footer clearfix mb-0 text-muted">
                 <div class="float-start">

@@ -2,7 +2,7 @@
 include ("backend/conn.php");
 session_start();
 if (isset($_SESSION['pass'])) {
-  header("Location: kapagalan.php");
+  header("Location: Inventory.php");
   exit;
 }
 ?>

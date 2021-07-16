@@ -14,7 +14,7 @@ include "conn.php";
         $run = mysqli_query($conn, $sql);
         $log_del = mysqli_query($conn, $del_logs);//
         if($run && $log_del){
-            header("location: ../kapagalan.php");
+            header("location: ../Inventory.php");
     }
     }
     ?>
