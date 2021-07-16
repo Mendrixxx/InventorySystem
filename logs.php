@@ -1,7 +1,8 @@
 <!--Inventory System Logs -->
-
 <?php
-include "backend/conn.php"; //Connect to the Database
+session_start();
+include ("backend/conn.php");
+if (isset($_SESSION['pass'])) {
 ?>
 
 <!DOCTYPE html>
@@ -83,13 +84,13 @@ include "backend/conn.php"; //Connect to the Database
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                
+
                             </nav>
                         </div>
                     </div>
                 </div>
-				
-		
+
+
 				<!-- Card Header Start-->
                     <div class="card-header">
 						<div class="card-box mb-40">
@@ -105,13 +106,13 @@ include "backend/conn.php"; //Connect to the Database
 									</thead>
 									<tbody>
 									</tbody>
-								</table> 
+								</table>
 								<!--Datatable End-->
                             </div>
                         </div>
 					</div>
 				<!--Card Header End-->
-					
+
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
@@ -128,10 +129,10 @@ include "backend/conn.php"; //Connect to the Database
 	<!-- JQuery and DataTable Plugin-->
    <script type = "text/javascript" src="Datatable/jquery-3.5.1.js"></script>
    <script type = "text/javascript"  src="Datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
-	
+
 	<script type="text/javascript">
-	
-	//Datatable 
+
+	//Datatable
     $(document).ready(function(){
        $("#logs").DataTable({
             "ajax":{
@@ -150,3 +151,9 @@ include "backend/conn.php"; //Connect to the Database
 
 </body>
 </html>
+
+<?php
+}else{
+      header("Location: login.php");
+      exit();
+}

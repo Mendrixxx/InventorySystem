@@ -1,8 +1,11 @@
 <?php
+    session_start();
     include("backend/conn.php");
     $sql = " Select Distinct classification from item";
     $res = mysqli_query($conn,$sql);
-?> 
+
+    if (isset($_SESSION['pass'])) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-               
+
                         <li class="sidebar-item  ">
                             <a href="kapagalan.php" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
@@ -59,7 +62,7 @@
                             </a>
                         </li>
 
-                        
+
 
                     </ul>
                 </div>
@@ -98,28 +101,28 @@
                                 <div class="card-header">
 									<div class="row">
 										<div class="col">
-																						<label>Select Classification</lable> 
-       
+																						<label>Select Classification</lable>
+
 
 <!-- Displays on dropdown the classifications from table item-->
         <select id = "classification" onchange="selectClassi()">
-        
+
          <option value="0">OFFICE</option>
          <option value="1">IT</option>
          <option value="2">LABORATORY</option>
-      
+
 	 <?php while( $rows = mysqli_fetch_array($res) ){ ?>
 	 <?php   } ?>
-        
-	</select>										
+
+	</select>
 
                                             </div>
 										<div class="col-md-4">
 											<input type="text" id="first-name" class="form-control" name="fname" placeholder="Search">
 										</div>
-         
+
 									</div>
-                                    
+
                                 </div>
                                 <div class="card-content">
                                     <!-- table strip dark -->
@@ -132,35 +135,35 @@
                                                 </tr>
                                             </thead>
                                             <tbody id = "ans">
-                                                
+
 <?php
-    $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='OFFICE' group by YEAR(date_aq) order by date_aq desc ";    
+    $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='OFFICE' group by YEAR(date_aq) order by date_aq desc ";
     $res = mysqli_query($conn,$sql);
-						    
+
     while ($rows = mysqli_fetch_array($res)) {
         $total=$rows["total"];
         $total=number_format($total,2);
-    ?>  
+    ?>
     <tr>
         <td> <?php echo $rows['yearName'] ?> </td>
-        <td>Php <?php echo $total ?> </td>      
+        <td>Php <?php echo $total ?> </td>
     </tr>
 
 <?php }?>
-                                                     
-                                        </tbody> 
+
+                                        </tbody>
                                     </table>
                                                                 <div>
                                                                 <a href="Summary.php" class="btn btn-primary">Reset</a>
                                                               </div>
-                                                                             
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-           
+
 
 
         <footer>
@@ -169,7 +172,7 @@
                     <p>2021 &copy; Bachelor of Science 3 - B</p>
                 </div>
                 <div class="float-end">
-                    
+
                 </div>
             </div>
         </footer>
@@ -181,4 +184,9 @@
 <script src="assets/js/main.js"></script>
 </body>
 
-</html> 
+</html>
+<?php
+}else{
+      header("Location: login.php");
+      exit();
+}

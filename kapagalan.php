@@ -1,6 +1,9 @@
 <?php
-    include 'backend/conn.php';
+session_start();
+include ("backend/conn.php");
+if (isset($_SESSION['pass'])) {
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,12 +26,12 @@
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"  >
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css">
     <script type="text/javascript" src="DataTable/datatables.min.js"></script>
 
 <script type="text/javascript">
-    
+
     $(document).ready(function(){
 
         function format ( d ) {
@@ -50,7 +53,7 @@
             '</thead>';
             for( temp in d ){
                 if(d[temp].comp_name !== undefined){
-                    strTable += ''+ 
+                    strTable += ''+
                     '<tbody>'+
                         '<tr>'+
                             '<td>'+d[temp].comp_name+'</td>'+
@@ -113,12 +116,12 @@
                 {"data":"cl_name"},
                 {"data":"last_name"},
                 {"data":"button"}
-            ]    
+            ]
        });
         $('#table1 tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row( this );
- 
+
             if ( row.child.isShown() ) {
                 // This row is already open - close it
                 row.child.hide();
@@ -163,10 +166,10 @@ tr.shown td.details-control {
 	    .table tbody tr:nth-of-type(odd) {
     background-color: white;
   }
-  
-  
+
+
 </style>
-  
+
 <body>
     <div id="app">
         <div id="sidebar" class="active">
@@ -181,8 +184,8 @@ tr.shown td.details-control {
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <li class="sidebar-item active has-sub">
                     <a href="kapagalan.html" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
@@ -191,10 +194,10 @@ tr.shown td.details-control {
                                     <ul class="submenu active">
                                         <li class="submenu-item active">
                                             <a href="mmm.html" class='sidebar-link'>Inventory Per Personnel</a>
-                                            
+
                                         </li>
 
-                             
+
                         </ul>
                         <li class="sidebar-item active ">
                             <a href="Summary.php" class='sidebar-link'>
@@ -208,19 +211,19 @@ tr.shown td.details-control {
                                 <span>Logs</span>
                             </a>
                         </li>
-                        
+
                     </div>
-                   
-                    
+
+
                     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
-                
+
             </div>
             <div id="main">
-                
+
 
                 <div class="page-heading">
-                    
+
                             <section class="section">
                                 <div class="row" id="table-inverse">
                                     <div class="col-12">
@@ -230,7 +233,7 @@ tr.shown td.details-control {
                                             </div>
                                             <div class="card-content">
                                                 <div class="card-body">
-                                                    
+
                                                 </div>
                                                 <div class="card-body">
                                                     <table class="table" id="table1">
@@ -245,7 +248,7 @@ tr.shown td.details-control {
                                                                 <th rowspan="2">Unit Value</th>
                                                                 <th rowspan="2">Total Value</th>
                                                                 <th rowspan="2">Quantity Per Property Card</th>
-                                                                <th rowspan="2">Quantity Per Physical Count</th> 
+                                                                <th rowspan="2">Quantity Per Physical Count</th>
                                                                 <th colspan="2">Shortage/Overage</th>
                                                                 <th rowspan="2">Classification</th>
                                                                 <th rowspan="2">Remarks</th>
@@ -267,22 +270,22 @@ tr.shown td.details-control {
                                                         </table>
                                                         <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
                                                         <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Add Component</button>
-                                                 
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
-                               
-                    
-                    
+
+
+
                             <footer>
                                 <div class="footer clearfix mb-0 text-muted">
                                     <div class="float-start">
                                         <p>2021 &copy; Bachelor of Science 3 - B</p>
                                     </div>
                                     <div class="float-end">
-                                        
+
                                     </div>
                                 </div>
                             </footer>
@@ -290,7 +293,7 @@ tr.shown td.details-control {
                     </div>
                     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
                     <script src="assets/js/bootstrap.bundle.min.js"></script>
-                    
+
                     <script src="assets/js/main.js"></script>
 
    <!--############################################################################################################################################################################################## -->
@@ -300,7 +303,7 @@ tr.shown td.details-control {
             <div class="modal-content">
                 <div class="modal-header">
                 <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
-                    <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>     
+                    <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form action="backend/delete.php" method="POST">
                     <div class="modal-body">
@@ -330,7 +333,7 @@ tr.shown td.details-control {
             <div class="modal-content">
                 <div class="modal-header">
                 <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
-                    <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>     
+                    <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form action="backend/deletec.php" method="POST">
                     <div class="modal-body">
@@ -367,7 +370,7 @@ tr.shown td.details-control {
       <div class="modal-body">
       <form action="backend/insert.php" method="POST">
                                                                 <div class="modal-body">
-                                                                
+
                                                                     <label>Name of Item: </label>
                                                                     <div class="form-group">
                                                                         <input name="iname" type="text" placeholder="Name" class="form-control" Required>
@@ -375,7 +378,7 @@ tr.shown td.details-control {
                                                                     <label>Description: </label>
                                                                     <div class="form-group">
                                                                         <input name="desc" type="text" placeholder="Description" class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Property Number: </label>
                                                                     <div class="form-group">
@@ -385,38 +388,38 @@ tr.shown td.details-control {
                                                                     <label>Date Acquired: </label>
                                                                     <div class="form-group">
                                                                         <input  name="dateaq" type="date" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Unit of Measure: </label>
                                                                     <div class="form-group">
                                                                         <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
-                                                                           
+
                                                                     </div>
                                                                     <label>Unit Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Total Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Property Card: </label>
                                                                     <div class="form-group">
                                                                         <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
                                                                     </div>
                                                                     <label>Quantity of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                                                                     </div> <label>Total value of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
                                                                     </div>
                                                                     <label>Remarks: </label>
                                                                     <div class="form-group">
@@ -428,7 +431,7 @@ tr.shown td.details-control {
                                                                             <?php while($row = mysqli_fetch_array($result)){
                                                                             echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>";
                                                                             }?>
-                                                                        </select>   
+                                                                        </select>
                                                                     </div>
                                                                     <label>Classification: </label>
                                                                     <div class="form-group">
@@ -438,21 +441,21 @@ tr.shown td.details-control {
                                                                             <option value="2">OFFICE</option>
                                                                         </select>
                                                                     </div>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Cancel</span>
                                                                     </button>
-                                                                    
+
                                                                     <button name = "add" type="submit" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Add Item</span>
                                                                     </button>
-                                                
+
                                                                 </div>
                                                             </form>
       </div>
@@ -473,12 +476,12 @@ tr.shown td.details-control {
       <div class="modal-body">
       <form action="backend/insert.php" method="POST">
                                                                 <div class="modal-body">
-                                                                <label>Select the Item that will receive this Component: </label> 
+                                                                <label>Select the Item that will receive this Component: </label>
                                                                 <div class="form-group">
                                                                     <?php
                                                                     $sql = "Select * from `item`";
                                                                     $result = mysqli_query($conn, $sql);
-                                                                    
+
                                                                     ?>
                                                                         <select name="itmname" class="form-control">
                                                                             <?php while($row = mysqli_fetch_array($result)){
@@ -490,51 +493,51 @@ tr.shown td.details-control {
                                                                     <div class="form-group">
                                                                         <input name="cname" type="text" placeholder="Name" class="form-control" Required>
                                                                     </div>
-                                                                    
+
                                                                     <label>Date Acquired: </label>
                                                                     <div class="form-group">
                                                                         <input  name="cdateaq" type="date" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Unit of Measure: </label>
                                                                     <div class="form-group">
                                                                         <input name="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
-                                                                           
+
                                                                     </div>
                                                                     <label>Unit Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="cuvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Total Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="ctvalue" type="number" placeholder="Total Value" class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Property Card: </label>
                                                                     <div class="form-group">
                                                                         <input  name="cqPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                        <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
                                                                     </div>
                                                                     <label>Quantity of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                                                                     </div> <label>Total value of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
                                                                     </div>
                                                                 <div class="modal-footer">
-                                                                   
+
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Cancel</span>
-                                                                        
+
                                                                     </button>
-                                                                   
+
                                                                     <button name = "addc" type="sumbit" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
@@ -549,7 +552,7 @@ tr.shown td.details-control {
 
 <!-- end of edit modal  -->
 
-    
+
 
 <!--Add Item Modal -->
 <div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -564,7 +567,7 @@ tr.shown td.details-control {
       <div class="modal-body">
       <form action="backend/insert.php" method="POST">
                                                                 <div class="modal-body">
-                                                                
+
                                                                     <label>Name of Item: </label>
                                                                     <div class="form-group">
                                                                         <input name="iname" type="text" placeholder="Name" class="form-control" Required>
@@ -572,7 +575,7 @@ tr.shown td.details-control {
                                                                     <label>Description: </label>
                                                                     <div class="form-group">
                                                                         <input name="desc" type="text" placeholder="Description" class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Property Number: </label>
                                                                     <div class="form-group">
@@ -582,38 +585,38 @@ tr.shown td.details-control {
                                                                     <label>Date Acquired: </label>
                                                                     <div class="form-group">
                                                                         <input  name="dateaq" type="date" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Unit of Measure: </label>
                                                                     <div class="form-group">
                                                                         <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
-                                                                           
+
                                                                     </div>
                                                                     <label>Unit Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Total Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Property Card: </label>
                                                                     <div class="form-group">
                                                                         <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                        <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
                                                                     </div>
                                                                     <label>Quantity of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                                                                     </div> <label>Total value of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
                                                                     </div>
                                                                     <label>Remarks: </label>
                                                                     <div class="form-group">
@@ -625,7 +628,7 @@ tr.shown td.details-control {
                                                                             <?php while($row = mysqli_fetch_array($result)){
                                                                             echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>";
                                                                             }?>
-                                                                        </select>   
+                                                                        </select>
                                                                     </div>
                                                                     <label>Classification: </label>
                                                                     <div class="form-group">
@@ -635,21 +638,21 @@ tr.shown td.details-control {
                                                                             <option value="2">OFFICE</option>
                                                                         </select>
                                                                     </div>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Cancel</span>
                                                                     </button>
-                                                                    
+
                                                                     <button name = "add" type="submit" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Add Item</span>
                                                                     </button>
-                                                
+
                                                                 </div>
                                                             </form>
       </div>
@@ -670,12 +673,12 @@ tr.shown td.details-control {
       <div class="modal-body">
       <form action="backend/insert.php" method="POST">
                                                                 <div class="modal-body">
-                                                                <label>Select the Item that will receive this Component: </label> 
+                                                                <label>Select the Item that will receive this Component: </label>
                                                                 <div class="form-group">
                                                                     <?php
                                                                     $sql = "Select * from `item`";
                                                                     $result = mysqli_query($conn, $sql);
-                                                                    
+
                                                                     ?>
                                                                         <select name="itmname" class="form-control">
                                                                             <?php while($row = mysqli_fetch_array($result)){
@@ -687,51 +690,51 @@ tr.shown td.details-control {
                                                                     <div class="form-group">
                                                                         <input name="cname" type="text" placeholder="Name" class="form-control" Required>
                                                                     </div>
-                                                                    
+
                                                                     <label>Date Acquired: </label>
                                                                     <div class="form-group">
                                                                         <input  name="cdateaq" type="date" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Unit of Measure: </label>
                                                                     <div class="form-group">
                                                                         <input name="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
-                                                                           
+
                                                                     </div>
                                                                     <label>Unit Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="cuvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
-                                                                         
+
                                                                     </div>
                                                                     <label>Total Value: </label>
                                                                     <div class="form-group">
                                                                         <input name="ctvalue" type="number" placeholder="Total Value" class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Property Card: </label>
                                                                     <div class="form-group">
                                                                         <input  name="cqPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
-                                                                          
+
                                                                     </div>
                                                                     <label>Quantity Per Physical Count: </label>
                                                                     <div class="form-group">
-                                                                        <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required> 
+                                                                        <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
                                                                     </div>
                                                                     <label>Quantity of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                                                                     </div> <label>Total value of Shortage/Overage: </label>
                                                                     <div class="form-group">
-                                                                        <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required> 
+                                                                        <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
                                                                     </div>
                                                                 <div class="modal-footer">
-                                                                   
+
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                         <i class="bx bx-x d-block d-sm-none"></i>
                                                                         <span class="d-none d-sm-block">Cancel</span>
-                                                                        
+
                                                                     </button>
-                                                                   
+
                                                                     <button name = "addc" type="sumbit" class="btn btn-primary ml-1"
                                                                         data-bs-dismiss="modal">
                                                                         <i class="bx bx-check d-block d-sm-none"></i>
@@ -748,7 +751,7 @@ tr.shown td.details-control {
 
 
    <!--############################################################################################################################################################################################## -->
-    
+
     <script>
         //DELETE item SCRIPT
         $('#table1').on('click', '#dtbn', function() {
@@ -761,20 +764,20 @@ tr.shown td.details-control {
             var data = $(this).data('assigned-id');
             console.log(data);
             $('#Delete_ID').val(data);
-			
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//For logs feature. Wag pong tanggalin.
 			$tr = $(this).closest("tr");
 			var data_logsItem = $tr.children("td").map(function(){
 			return $(this).text();
 			}).get();
-		
+
 			console.log(data_logsItem);
-			
+
 			$('#item_name').val(data_logsItem[1]);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
-        
+
         //DELETE comp SCRIPT
         $('#table1').on('click', '#dtbnc', function() {
             $('#deletec').modal({
@@ -786,29 +789,32 @@ tr.shown td.details-control {
             var data = $(this).data('assigned-id');
             console.log(data);
             $('#Delete_IDc').val(data);
-			
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//For logs feature. Wag pong tanggalin.
 			$tr = $(this).closest("tr");
 			var data_logsComp = $tr.children("td").map(function(){
 			return $(this).text();
 			}).get();
-			
+
 			console.log(data_logsComp);
-			
+
 			$('#comp_name').val(data_logsComp[0]);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         });
-        
-        function CloseModalPopup() {       
+
+        function CloseModalPopup() {
             $("#delete").modal('hide');
             $("#deletec").modal('hide');
     }
     </script>
     <!--############################################################################################################################################################################################## -->
     <!-- EDIT SCRIPT -->
-                    </body>
-                    
-                    </html>
+</body>
+</html>
 
-                                                          
+<?php
+}else{
+header("Location: login.php");
+exit();
+}
