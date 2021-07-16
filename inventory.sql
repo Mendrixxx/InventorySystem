@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 11:17 AM
+-- Generation Time: Jul 16, 2021 at 12:06 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `archive` (
   `archive_id` int(11) NOT NULL,
-  `year` date DEFAULT NULL,
+  `year` year(4) DEFAULT NULL,
   `total` double DEFAULT NULL,
   `classification` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,14 +39,14 @@ CREATE TABLE `archive` (
 --
 
 INSERT INTO `archive` (`archive_id`, `year`, `total`, `classification`) VALUES
-(1, '0000-00-00', 30000, 1),
-(2, '0000-00-00', 50000, 1),
-(3, '0000-00-00', 60000, 0),
-(4, '0000-00-00', 70000, 0),
-(5, '0000-00-00', 80000, 0),
-(7, '0000-00-00', 90000, 2),
-(8, '0000-00-00', 100000, 2),
-(9, '0000-00-00', 110000, 2),
+(1, 0000, 30000, 1),
+(2, 0000, 50000, 1),
+(3, 0000, 60000, 0),
+(4, 0000, 70000, 0),
+(5, 0000, 80000, 0),
+(7, 0000, 90000, 2),
+(8, 0000, 100000, 2),
+(9, 0000, 110000, 2),
 (10, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -307,8 +307,7 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_aq`, `unit_meas`, `unit_val`, `total_val`, `quant_propcar`, `quant_phycou`, `remarks`, `classification`, `SO_quant`, `SO_val`) VALUES
-(59, '1', '1', '1', '0001-01-01', '1', 1, 1, 1, 1, 162, 0, 1, 1),
-(60, '2', '2', '2', '0002-02-02', '2', 2, 2, 2, 2, 162, 0, 2, 2);
+(1, '1', '1', '1', '2021-07-01', '1', 1, 1, 1, 1, 899, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -346,7 +345,12 @@ INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
 (16, '123', 'Added Item', '2021-07-16'),
 (17, '1231231', 'Added Item', '2021-07-16'),
 (18, '1', 'Added Item', '2021-07-16'),
-(19, '2', 'Added Item', '2021-07-16');
+(19, '2', 'Added Item', '2021-07-16'),
+(20, '1', 'Deleted It', '2021-07-16'),
+(21, '2', 'Deleted It', '2021-07-16'),
+(22, '1', 'Deleted It', '2021-07-16'),
+(23, '1', 'Deleted It', '2021-07-16'),
+(24, '1', 'Deleted It', '2021-07-16');
 
 -- --------------------------------------------------------
 
@@ -392,8 +396,7 @@ CREATE TABLE `yearcosting` (
 --
 
 INSERT INTO `yearcosting` (`id`, `item_id`, `cost`) VALUES
-(2, 59, 1),
-(3, 60, 2);
+(1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -526,7 +529,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `nbc`
