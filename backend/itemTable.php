@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include "conn.php";
 
 	$sql = "SELECT * FROM ((item INNER JOIN classification ON item.classification = classification.classification_id)INNER JOIN employee ON item.remarks = employee.id)";
@@ -6,7 +7,7 @@
 	$result = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($result);
 
-	$sqlCompItem = "SELECT * FROM component"; 
+	$sqlCompItem = "SELECT * FROM component";
 	$resultCompItem = mysqli_query($conn,$sqlCompItem);
 	$components = array();
 	while($rowComp = mysqli_fetch_array($resultCompItem)){
@@ -45,7 +46,7 @@
 		$datarow['button'] = '<a href="#" data-toggle="modal" data-title="Edit" data-placement="top" data-target="#edititem" editId="'.$row['item_id'].'" class="btn btn-primary">Edit</a> <button id ="dtbn" class="btn btn-danger btn-xs" data-assigned-id ='.$row['item_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
 		foreach($components as $temp){
 			/*echo "<b>item_id</b> = ".$temp['item_id']."=== <b>row['item_id']</b>".$row['item_id']."<br>";*/
-			if($temp['item_id']==$row['item_id']){	
+			if($temp['item_id']==$row['item_id']){
 				$datum = array();
 				$datum['comp_id'] = $temp['comp_id'];
 				$datum['item_id'] = $temp['item_id'];
@@ -61,17 +62,17 @@
 				$datum['button'] = '<a href="#" editCompId="'.$temp['comp_id'].'" class="btn btn-primary">Edit</a> <button id ="dtbnc" class="btn btn-danger btn-xs" data-assigned-id ='.$temp['comp_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
 				$datarow[] = $datum;
 			}
-		}	
+		}
 
 		$rows[] = $datarow;
 	}
 
 	$output = array(
-		"draw"	=>	"",			
+		"draw"	=>	"",
 		"iTotalRecords"	=> 	$numRows,
 		"iTotalDisplayRecords"	=>  $numRows,
 		"data"	=> 	$rows
 	);
 	echo json_encode($output);
-	
+
 ?>

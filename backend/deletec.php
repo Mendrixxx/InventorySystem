@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 include "conn.php";
 
 	//Wag po tangallin yung mga lines na may comment symbol. For logs po ito.

@@ -1,10 +1,11 @@
 <?php
+	session_start();
 	include "conn.php";
 //Wag po tangallin yung mga lines na may comment symbol. For logs po ito.
 	$added_item = "Added Item";//
 	$added_component = "Added Component";
-	
-	
+
+
 if(isset($_POST['add'])){
     $iname = $_POST['iname'];
     $desc = $_POST['desc'];
@@ -40,7 +41,7 @@ if(isset($_POST['addc'])){
     $cqPhysCount = $_POST['cqPhysCount'];
     $cqSO = $_POST['cqSO'];
     $cvSO = $_POST['cvSO'];
-    
+
     $addcomp = "INSERT into component(item_id, comp_name, c_date_aq, c_unit_meas, c_unit_val, c_total_val, c_quan_propcar, c_quan_phycou, c_SO_quan, c_SO_val) values ('$itmname', '$cname', '$cdateaq', '$cumeas', '$cuvalue', '$ctvalue', '$cqPropCard', '$cqPhysCount', '$cqSO', '$cvSO')";
 	$enter_logComp = "INSERT into log(item_name, action, date_action) VALUES ('$cname', '$added_component', NOW())";//
     $query_run = mysqli_query($conn, $addcomp);

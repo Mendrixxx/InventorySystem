@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include "conn.php";
 
 	$sql = "SELECT * FROM log ORDER BY date_action DESC";
