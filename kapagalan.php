@@ -161,15 +161,7 @@ tr.shown td.details-control {
     border-bottom: 1px solid lightgreen;
   }
   
-  .table tbody tr:nth-of-type(odd) {
-    background-color: white;
-  }
-  .table tbody tr:nth-of-type(odd):hover {
-    background-color: dodgerblue;
-    color: white;
-    transform: scale(1.0);
-    transition: transform 100ms ease-in;
-  }
+  
 </style>
   
 <body>
