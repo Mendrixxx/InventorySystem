@@ -1,8 +1,9 @@
 <?php
-  //session_start();
-
-  include 'backend/conn.php';
+session_start();
+include ("backend/conn.php");
+if (isset($_SESSION['pass'])) {
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -43,3 +44,10 @@
 
   </body>
 </html>
+
+<?php
+}else{
+      header("Location: login.php");
+      exit();
+}
+?>

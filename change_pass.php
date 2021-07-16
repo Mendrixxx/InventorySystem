@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 include 'backend/conn.php';
 
 if (isset($_POST['op']) && isset($_POST['np']) && isset($_POST['c_np'])) {
@@ -45,10 +45,5 @@ if (isset($_POST['op']) && isset($_POST['np']) && isset($_POST['c_np'])) {
   header("Location: modal.php?error");
   exit();
 }
-
-//}else{
-//  header("Location: login.php");
-//  exit();
-//}
 
 ?>
