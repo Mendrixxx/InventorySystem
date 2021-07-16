@@ -486,57 +486,57 @@
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
                </div>
                <div class="modal-body">
-                  <form action="backend/insert.php" method="POST">
+                  <form action="backend/editItem.php" method="POST" autocomplete = "off" id="editform">
                      <div class="modal-body">
                         <label>Name of Item: </label>
                         <div class="form-group">
-                           <input name="iname" type="text" placeholder="Name" class="form-control" Required>
+                           <input name="iname" id="iname" type="text" placeholder="Name" class="form-control" Required>
                         </div>
                         <label>Description: </label>
                         <div class="form-group">
-                           <input name="desc" type="text" placeholder="Description" class="form-control" Required>
+                           <input name="desc" id="desc" type="text" placeholder="Description" class="form-control" Required>
                         </div>
                         <label>Property Number: </label>
                         <div class="form-group">
-                           <input  name="pnum" type="text" placeholder="Property Number" class="form-control" Required>
+                           <input  name="pnum" id="pnum" type="text" placeholder="Property Number" class="form-control" Required>
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="dateaq" type="date" class="form-control" Required>
+                           <input  name="dateaq" id="dateaq" type="date" class="form-control" Required>
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                           <input name="umeas" id="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                           <input name="uvalue"  id="uvalue" type="number" placeholder="Unit Value" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                           <input name="tvalue" id="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="qPropCard" id="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="qPhysCount" id="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="qSO" id="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="vSO" id="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Remarks: </label>
                         <div class="form-group">
@@ -544,15 +544,15 @@
                               $sql = "Select * from `employee`";
                               $result = mysqli_query($conn, $sql);
                               ?>
-                           <select name="remarks" class="form-control">
+                           <select name="remarks" id="remarks" class="form-control">
                            <?php while($row = mysqli_fetch_array($result)){
-                              echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>";
+                              echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>"; // di ko gets?
                               }?>
                            </select>
                         </div>
                         <label>Classification: </label>
                         <div class="form-group">
-                           <select name="classification" class="form-control">
+                           <select name="classification" id="classification" class="form-control">
                               <option value="0">IT</option>
                               <option value="1">LABORATORY</option>
                               <option value="2">OFFICE</option>
@@ -564,10 +564,10 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Cancel</span>
                         </button>
-                        <button name = "add" type="submit" class="btn btn-primary ml-1"
+                        <button name = "update" id="update" type="submit" class="btn btn-primary ml-1"
                            data-bs-dismiss="modal">
                         <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Add Item</span>
+                        <span class="d-none d-sm-block">Update</span>
                         </button>
                      </div>
                   </form>
@@ -575,7 +575,7 @@
             </div>
          </div>
       </div>
-      <!--Add Item Modal END-->
+      <!--Edit Item Modal END-->
       <!--Edit Component Modal -->
       <div class="modal fade" id="editcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog" role="document">
@@ -714,6 +714,86 @@
       </script>
       <!--############################################################################################################################################################################################## -->
       <!-- EDIT SCRIPT -->
+      <script>
+        $(document).ready(function(){
+          $("#table1").on("click", "#editbtn", function(){
+            var itemid = $(this).attr("editId");
+            submitform(itemid);
+          });
+            //get values from the inputs
+          function submitform(itemid){
+            $("#editform").submit(function(){
+              //e.preventDefault();
+                  var temp = true;
+                  var item_name = $("#iname").val();
+                  var item_des = $("#desc").val();
+                  var item_prop_no = $("#pnum").val();
+                  var item_date = $("#dateaq").val();
+                  var item_umeasure = $("#umeas").val();
+                  var item_uvalue = $("#uvalue").val();
+                  var item_totalvalue = $("#tvalue").val();
+                  var item_quantity_prop_card = $("#qPropCard").val();
+                  var item_quantity = $("#qPhysCount").val();
+                  var item_quantity_shortage = $("#qSO").val();
+                  var item_total_shortage = $("#vSO").val();
+                  var remarks = $("#remarks").val();
+                  var classification = $("#classification").val();
+                    $.ajax({
+                        url:"backend/editItem.php",
+                        method:"post",
+                        data: {
+                          updatebtn:temp,
+                            id:itemid,
+                            name:item_name,
+                            des:item_des,
+                            prop_no:item_prop_no,
+                            date:item_date,
+                            umeasure:item_umeasure,
+                            uvalue:item_uvalue,
+                            totalvalue:item_totalvalue,
+                            quantity_prop_card:item_quantity_prop_card,
+                            quantity:item_quantity,
+                            quantity_shortage:item_quantity_shortage,
+                            total_shortage:item_total_shortage,
+                            remarks:remarks,
+                            classification:classification,
+                        },
+                        success:function(response){
+                            alert(response);
+                            //table.destroy
+                            //reloadTable
+                        }
+                    });
+                    
+                    
+            });
+          }
+        });
+
+
+        //
+        function itemdisplay(ctl){
+            editRow = $(ctl).parents("tr");
+            var cols = editRow.children("td");
+            var id = editRow.attr("editId");
+            var remarks;
+            var classification;
+
+            $("#iname").val($(cols[1]).text());
+            $("#desc").val($(cols[2]).text());
+            $("#pnum").val($(cols[3]).text());
+            $("#dateaq").val($(cols[4]).text());
+            $("#umeas").val($(cols[5]).text());
+            $("#uvalue").val($(cols[6]).text());
+            $("#tvalue").val($(cols[7]).text());
+            $("#qPropCard").val($(cols[8]).text());
+            $("#qPhysCount").val($(cols[9]).text());
+            $("#qSO").val($(cols[10]).text());
+            $("#vSO").val($(cols[11]).text());
+            remarks = $("#remarks option:selected");
+            classification = $("#classification option:selected");
+        }
+    </script> 
    </body>
 </html>
 <?php

@@ -43,7 +43,7 @@
 		$datarow['SO_val'] = $row['SO_val'];
 		$datarow['cl_name'] = $row['cl_name'];
 		$datarow['last_name'] = $row['last_name'];
-		$datarow['button'] = '<a href="#" data-toggle="modal" data-title="Edit" data-placement="top" data-target="#edititem" editId="'.$row['item_id'].'" class="btn btn-primary">Edit</a> <button id ="dtbn" class="btn btn-danger btn-xs" data-assigned-id ='.$row['item_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
+		$datarow['button'] = '<a href="#" id="editbtn" data-toggle="modal" data-title="Edit" data-placement="top" data-target="#edititem" editId="'.$row['item_id'].'" class="btn btn-primary" onclick="itemdisplay(this)">Edit</a> <button id ="dtbn" class="btn btn-danger btn-xs" data-assigned-id ='.$row['item_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
 		foreach($components as $temp){
 			/*echo "<b>item_id</b> = ".$temp['item_id']."=== <b>row['item_id']</b>".$row['item_id']."<br>";*/
 			if($temp['item_id']==$row['item_id']){
