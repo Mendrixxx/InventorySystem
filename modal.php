@@ -1,7 +1,6 @@
 <?php
-session_start();
 include ("backend/conn.php");
-if (isset($_SESSION['pass'])) {
+if (!isset($_SESSION['pass'])) {
 ?>
 
 
@@ -47,7 +46,7 @@ if (isset($_SESSION['pass'])) {
 
 <?php
 }else{
-      header("Location: login.php");
+      header("Location: kapagalan.php");
       exit();
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+if (!isset($_SESSION['pass'])) {
 include 'backend/conn.php';
 
 if (isset($_POST['op']) && isset($_POST['np']) && isset($_POST['c_np'])) {
@@ -25,6 +25,7 @@ if (isset($_POST['op']) && isset($_POST['np']) && isset($_POST['c_np'])) {
     exit();
   }else{
 
+    //$id = $_SESSION['pass']
     $sql = "SELECT `pass` FROM `auth` WHERE `pass` = '$op'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) === 1){
@@ -46,4 +47,5 @@ if (isset($_POST['op']) && isset($_POST['np']) && isset($_POST['c_np'])) {
   exit();
 }
 
+}
 ?>
