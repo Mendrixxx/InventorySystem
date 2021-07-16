@@ -25,112 +25,119 @@
       <script type="text/javascript" src="DataTable/datatables.min.js"></script>
       <script type="text/javascript">
          $(document).ready(function(){
-         
-             function format ( d ) {
-                 // `d` is the original data object for the row
-                 var temp,strTable =  '<table class="table" >'+
-                 '<thead>'+
-                     '<tr>'+
-                         '<th>Component Name</th>'+
-                         '<th>Date Aquired</th>'+
-                         '<th>Unit Of Measure</th>'+
-                         '<th>Unit Value</th>'+
-                         '<th>Total Value</th>'+
-                         '<th>Q.P. Property Card</th>'+
-                         '<th>Q.P. Physical Count</th>'+
-                         '<th>Shortage/Overage Q.</th>'+
-                         '<th>Shortage/Overage V.</th>'+
-                         '<th>Manage</th>'+
-                     '</tr>'+
-                 '</thead>';
-                 for( temp in d ){
-                     if(d[temp].comp_name !== undefined){
-                         strTable += ''+
-                         '<tbody>'+
-                             '<tr>'+
-                                 '<td>'+d[temp].comp_name+'</td>'+
-                                 '<td>'+d[temp].c_date_aq+'</td>'+
-                                 '<td>'+d[temp].c_unit_meas+'</td>'+
-                                 '<td>'+d[temp].c_unit_val+'</td>'+
-                                 '<td>'+d[temp].c_total_val+'</td>'+
-                                 '<td>'+d[temp].c_quan_propcar+'</td>'+
-                                 '<td>'+d[temp].c_quan_phycou+'</td>'+
-                                 '<td>'+d[temp].c_SO_quan+'</td>'+
-                                 '<td>'+d[temp].c_SO_val+'</td>'+
-                                 '<td>'+d[temp].button+'</td>'+
-                             '</tr>'
-                         '</tbody>';
-                     }
-                 }
-                 strTable += '</table>';
-                 return strTable;
-                /*
-                 return '<table class="table table-striped">'+
-                     '<tr>'+
-                         '<td>'+d.component.comp_name+'</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                         '<td>Extension number:</td>'+
-                         '<td>'+d.component_comp_id+'</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                         '<td>Extra info:</td>'+
-                         '<td>And any further details here (images etc)...</td>'+
-                     '</tr>'+
-                 '</table>';*/
-             }
-         
-             var table = $("#table1").DataTable({
-                 "processing":true,
-                 "serverside":true,
-                 "ajax":{
-                     url: "backend/itemTable.php",
-                     dataType: "json"
-                 },
-                 "columns":[
-                 {
-                     "className":      'details-control',
-                     "orderable":      false,
-                     "data":           null,
-                     "defaultContent": ''
-                 },
-                     {"data":"item_name"},
-                     {"data":"item_desc"},
-                     {"data":"property_num"},
-                     {"data":"date_aq"},
-                     {"data":"unit_meas"},
-                     {"data":"unit_val"},
-                     {"data":"total_val"},
-                     {"data":"quant_propcar"},
-                     {"data":"quant_phycou"},
-                     {"data":"SO_quant"},
-                     {"data":"SO_val"},
-                     {"data":"cl_name"},
-                     {"data":"last_name"},
-                     {"data":"button"}
-                 ]
-            });
-             $('#table1 tbody').on('click', 'td.details-control', function () {
-                 var tr = $(this).closest('tr');
-                 var row = table.row( this );
-         
-                 if ( row.child.isShown() ) {
-                     // This row is already open - close it
-                     row.child.hide();
-                     tr.removeClass('shown');
-                 }
-                 else {
-                     // Open this row
-                     // $( row.child() ).DataTable();
-                     row.child( format(row.data()) ).show();
-                     tr.addClass('shown');
-                 }
-             } );
-         
-         });
-         
-         
-      </script>
+
+        function format ( d ) {
+            // `d` is the original data object for the row
+            var temp,strTable;
+            if(d[0]!== undefined){
+                   strTable =  '<table class="table" >'+
+                '<thead>'+
+                    '<tr>'+
+                        '<th>Component Name</th>'+
+                        '<th>Date Aquired</th>'+
+                        '<th>Unit Of Measure</th>'+
+                        '<th>Unit Value</th>'+
+                        '<th>Total Value</th>'+
+                        '<th>Q.P. Property Card</th>'+
+                        '<th>Q.P. Physical Count</th>'+
+                        '<th>Shortage/Overage Q.</th>'+
+                        '<th>Shortage/Overage V.</th>'+
+                        '<th>Manage</th>'+
+                    '</tr>'+
+                '</thead>';
+                for( temp in d ){
+                    if(d[temp].comp_name !== undefined){
+                        strTable += ''+
+                        '<tbody>'+
+                            '<tr>'+
+                                '<td>'+d[temp].comp_name+'</td>'+
+                                '<td>'+d[temp].c_date_aq+'</td>'+
+                                '<td>'+d[temp].c_unit_meas+'</td>'+
+                                '<td>'+d[temp].c_unit_val+'</td>'+
+                                '<td>'+d[temp].c_total_val+'</td>'+
+                                '<td>'+d[temp].c_quan_propcar+'</td>'+
+                                '<td>'+d[temp].c_quan_phycou+'</td>'+
+                                '<td>'+d[temp].c_SO_quan+'</td>'+
+                                '<td>'+d[temp].c_SO_val+'</td>'+
+                                '<td>'+d[temp].button+'</td>'+
+                            '</tr>'
+                        '</tbody>';
+                    }
+                }
+                strTable += '</table>'; 
+            }else{
+                return "This Item has <a style='color:red;'>No Component</a>.";
+            }
+            
+            return strTable;
+           /*
+            return '<table class="table table-striped">'+
+                '<tr>'+
+                    '<td>'+d.component.comp_name+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>Extension number:</td>'+
+                    '<td>'+d.component_comp_id+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>Extra info:</td>'+
+                    '<td>And any further details here (images etc)...</td>'+
+                '</tr>'+
+            '</table>';*/
+        }
+
+        var table = $("#table1").DataTable({
+            "processing":true,
+            "serverside":true,
+            "ajax":{
+                url: "backend/itemTable.php",
+                dataType: "json"
+            },
+            "columns":[
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
+                {"data":"item_name"},
+                {"data":"item_desc"},
+                {"data":"property_num"},
+                {"data":"date_aq"},
+                {"data":"unit_meas"},
+                {"data":"unit_val"},
+                {"data":"total_val"},
+                {"data":"quant_propcar"},
+                {"data":"quant_phycou"},
+                {"data":"SO_quant"},
+                {"data":"SO_val"},
+                {"data":"cl_name"},
+                {"data":"last_name"},
+                {"data":"button"}
+            ]
+       });
+        $('#table1 tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( this );
+
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                // $( row.child() ).DataTable();
+                
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+            }
+        } );
+
+    });
+
+
+</script>
    </head>
    <style>
       td.details-control {
