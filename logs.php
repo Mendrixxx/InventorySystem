@@ -139,6 +139,7 @@ if (isset($_SESSION['pass'])) {
                 "url": "backend/logData.php",
                 "dataSrc":"",
            },
+		    "ordering": false,
             "columns":[
 				{"data":"action"},
                 {"data":"item_name"},
