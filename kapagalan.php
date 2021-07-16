@@ -197,7 +197,7 @@ tr.shown td.details-control {
                              
                         </ul>
                         <li class="sidebar-item active ">
-                            <a href="Summary.html" class='sidebar-link'>
+                            <a href="Summary.php" class='sidebar-link'>
                                 <i class="bi bi-grid-1x2-fill"></i>
                                 <span>Summary</span>
                             </a>
