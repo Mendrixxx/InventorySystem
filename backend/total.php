@@ -2,7 +2,6 @@
 <?php
 session_start();
 include "conn.php";
-include '../ChromePhp.php';
 
  if (isset($_POST['reset'])) {
 
