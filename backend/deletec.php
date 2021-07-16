@@ -6,7 +6,7 @@ include "conn.php";
 	$delete_comp = "Deleted Component";//
  if (isset($_POST['continuec'])) {
         $id = $_POST['Delete_IDc'];
-        $item_name = $_POST['comp_name'];
+        $comp_name = $_POST['comp_name'];
         $sql = "DELETE FROM component where comp_id = $id";
         $del_logs = "INSERT into log(item_name, action, date_action) VALUES ('$comp_name', '$delete_comp', NOW())";//
 
