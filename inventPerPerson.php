@@ -61,8 +61,7 @@ if (isset($_SESSION['pass'])) {
                     <section class="section">
                         <div class="row" id="table-inverse">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
+                                
                                         <h4 class="card-title">Inventory Per Personel</h4>
                                     </div>
                                     <div class="card-content">
