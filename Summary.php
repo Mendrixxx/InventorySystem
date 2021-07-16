@@ -28,8 +28,9 @@
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
-        <script type="text/javascript" src="assets/js/select.js"> </script>
+    <script type="text/javascript" src="assets/js/select.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="DataTable/DataTables-1.10.25/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -83,26 +84,20 @@
 
 	</select>
 
-                                            </div>
-										<div class="col-md-4">
-											<input type="text" id="first-name" class="form-control" name="fname" placeholder="Search">
-										</div>
-
+                                        </div>
 									</div>
-
                                 </div>
                                 <div class="card-content">
                                     <!-- table strip dark -->
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-dark mb-0">
+                                        <table id = "sam" class="table table-striped table-dark mb-0">
                                             <thead>
                                                 <tr>
                                                     <th>Year</th>
                                                     <th>Total Value</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id = "ans">
-
+<tbody id = "ans">
 <?php
     $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='OFFICE' group by YEAR(date_aq) order by date_aq desc ";
     $res = mysqli_query($conn,$sql);
@@ -117,8 +112,7 @@
     </tr>
 
 <?php }?>
-
-                                        </tbody>
+</tbody>
                                     </table>
                                                                 <div>
                                                                 <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>
@@ -176,6 +170,32 @@
          <!-- /.modal-dialog -->
       </div>
       <!--############################################################################################################################################################################################## -->
+
+    <!-- JQuery and DataTable Plugin-->
+   <script type = "text/javascript" src="Datatable/jquery-3.5.1.js"></script>
+   <script type = "text/javascript"  src="Datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+
+    //Datatable
+    $(document).ready(function(){
+       $("#sam").DataTable({
+            "ajax":{
+                "url": "backend/summary.php",
+                "dataSrc":"",
+           },
+            "ordering": false,
+            "columns":[
+                
+                {"data":"ayear"},
+                {"data":"total"},
+            ],
+
+       });
+    });
+</script>
+
+
 </body>
 
 </html>
