@@ -146,7 +146,7 @@ td.details-control {
 tr.shown td.details-control {
     background: url('DataTable/DataTables-1.10.25/images/details_close.png') no-repeat center center;
 }
-.table-striped thead tr {
+.table thead tr {
       background-color: #009879;
       color: #ffffff;
       text-align: center;
@@ -154,17 +154,17 @@ tr.shown td.details-control {
       cursor: pointer;
     }
 
-.table-striped td {
+.table td {
     padding: 12px 15px;
   }
-  .table-striped tbody tr {
+  .table tbody tr {
     border-bottom: 1px solid lightgreen;
   }
   
-  .table-striped tbody tr:nth-of-type(odd) {
+  .table tbody tr:nth-of-type(odd) {
     background-color: white;
   }
-  .table-striped tbody tr:nth-of-type(odd):hover {
+  .table tbody tr:nth-of-type(odd):hover {
     background-color: dodgerblue;
     color: white;
     transform: scale(1.0);
