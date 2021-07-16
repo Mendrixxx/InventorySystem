@@ -13,7 +13,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory System - Summary</title>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -29,7 +28,6 @@
         <script type="text/javascript" src="assets/js/select.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="DataTable/DataTables-1.10.25/css/jquery.dataTables.min.css">
-
 
 </head>
 
@@ -91,7 +89,7 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <a href="#" class="btn btn-danger" >Generate PDF</a>
+									<a href="#" class="btn btn-danger" >Generate PDF</a>
                                 </ol>
                             </nav>
                         </div>
@@ -105,8 +103,8 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="row">
-                                        <div class="col">
+									<div class="row">
+										<div class="col">
                                                                     <label>Select Classification</lable>
 
 
@@ -122,8 +120,9 @@
 
        </select>
 
-                                         </div>
-                                    </div>
+
+                                        </div>
+									</div>
                                 </div>
                                 <div class="card-content">
                                     <!-- table strip dark -->
@@ -152,12 +151,10 @@
 <?php }?>
 </tbody>
                                        </table>
-                                           
-                                     <div>
-                                                                <a href="Summary.php" class="btn btn-primary">Reset</a>
+                                                                <div>
+                                                                <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>
                                                               </div>
 
-                                                               
                                 </div>
                             </div>
                         </div>
@@ -179,6 +176,37 @@
         </footer>
     </div>
 </div>
+<script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+   <!--############################################################################################################################################################################################## -->
+      <!-- DELETE component MODAL -->
+      <div class="modal fade" id="rst" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
+                  <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>
+               </div>
+               <form action="backend/total.php" method="POST">
+                  <div class="modal-body">
+                     <div class="alert alert-default"><span class="fa fa-exclamation-triangle"></span> Are you sure
+                        you want to archive this years inventory?</br>(This will compute for the total cost of this year.)
+                     </div>
+                  </div>
+                  <div class="modal-footer ">
+                     <button type="button" class="btn btn-secondary" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
+                        class="fa fa-times-circle"></span> No</button>
+                     <button type="submit" name="reset" class="btn btn-warning" id="reset"><span
+                        class="fa fa-check-circle"></span> Yes</button>
+                  </div>
+               </form>
+            </div>
+            <!-- /.modal-content -->
+         </div>
+         <!-- /.modal-dialog -->
+      </div>
+      <!--############################################################################################################################################################################################## -->
 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 
@@ -207,7 +235,7 @@
 
        });
     });
-</script>
+</script>     
 </body>
 
 </html>
@@ -216,3 +244,4 @@
       header("Location: login.php");
       exit();
 }
+?>
