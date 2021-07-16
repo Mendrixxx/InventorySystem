@@ -33,6 +33,25 @@ if (isset($_SESSION['pass'])) {
     <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css">
     <script type="text/javascript" src="DataTable/datatables.min.js"></script>
 </head>
+	<style>
+    
+      .personelTable thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      }
+      .personelTable td {
+      padding: 12px 15px;
+      }
+      .personelTable tbody tr {
+      border-bottom: 1px solid lightgreen;
+      }
+      .personelTable tbody tr:nth-of-type(odd) {
+      background-color: white;
+      }
+   </style>
 <body>
    	<!--Sidebars-->
     <?php require_once "functions/sidebar.php" ?>
