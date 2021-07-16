@@ -160,6 +160,9 @@ tr.shown td.details-control {
   .table tbody tr {
     border-bottom: 1px solid lightgreen;
   }
+	    .table tbody tr:nth-of-type(odd) {
+    background-color: white;
+  }
   
   
 </style>
