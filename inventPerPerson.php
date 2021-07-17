@@ -26,7 +26,7 @@ if (isset($_SESSION['pass'])) {
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
-
+    <link rel="stylesheet" href="assets/css/bg.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"  >
     <script src="assets/js/jquery-3.6.0.min.js"></script>
 
