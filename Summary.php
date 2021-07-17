@@ -91,7 +91,7 @@
 
 <!-- Displays on dropdown the classifications from table item-->
 <select name="classification" id="classification" class="form-control">
-         <option value="">Classification Search</option>
+         <option value="">Classification</option>
 
    <?php while( $rows = mysqli_fetch_array($res) ){ ?>
    <?php     echo '<option value="'.$row["classification_id"].'">'.$row["cl_name"].'</option>';
