@@ -3,5 +3,5 @@ body{
   padding: 0;
   background: linear-gradient(125deg, #FFFFFF, #ADD8E6);
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
 }
