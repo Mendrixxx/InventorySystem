@@ -93,7 +93,7 @@
 <select name="classification" id="classification" class="form-control">
          <option value="">Classification</option>
 
-   <?php while( $rows = mysqli_fetch_array($res) ){ ?>
+   <?php while( $row = mysqli_fetch_array($res) ){ ?>
    <?php     echo '<option value="'.$row["classification_id"].'">'.$row["cl_name"].'</option>';
          }
          ?>
