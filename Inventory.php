@@ -19,7 +19,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	  
+	<link rel="stylesheet" href="assets/css/bg.css">  
       <link rel="stylesheet" href="assets/css/bootstrap.css">
       <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
       <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
