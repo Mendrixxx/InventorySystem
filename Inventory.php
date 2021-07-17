@@ -39,7 +39,7 @@
             if(d[0]!== undefined){
                    strTable =  '<table class="table" >'+
                 '<thead>'+
-                    '<tr>'+
+                    '<tr style= "background-color: #009879">'+
                         '<th>Component Name</th>'+
                         '<th>Date Aquired</th>'+
                         '<th>Unit Of Measure</th>'+
