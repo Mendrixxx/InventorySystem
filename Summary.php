@@ -105,12 +105,11 @@
                                 <div class="card-header">
 									<div class="row">
 										<div class="col">
-																						<label>Select Classification</lable>
-
+											
 
 <!-- Displays on dropdown the classifications from table item-->
         <select id = "classification" onchange="selectClassi()">
-
+         <option value="">Classification Search</option> 
          <option value="0">OFFICE</option>
          <option value="1">IT</option>
          <option value="2">LABORATORY</option>
@@ -131,6 +130,7 @@
                                                 <tr>
                                                     <th>Year</th>
                                                     <th>Total Value</th>
+                                                    
                                                 </tr>
                                             </thead>
 <tbody id = "ans">
