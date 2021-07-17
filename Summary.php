@@ -1,7 +1,7 @@
 <?php
     session_start();
     include("backend/conn.php");
-    $sql = " Select Distinct classification from item";
+    $sql = " SELECT * from classification order by cl_name";
     $res = mysqli_query($conn,$sql);
 
     if (isset($_SESSION['pass'])) {
@@ -13,9 +13,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory System - Summary</title>
-	
-	<!--BU LOGO-->
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/bu.png">
+  
+  <!--BU LOGO-->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/bu.png">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/bg.css">
+
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -53,9 +53,9 @@
       }
    </style>
 <body>
-   	<!--Sidebars-->
+    <!--Sidebars-->
     <?php require_once "functions/sidebar.php" ?>
-	
+  
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
@@ -71,26 +71,8 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-					<!-- Generate PDF button -->
-                                    <style type="text/css">
-
-                                        #button{
-
-                                            display: inline-block;
-                                            background-color: green;
-                                            color: white;
-                                            padding: 5px;
-                                            text-align: center;
-                                            font-family: verdana;
-                                            text-decoration: none;
-                                            height: 38px;
-                                            width: 150px;
-                                            margin-left: 1px;
-                                            margin-bottom: 1px;
-                                        }
-                                        </style>
-
-                                        <a id="button" class= "btn btn-primary" href ="genPDFsum.php">Generate PDF</a>
+                  <a href="#" class="btn btn-danger" >Generate PDF</a>
+                                </ol>
                             </nav>
                         </div>
                     </div>
@@ -103,52 +85,35 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-									<div class="row">
-										<div class="col">
-											
+                  <div class="row">
+                    <div class="col">
+                              
 
 <!-- Displays on dropdown the classifications from table item-->
-        <select id = "classification" onchange="selectClassi()">
-         <option value="">Classification Search</option> 
-         <option value="0">OFFICE</option>
-         <option value="1">IT</option>
-         <option value="2">LABORATORY</option>
+<select name="classification" id="classification" class="form-control">
+         <option value="">Classification Search</option>
 
-	 <?php while( $rows = mysqli_fetch_array($res) ){ ?>
-	 <?php   } ?>
+   <?php while( $rows = mysqli_fetch_array($res) ){ ?>
+   <?php     echo '<option value="'.$row["classification_id"].'">'.$row["cl_name"].'</option>';
+         }
+         ?>
 
-	</select>
+  </select>
 
                                         </div>
-									</div>
+                  </div>
                                 </div>
                                 <div class="card-content">
                                     <!-- table strip dark -->
                                     <div class="table-responsive">
-                                        <table id = "sam" class="table table-striped">
+                                        <table id = "item_data" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Year</th>
                                                     <th>Total Value</th>
-                                                    
+                                                    <th>Classification</th>
                                                 </tr>
                                             </thead>
-<tbody id = "ans">
-<?php
-    $sql = " SELECT YEAR(date_aq) as yearName, sum(total_val) as total from item where classification='OFFICE' group by YEAR(date_aq) order by date_aq desc ";
-    $res = mysqli_query($conn,$sql);
-
-    while ($rows = mysqli_fetch_array($res)) {
-        $total=$rows["total"];
-        $total=number_format($total,2);
-    ?>
-    <tr>
-        <td> <?php echo $rows['yearName'] ?> </td>
-        <td>Php <?php echo $total ?> </td>
-    </tr>
-
-<?php }?>
-</tbody>
                                     </table>
                                                                 <div>
                                                                 <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>
@@ -210,31 +175,52 @@
     <!-- JQuery and DataTable Plugin-->
    <script type = "text/javascript" src="Datatable/jquery-3.5.1.js"></script>
    <script type = "text/javascript"  src="Datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" >
+$(document).ready(function(){
+ 
+ load_data();
 
-<script type="text/javascript">
+ function load_data(is_classification)
+ {
+  var dataTable = $('#item_data').DataTable({
+   "processing":true,
+   "serverSide":true,
+   "order":[],
+   "ajax":{
+    url:"backend/summary.php",
+    type:"POST",
+    data:{is_classification:is_classification}
+   },
+   "columnDefs":[
+    {
+     "targets":[2],
+     "orderable":false,
+    },
+   ],
+  });
+ }
 
-    //Datatable
-    $(document).ready(function(){
-       $("#sam").DataTable({
-            "ajax":{
-                "url": "backend/summary.php",
-                "dataSrc":"",
-           },
-            "ordering": false,
-            "columns":[
-                
-                {"data":"ayear"},
-                {"data":"total"},
-            ],
-
-       });
-    });
+ $(document).on('change', '#classification', function(){
+  var classification = $(this).val();
+  $('#item_data').DataTable().destroy();
+  if(classification != '')
+  {
+   load_data(classification);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
 </script>
-
 
 </body>
 
 </html>
+
+
+
 <?php
 }else{
       header("Location: login.php");
