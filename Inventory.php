@@ -552,7 +552,7 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <form action="backend/editItem.php" method="POST" autocomplete = "off" id="editform">
+                  <form action="" method="POST" autocomplete = "off" id="editform">
                      <div class="modal-body">
                         <label>Name of Item: </label>
                         <div class="form-group">
@@ -783,7 +783,7 @@
             //get values from the inputs
           function submitform(itemid){
             $("#editform").submit(function(){
-              //e.preventDefault();
+                  //e.preventDefault();
                   var temp = true;
                   var item_name = $("#iname").val();
                   var item_des = $("#desc").val();
@@ -796,13 +796,14 @@
                   var item_quantity = $("#qPhysCount").val();
                   var item_quantity_shortage = $("#qSO").val();
                   var item_total_shortage = $("#vSO").val();
-                  var remarks = $("#remarks").val();
-                  var classification = $("#classification").val();
+                  var remarks = $("#remarks option:selected").val();
+                  var classification = $("#classification option:selected").val();
+                  
                     $.ajax({
                         url:"backend/editItem.php",
                         method:"post",
                         data: {
-                          updatebtn:temp,
+                            updatebtn:temp,
                             id:itemid,
                             name:item_name,
                             des:item_des,
@@ -835,10 +836,10 @@
         function itemdisplay(ctl){
             editRow = $(ctl).parents("tr");
             var cols = editRow.children("td");
-            var id = editRow.attr("editId");
-            var remarks;
-            var classification;
-
+            var id = $("#editbtn").attr("editId");
+            var remarks = $(cols[14]).children("a").attr("employeeId");
+            var classification = $(cols[14]).children("a").attr("classId");
+            console.log(classification);
             $("#iname").val($(cols[1]).text());
             $("#desc").val($(cols[2]).text());
             $("#pnum").val($(cols[3]).text());
@@ -850,8 +851,8 @@
             $("#qPhysCount").val($(cols[9]).text());
             $("#qSO").val($(cols[10]).text());
             $("#vSO").val($(cols[11]).text());
-            remarks = $("#remarks option:selected");
-            classification = $("#classification option:selected");
+            $("#remarks").val(remarks, true);
+            $("#classification").val(classification, true);         
         }
     </script> 
    </body>
