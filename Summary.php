@@ -71,8 +71,26 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-									<a href="#" class="btn btn-danger" >Generate PDF</a>
-                                </ol>
+					<!-- Generate PDF button -->
+                                    <style type="text/css">
+
+                                        #button{
+
+                                            display: inline-block;
+                                            background-color: green;
+                                            color: white;
+                                            padding: 5px;
+                                            text-align: center;
+                                            font-family: verdana;
+                                            text-decoration: none;
+                                            height: 38px;
+                                            width: 150px;
+                                            margin-left: 1px;
+                                            margin-bottom: 1px;
+                                        }
+                                        </style>
+
+                                        <a id="button" class= "btn btn-primary" href ="genPDFsum.php">Generate PDF</a>
                             </nav>
                         </div>
                     </div>
