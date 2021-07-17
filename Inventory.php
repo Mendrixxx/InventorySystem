@@ -222,6 +222,66 @@
                            </table>
                            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
                            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Add Component</button>
+				<!-- Generate PDF button -->
+                                                        <style type="text/css">
+
+                                                            #button{
+
+                                                                display: inline-block;
+                                                                background-color: green;
+                                                                color: white;
+                                                                padding: 5px;
+                                                                text-align: center;
+                                                                font-family: verdana;
+                                                                text-decoration: none;
+                                                                height: 38px;
+                                                                width: 200px;
+                                                                margin-left: 1px;
+                                                                margin-bottom: 1px;
+                                                            }
+                                                            </style>
+
+                                                            <a id="button" class= "btn btn-primary" href ="genPDF.php">Equipment</a>
+                                                        <!-- Generate PDF button -->
+                                                        <style type="text/css">
+
+                                                            #button{
+
+                                                                display: inline-block;
+                                                                background-color: green;
+                                                                color: white;
+                                                                padding: 5px;
+                                                                text-align: center;
+                                                                font-family: verdana;
+                                                                text-decoration: none;
+                                                                height: 38px;
+                                                                width: 100px;
+                                                                margin-left: 1px;
+                                                                margin-bottom: 1px;
+                                                            }
+                                                            </style>
+
+                                                            <a id="button" class= "btn btn-primary" href ="genPDF1.php">IT</a>
+                                                        <!-- Generate PDF button -->
+                                                        <style type="text/css">
+
+                                                            #button{
+
+                                                                display: inline-block;
+                                                                background-color: green;
+                                                                color: white;
+                                                                padding: 5px;
+                                                                text-align: center;
+                                                                font-family: verdana;
+                                                                text-decoration: none;
+                                                                height: 38px;
+                                                                width: 110px;
+                                                                margin-left: 1px;
+                                                                margin-bottom: 1px;
+                                                            }
+                                                            </style>
+
+                                                            <a id="button" class= "btn btn-primary" href ="genPDF2.php">Laboratory</a>
                         </div>
                      </div>
                   </div>
