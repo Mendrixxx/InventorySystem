@@ -106,8 +106,8 @@
                                                 </tr>    </thead>
     <thead>
             <tr>
-              <td><input type="text" data-column="0"  class="search-input-text"></td>
-              <th><input type="text" data-column="1"  class="search-input-text"></td>
+              <td><input type="text" placeholder="Search Year" data-column="0"  class="search-input-text"></td>
+              <th><input type="text" placeholder="Search Total" data-column="1"  class="search-input-text"></td>
               <td>
                 <select data-column="2"  class="search-input-select">
                   <option value="">All Equipment</option>
