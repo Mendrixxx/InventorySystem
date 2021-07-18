@@ -101,13 +101,13 @@
                                             <thead>
                                                 <tr>
                                                   <th>Year</th>
-                                                  <th>Total</th>
+                                                  <th>Total Value</th>
                                                   <th>Classification</th>
                                                 </tr>    </thead>
     <thead>
             <tr>
               <td><input type="text" placeholder="Search Year" data-column="0"  class="search-input-text"></td>
-              <th><input type="text" placeholder="Search Total" data-column="1"  class="search-input-text"></td>
+              <th><input type="text" placeholder="Search Total Value" data-column="1"  class="search-input-text"></td>
               <td>
                 <select data-column="2"  class="search-input-select">
                   <option value="">All Equipment</option>
