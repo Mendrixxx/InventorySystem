@@ -2,69 +2,71 @@
 	session_start();
 	include "conn.php";
 
-$column = array("archive.ayear", "archive.total", "classification.cl_name");
-$query = "
- SELECT * FROM archive 
+// storing  request (ie, get/post) global array to a variable  
+$requestData= $_REQUEST;
+
+
+$columns = array( 
+// datatable column index  => database column name
+	0 =>'ayear', 
+	1 => 'total',
+	2=> 'cl_name'
+);
+
+
+// getting total number records without any search
+$sql = " SELECT * FROM archive 
  INNER JOIN classification 
  ON classification.classification_id = archive.classification 
 ";
-$query .= " WHERE ";
-if(isset($_POST["is_classification"]))
-{
- $query .= "archive.classification = '".$_POST["is_classification"]."' AND ";
-}
-if(isset($_POST["search"]["value"]))
-{
- $query .= '(archive.ayear LIKE "%'.$_POST["search"]["value"].'%" ';
- $query .= 'OR archive.total LIKE "%'.$_POST["search"]["value"].'%") ';
- $query .= 'OR classification.cl_name LIKE "%'.$_POST["search"]["value"].'%" ';
-}
+$query=mysqli_query($conn, $sql) or die("summary.php: get summary");
+$totalData = mysqli_num_rows($query);
+$totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-if(isset($_POST["order"]))
-{
- $query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' ';
+
+$sql = " SELECT * FROM archive 
+ INNER JOIN classification 
+ ON classification.classification_id = archive.classification WHERE 1 = 1";
+
+// getting records as per search parameters
+if( !empty($requestData['columns'][0]['search']['value']) ){   //year
+	$sql.=" AND ayear LIKE '".$requestData['columns'][0]['search']['value']."%' ";
 }
-else
-{
- $query .= 'ORDER BY archive.ayear DESC ';
+if( !empty($requestData['columns'][1]['search']['value']) ){  //total
+	$sql.=" AND total LIKE '".$requestData['columns'][1]['search']['value']."%' ";
 }
+if( !empty($requestData['columns'][2]['search']['value']) ){ //classification
+	$sql.=" AND classification LIKE '".$requestData['columns'][2]['search']['value']."%' ";
 
-$query1 = '';
-
-if($_POST["length"] != 1)
-{
- $query1 .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
 }
+$query=mysqli_query($conn, $sql) or die("summary.php: get employees");
+$totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result.
+	
+//$sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";  // adding length
 
-$number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
+$query=mysqli_query($conn, $sql) or die("summary.php: get summary");
 
-$result = mysqli_query($conn, $query . $query1);
+	
+
 
 $data = array();
+while( $row=mysqli_fetch_array($query) ) {  // preparing an array
+	$nestedData=array(); 
 
-while($row = mysqli_fetch_array($result))
-{
- $sub_array = array();
- $sub_array[] = $row["ayear"];
- $sub_array[] = $row["total"];
- $sub_array[] = $row["cl_name"];
- $data[] = $sub_array;
+	$nestedData[] = $row["ayear"];
+	$nestedData[] = $row["total"];
+	$nestedData[] = $row["cl_name"];
+	
+	$data[] = $nestedData;
 }
 
-function get_all_data($conn)
-{
- $query = "SELECT * FROM archive";
- $result = mysqli_query($conn, $query);
- return mysqli_num_rows($result);
-}
 
-$output = array(
- "draw"    => intval($_POST["draw"]),
- "recordsTotal"  =>  get_all_data($conn),
- "recordsFiltered" => $number_filter_row,
- "data"    => $data
-);
 
-echo json_encode($output);
+$json_data = array(
+			"draw"            => intval( $requestData['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+			"recordsTotal"    => intval( $totalData ),  // total number of records
+			"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+			"data"            => $data   // total data array
+			);
 
-?>
+echo json_encode($json_data);  // send data as json format
