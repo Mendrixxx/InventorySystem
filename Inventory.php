@@ -35,68 +35,50 @@
 
         function format ( d ) {
             // `d` is the original data object for the row
-            var temp,strTable;
-            if(d[0]!== undefined){
-                   strTable =  '<table class="table" >'+
-                '<thead>'+
-                    '<tr style= "background-color: #009879">'+
-                        '<th>Component Name</th>'+
-                        '<th>Date Aquired</th>'+
-                        '<th>Unit Of Measure</th>'+
-                        '<th>Unit Value</th>'+
-                        '<th>Total Value</th>'+
-                        '<th>Q.P. Property Card</th>'+
-                        '<th>Q.P. Physical Count</th>'+
-                        '<th>Shortage/Overage Q.</th>'+
-                        '<th>Shortage/Overage V.</th>'+
-                        '<th>Manage</th>'+
-                    '</tr>'+
-                '</thead>';
-                for( temp in d ){
-                    if(d[temp].comp_name !== undefined){
-                        strTable += ''+
-                        '<tbody>'+
-                            '<tr>'+
-                                '<td>'+d[temp].comp_name+'</td>'+
-                                '<td>'+d[temp].c_date_aq+'</td>'+
-                                '<td>'+d[temp].c_unit_meas+'</td>'+
-                                '<td>'+d[temp].c_unit_val+'</td>'+
-                                '<td>'+d[temp].c_total_val+'</td>'+
-                                '<td>'+d[temp].c_quan_propcar+'</td>'+
-                                '<td>'+d[temp].c_quan_phycou+'</td>'+
-                                '<td>'+d[temp].c_SO_quan+'</td>'+
-                                '<td>'+d[temp].c_SO_val+'</td>'+
-                                '<td>'+d[temp].button+'</td>'+
-                            '</tr>'
-                        '</tbody>';
-                    }
-                }
-                strTable += '</table>'; 
-            }else{
-                return "This Item has <a style='color:red;'>No Component</a>.";
+          if(d.hasOwnProperty(0)){
+            var strTable =  '<table class="table" >'+
+            '<thead>'+
+                '<tr style= "background-color: #009879">'+
+                    '<th>Component Name</th>'+
+                    '<th>Date Aquired</th>'+
+                    '<th>Unit Of Measure</th>'+
+                    '<th>Unit Value</th>'+
+                    '<th>Total Value</th>'+
+                    '<th>Q.P. Property Card</th>'+
+                    '<th>Q.P. Physical Count</th>'+
+                    '<th>Shortage/Overage Q.</th>'+
+                    '<th>Shortage/Overage V.</th>'+
+                    '<th>Manage</th>'+
+                '</tr>'+
+            '</thead>'+
+            '<tbody>';
+            var len = Object.keys(d).length;
+            for(var i=0;i<len-15;i++){
+              var holder = d[i];
+              strTable += '<tr>';
+              strTable += (holder.comp_name!=null ? '<td>'+holder.comp_name+'</td>': '<td></td>');
+              strTable += (holder.c_date_aq != null ? '<td>'+holder.c_date_aq+'</td>': '<td></td>');
+              strTable += (holder.c_unit_meas != null ? '<td>'+holder.c_unit_meas+'</td>': '<td></td>');
+              strTable += (holder.c_unit_val != null ? '<td>'+holder.c_unit_val+'</td>': '<td></td>');
+              strTable += (holder.c_total_val != null ? '<td>'+holder.c_total_val+'</td>': '<td></td>');
+              strTable += (holder.c_quan_propcar != null ? '<td>'+holder.c_quan_propcar+'</td>': '<td></td>');
+              strTable += (holder.c_quan_phycou != null ? '<td>'+holder.c_quan_phycou+'</td>': '<td></td>');
+              strTable += (holder.c_SO_quan != null ? '<td>'+holder.c_SO_quan+'</td>': '<td></td>');
+              strTable += (holder.c_SO_val != null ? '<td>'+holder.c_SO_val+'</td>': '<td></td>');
+              strTable += (holder.button != null ? '<td>'+holder.button+'</td>': '<td></td>');
+                '</tr>';
             }
-            
+            strTable += '</tbody></table>'; 
+          }else{
+            return "This Item has <a style='color:red;'>No Component</a>.";
+          }
             return strTable;
-           /*
-            return '<table class="table table-striped">'+
-                '<tr>'+
-                    '<td>'+d.component.comp_name+'</td>'+
-                '</tr>'+
-                '<tr>'+
-                    '<td>Extension number:</td>'+
-                    '<td>'+d.component_comp_id+'</td>'+
-                '</tr>'+
-                '<tr>'+
-                    '<td>Extra info:</td>'+
-                    '<td>And any further details here (images etc)...</td>'+
-                '</tr>'+
-            '</table>';*/
         }
 
         var table = $("#table1").DataTable({
             "processing":true,
             "serverside":true,
-			"autoWidth":false,
+			      "autoWidth":false,
             "ajax":{
                 url: "backend/itemTable.php",
                 dataType: "json"
@@ -108,21 +90,62 @@
                 "data":           null,
                 "defaultContent": ''
             },
-                {"data":"item_name"},
-                {"data":"item_desc"},
-                {"data":"property_num"},
-                {"data":"date_aq"},
-                {"data":"unit_meas"},
-                {"data":"unit_val"},
-                {"data":"total_val"},
-                {"data":"quant_propcar"},
-                {"data":"quant_phycou"},
-                {"data":"SO_quant"},
-                {"data":"SO_val"},
-                {"data":"cl_name"},
-                {"data":"last_name"},
-                {"data":"button"}
-            ]
+            {
+              "data":"item_name",
+              "defaultContent":" "
+            },
+            {
+              "data":"item_desc",
+              "defaultContent":" "
+            },
+            {
+              "data":"property_num",
+              "defaultContent":" "
+            },
+            {
+              "data":"date_aq",
+              "defaultContent":" "
+            },
+            {
+              "data":"unit_meas",
+              "defaultContent":" "
+            },
+            {
+              "data":"unit_val",
+              "defaultContent":" "
+            },
+            {
+              "data":"total_val",
+              "defaultContent":" "
+            },
+            {
+              "data":"quant_propcar",
+              "defaultContent":" "
+            },
+            {
+              "data":"quant_phycou",
+              "defaultContent":" "
+            },
+            {
+              "data":"SO_quant",
+              "defaultContent":" "
+            },
+            {
+              "data":"SO_val",
+              "defaultContent": " " 
+            },
+            {
+              "data":"cl_name",
+              "defaultContent":" "
+            },
+            {
+              "data":"last_name",
+              "defaultContent":" "
+            },
+            {
+              "data":"button",
+              "defaultContent":" "
+            }]
        });
 	   
         $('#table1 tbody').on('click', 'td.details-control', function () {
