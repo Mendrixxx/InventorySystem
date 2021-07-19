@@ -423,27 +423,27 @@
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="uvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                           <input name="uvalue"  type="number" min="0" placeholder="Unit Value" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                           <input name="tvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="qPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="qPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="qSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="vSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Remarks: </label>
                         <div class="form-group">
@@ -523,27 +523,27 @@
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="cuvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                           <input name="cuvalue"  type="number" min="0" placeholder="Unit Value" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="ctvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                           <input name="ctvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="cqPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="cqSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="cvSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
                         </div>
                      </div>
                      <div class="modal-footer">
@@ -599,27 +599,27 @@
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="uvalue"  id="uvalue" type="number" placeholder="Unit Value" class="form-control" Required>
+                           <input name="uvalue"  id="uvalue" type="number" min="0" placeholder="Unit Value" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="tvalue" id="tvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                           <input name="tvalue" id="tvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" id="qPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="qPropCard" id="qPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" id="qPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="qPhysCount" id="qPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="qSO" id="qSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="qSO" id="qSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="vSO" id="vSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="vSO" id="vSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Remarks: </label>
                         <div class="form-group">
@@ -699,27 +699,27 @@
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="cuvalue"  type="number" placeholder="Unit Value" class="form-control" Required>
+                           <input name="cuvalue"  type="number" min="0" placeholder="Unit Value" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="ctvalue" type="number" placeholder="Total Value" class="form-control" Required>
+                           <input name="ctvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="cqPropCard" type="number"  placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="cqPhysCount" type="number"  placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cqSO" type="number"  placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="cqSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cvSO" type="number"  placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="cvSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
                         </div>
                      </div>
                      <div class="modal-footer">
