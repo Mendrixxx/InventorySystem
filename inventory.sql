@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 05:43 PM
+-- Generation Time: Jul 19, 2021 at 02:31 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -104,7 +104,7 @@ CREATE TABLE `classification` (
 --
 
 INSERT INTO `classification` (`classification_id`, `cl_name`) VALUES
-(0, 'Equipment'),
+(0, 'Office'),
 (1, 'IT'),
 (2, 'Laboratory');
 
