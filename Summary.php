@@ -104,8 +104,9 @@
                                                   <th>Total Value</th>
                                                   <th>Classification</th>
                                                 </tr>    </thead>
-    <thead>
-            <tr>
+   
+        <tfoot>
+              <tr>
               <td><input type="text" placeholder="Search Year" data-column="0"  class="search-input-text"></td>
               <th><input type="text" placeholder="Search Total Value" data-column="1"  class="search-input-text"></td>
               <td>
@@ -117,7 +118,8 @@
                 </select>
               </td>
             </tr>
-          </thead>
+        </tfoot>
+     
                                     </table>
                                                                 <div>
                                                                 <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>
