@@ -448,12 +448,12 @@
                         <label>Remarks: </label>
                         <div class="form-group">
                            <?php
-                              $sql = "Select * from `employee`";
+                              $sql = "Select employee.id, employee.first_name, employee.last_name from `employee` INNER JOIN `nbc` ON employee.id = nbc.employee_id INNER JOIN `colleges` ON nbc.college_id = colleges.id WHERE colleges.id = '1'";
                               $result = mysqli_query($conn, $sql);
                               ?>
                            <select name="remarks" class="form-control">
                            <?php while($row = mysqli_fetch_array($result)){
-                              echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>";
+                              echo "<option value = '$row[0]'>$row[2]".", "."$row[1]</option>";
                               }?>
                            </select>
                         </div>
