@@ -5,7 +5,18 @@
     if ($conn->connect_error) {
         die("Connection Failed: ". $conn->connect_error);
     } else {
-        echo getData($conn);    
+        $employeeID = getData($conn);
+        $arr = array_unique(array_column($employeeID, 'remarks'));
+        
+        $query = "  SELECT *
+                    FROM `employee` 
+                    WHERE `id` 
+                    IN (". implode (',', array_map('strval', $arr)) .")";
+        
+
+        $result = mysqli_query($conn, $query);
+        $employee = getRowsFrmDB($result);
+        echo json_encode(utf8ize($employee));
     }
 
 
@@ -15,7 +26,7 @@
         $query = "SELECT remarks FROM item";
         $result = mysqli_query($conn, $query);
         $dataArr = getRowsFrmDB($result);
-        return json_encode($dataArr);
+        return $dataArr;
     };
 
     function getRowsFrmDB($result) {
@@ -24,4 +35,15 @@
         } else {
             return [];
         }
+    }
+
+    function utf8ize( $mixed ) {
+        if (is_array($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed[$key] = utf8ize($value);
+            }
+        } elseif (is_string($mixed)) {
+            return mb_convert_encoding($mixed, "UTF-8", "UTF-8");
+        }
+        return $mixed;
     }

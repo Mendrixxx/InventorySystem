@@ -80,7 +80,7 @@ if (isset($_SESSION['pass'])) {
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Item ID</th>
-                                                        <th scope="col">Personel Name</th>
+                                                        <th scope="col">Personel ID</th>
                                                         <th scope="col">Item Name</th>
                                                         <th scope="col">Item Description</th>
                                                         <th scope="col">Property Number</th>
@@ -111,126 +111,6 @@ if (isset($_SESSION['pass'])) {
         </footer>
     </div>
 
-    <!-- view/edit modal -->
-    <div class="modal fade" id="viewItem" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title-lg">Item Information</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="row g-3" action="" method="POST">
-
-                        <div class="form-group row g-3">
-                            <div class="col-12">
-                                <div class="mb-2 row">
-                                    <label for="itemID" class="col-sm-3 col-form-label"><h5>Item ID</h5></label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" value="item_id" type="text" id="itemID" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-2 row">
-                                    <label for="itemName" class="col-sm-3 col-form-label"><h5>Name</h5></label>
-                                    <div class="col-sm">
-                                        <input type="text" value="inte_name" class="form-control" id="itemName">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row g-3">
-                            <hr><h5>About Item</h5>
-                            <div class="col-md-12">
-                                <label for="itemDesc" class="form-label">Description</label>
-                                <input type="text" value="item_desc" class="form-control" id="itemDesc">
-                            </div>
-
-                            <div class="col-md-8">
-                                <label for="propNo" class="form-label">Property Number</label>
-                                <input type="text" value="prop_num" class="form-control" id="propNo">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="dateAcq" class="form-label">Date Acquired</label>
-                                <input type="date" class="form-control">
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="unitMeas" class="form-label">Unit of Meassure</label>
-                                <input type="text" value="unit_meas" class="form-control" id="unitMeas">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="unitVal" class="form-label">Unit Value</label>
-                                <input type="text" value="unit_val" class="form-control" id="unitVal">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="classification" class="form-label">Classification</label>
-                                <input type="text" value="classification" class="form-control" id="classification">
-                            </div>
-                        </div>
-
-                        <div class="form-group row g-3" hidden>
-                            <hr><h5>Components</h5>
-                            <!-- generate components -->
-                        </div>
-
-                        <div class="form-group row g-3">
-                            <hr><h5>Quantity Per: </h5>
-                            <div class="col-md-6">
-                                <label for="qtyPhyCount" class="form-label">Physical Count</label>
-                                <input type="number" value="phy_count" class="form-control" id="qtyPhyCount">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="qtyPropCard" class="form-label">Property Card</label>
-                                <input type="number" value="prop_card" class="form-control" id="qtyPropCard">
-                            </div>
-                            <h5>Shortage/Overage</h5>
-                            <div class="col-md-6">
-                                <label for="SO_quant" class="form-label">Quantity</label>
-                                <input type="number" value="SO_phyCount" class="form-control" id="SO_quant">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="SO_totalVal" class="form-label">Total Value</label>
-                                <input type="text" value="SO_totalVal" class="form-control" id="SO_totalVal">
-                            </div>
-                        </div>
-
-                        <div class="form-group row g-3">
-                        <hr>
-                            <div class="col-md-12">
-                                <div class="mb-2 row">
-                                    <label for="totalVal" class="col-sm-3 col-form-label"><h5>Total Value:</h5></label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" value="total_val" type="text" id="totalVal" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" hidden>Save Changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--
-    <div class="dropdown">
-        <a class="btn btn-outline-primary no-arrow dropdown-toggle btn-sm" href="#" role="button" data-toggle="dropdown">
-            <i class="bi bi-box-arrow-up-left"></i><span>More</span>
-        </a>
-        <div class="dropdwon-menu dropdown-menu-right dropdown-menu-icon-list">
-            <a class="view btn btn-outline-info btn-sm dropdown-item" href="#" role="button" data-target="#viewItem">
-                <i class="bi bi-box-arrow-up-left"></i><span>View/Edit</span>
-            </a>
-            <a class="view btn btn-outline-danger btn-sm dropdown-item" href="#" role="button" data-target="#viewItem">
-                <i class="bi bi-box-arrow-up-left"></i><span>Delete</span>
-            </a>
-        </div>
-    </div>
-    <!-- end of view/edit modal -->
-
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
@@ -241,7 +121,7 @@ if (isset($_SESSION['pass'])) {
             // getting the list of personel
             $.ajax({
                 type: "GET",
-                url: 'functions/inventoryPerPersonel/function.get.invPerPersonel.php',
+                url: 'functions/inventoryPerPersonel/function.get.personels.php',
                 dataType: "JSON",
                 success: (data) => {
                     console.log(data);
@@ -250,7 +130,6 @@ if (isset($_SESSION['pass'])) {
             });
 
             // filtering by personel
-            var personMap;
             $('select[name=personel]').on('change', (event) => {
                 var personelName = $('#personelName').val();
                 // console.log(personelName);
@@ -279,23 +158,7 @@ if (isset($_SESSION['pass'])) {
                     {"data":"item_name"},
                     {"data":"item_desc"},
                     {"data":"property_num"},
-                    {"data":"date_aq"},
-                    {
-                        "data": null,
-                        "defaultContent":
-                            `<a class="view btn btn-outline-info btn-sm" href="#" role="button" data-target="#viewItem">
-                                <i class="bi bi-box-arrow-up-left"></i><span>More</span>
-                            </a>`,
-                        className: "text-center",
-                    },
-                    {"data":"unit_meas", visible: false},
-                    {"data":"unit_val", visible: false},
-                    {"data":"total_val", visible: false},
-                    {"data":"quant_propcar", visible: false},
-                    {"data":"quant_phycou", visible: false},
-                    {"data":"SO_quant", visible: false},
-                    {"data":"SO_val", visible: false},
-                    {"data":"classification", visible: false}
+                    {"data":"date_aq"}
                 ],
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
 		        language: {
@@ -307,50 +170,24 @@ if (isset($_SESSION['pass'])) {
                     }
 	        	},
             });
-
-            // perform view
-            $('.personelTable tbody').on('click', '.view', function() {
-                // console.log('click');
-                var itemData = $('.personelTable').DataTable().row($(this).parents("tr")).data();
-                console.log(itemData);
-
-                $('#itemID').val(itemData.item_id);
-                $('#itemName').val(itemData.item_name);
-                $('#itemDesc').val(itemData.item_desc);
-                $('#propNo').val(itemData.property_num);
-
-                // TODO: how to display date in form input type date
-                $('#dateAcq').val(itemData.date_aq);
-
-                $('#unitMeas').val(itemData.unit_meas);
-                $('#unitVal').val(itemData.unit_val);
-                $('#classification').val(itemData.classification);
-                $('#qtyPhyCount').val(itemData.quant_phycou);
-                $('#qtyPropCard').val(itemData.quant_propcar);
-                $('#SO_quant').val(itemData.SO_quant);
-                $('#SO_totalVal').val(itemData.SO_val);
-
-                // TODO MAYBE: totalval should calc unit_val*qtyPhyCount
-                $('#totalVal').val(itemData.total_val);
-
-                $('#viewItem').modal('show');
-            })
-
+            
         });
 
         function getPersonels(data) {
             // sort values
             data.sort(function(a, b) {
-                a = a.remarks.toLowerCase();
-                b = b.remarks.toLowerCase();
+                a = a.first_name.toLowerCase();
+                b = b.first_name.toLowerCase();
                 return a < b ? -1 : a > b ? 1 : 0;
             });
 
             // append values in options
             for( i in data) {
                 let sortVal = data[i];
+                let firstName = sortVal.first_name;
+                let lastName = sortVal.last_name;
                 $('#personelName').append(
-                    $("<option></option>").val(sortVal.remarks).html(sortVal.remarks)
+                    $("<option></option>").val(sortVal.id).html(`${firstName} ${lastName}`)
                 );
             }
         }
