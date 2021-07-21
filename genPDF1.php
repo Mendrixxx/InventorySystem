@@ -63,6 +63,7 @@ class PDF_MC_Table extends FPDF{
 		
 	}
 	
+	
 }
 
 $pdf = new PDF_MC_Table();
@@ -76,18 +77,12 @@ $pdf->AddPage('L', 'Legal', 0);
 		$max = 11; 
 		$i = 0;
 	
-		$stmt = $db->query('SELECT
-		*
-	FROM
-		item AS i
-		LEFT JOIN employee AS e ON (i.remarks = e.id)
-	LEFT JOIN component AS c ON (i.item_id=c.item_id) order by i.item_id asc
-	');
+		$stmt = $db->query('SELECT * from item order by classification');
 		
 		while($data = $stmt->fetch(PDO::FETCH_OBJ)){
 			
 			if($i != $max){
-					
+		
 						$pdf->Cell(25, 10, $data->item_name,1,0,'L');
 						$pdf->Cell(40, 10, $data->item_desc,1,0,'L');
 						$pdf->Cell(35, 10, $data->property_num,1,0,'L');
@@ -99,20 +94,7 @@ $pdf->AddPage('L', 'Legal', 0);
 						$pdf->Cell(37, 10, $data->quant_phycou,1,0,'L');
 						$pdf->Cell(15, 10, $data->SO_quant,1,0,'L');
 						$pdf->Cell(15, 10, $data->SO_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->last_name,1,0,'L');
-						$pdf->Ln();
-						$pdf->Cell(25, 10, $data->comp_name, 1,0, 'L');
-						$pdf->Cell(40, 10, '', 1,0, 'L');
-						$pdf->Cell(35, 10, '', 1, 0, 'L');
-						$pdf->Cell(30, 10, $data->c_date_aq, 1, 0, 'L');
-						$pdf->Cell(25, 10, $data->c_unit_meas, 1, 0, 'L');
-						$pdf->Cell(20, 10, $data->c_unit_val, 1, 0, 'L');
-						$pdf->Cell(30, 10, $data->c_total_val, 1, 0, 'L');
-						$pdf->Cell(37, 10, $data->c_quan_propcar, 1, 0, 'L');
-						$pdf->Cell(37, 10, $data->c_quan_phycou,1,0,'L');
-						$pdf->Cell(15, 10, $data->c_SO_quan,1,0,'L');
-						$pdf->Cell(15, 10, $data->c_SO_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->last_name,1,0,'L');
+						$pdf->Cell(30, 10, $data->remarks,1,0,'L');
 						$pdf->Ln();
 						$amount = $amount+$data->total_val;
 						$total = $amount;
@@ -124,8 +106,39 @@ $pdf->AddPage('L', 'Legal', 0);
 		$pdf->Cell(175, 10, 'SUBTOTAL: ', 1, 0, 'L');
 		$pdf->SetFont('Times','B',10);
 		$pdf->Cell(30, 10, $total, 1, 0, 'L');
+		$pdf->Ln();
 		$total = 0;
 		$i = 0;
+		$pdf->SetFont('Arial','',8);
+		$pdf->Cell(50, 10, 'Prepared by: ', 0, 0, 'L');
+		$pdf->Cell(50, 10, 'Noted by: ', 0, 0, 'L');
+		$pdf->Ln();
+		$pdf->SetFont('Times','B',10);
+		$pdf->Cell(40, 25, 'AGNES R. CARO ', 0, 0, 'L');
+		$pdf->Cell(40, 25, 'PRITZIE S. REY ', 0, 0, 'R');
+		$pdf->Cell(90, 25, 'CHAIRMAINE GRACE H. CABIRIA ', 0, 0, 'R');
+		$pdf->Cell(70, 25, 'LUIS E. CAMACHO ', 0, 0, 'R');
+		$pdf->Ln();
+		$pdf->SetFont('Arial','',8);
+		$pdf->Cell(40, 0, 'Supply Officer ', 0, 0, 'L');
+		$pdf->Cell(50, 0, 'Chairman Inventory Committee ', 0, 0, 'C');
+		$pdf->Cell(90, 0, 'Member ', 0, 0, 'C');
+		$pdf->Cell(85, 0, 'Member', 0, 0, 'C');
+		$pdf->Ln();
+		$pdf->SetFont('Arial','',8);
+		$pdf->Cell(140, 15, 'Recommending Approval: ', 0, 0, 'R');
+		$pdf->Cell(160, 15, 'Approved by: ', 0, 0, 'R');
+		$pdf->Ln();
+		$pdf->SetFont('Times','B',10);
+		$pdf->Cell(140, 20, 'JOCELYN E. SERRANO', 0, 0, 'R');
+		$pdf->Cell(80, 20, 'ATTY JOSEPH L. BARTOLATA', 0, 0, 'R');
+		$pdf->Cell(160, 20, 'DR. ARNULFO M. MARCARIÑAS', 0, 0, 'C');
+		$pdf->Ln();
+		$pdf->SetFont('Arial','',8);
+		$pdf->Cell(120, 0, 'Dean', 0, 0, 'R');
+		$pdf->Cell(100, 0, 'VP for Administration and Finance', 0, 0, 'R');
+		$pdf->Cell(160, 0, 'SUC President IV', 0, 0, 'C');
+		$pdf->Ln();
 
 $pdf->Output();
 ?>
