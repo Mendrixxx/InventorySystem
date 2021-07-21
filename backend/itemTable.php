@@ -3,7 +3,11 @@
 	include "conn.php";
 
 	$sql = "SELECT * FROM ((item INNER JOIN classification ON item.classification = classification.classification_id)INNER JOIN employee ON item.remarks = employee.id)";
-
+	if(isset($_POST['category'])){
+		$category = $_POST['category'];
+		$sql .= "WHERE `cl_name` = '".$category."'";
+	}
+	
 	$result = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($result);
 
