@@ -26,7 +26,7 @@ if( !empty($requestData['columns'][1]['search']['value']) ){  //total
 	$sql.=" AND total LIKE '".$requestData['columns'][1]['search']['value']."%' ";}
 if( !empty($requestData['columns'][2]['search']['value']) ){ //classification
 	$sql.=" AND classification LIKE '".$requestData['columns'][2]['search']['value']."%' ";}
-
+ $sql .= 'ORDER BY archive.ayear DESC ';
 $query=mysqli_query($conn, $sql) or die("summary.php: get employees");
 $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result.
 	
