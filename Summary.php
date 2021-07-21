@@ -1,6 +1,8 @@
 <?php
     session_start();
-
+    include("backend/conn.php");
+    $sql = " SELECT * from classification";
+    $res = mysqli_query($conn,$sql);
     if (isset($_SESSION['pass'])) {
 ?>
 <!DOCTYPE html>
@@ -27,13 +29,14 @@
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
-    <script type="text/javascript" src="assets/js/select.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="DataTable/DataTables-1.10.25/css/jquery.dataTables.min.css">
 
-
+  </head>  
 <style>
-    
+
+
+
       .table thead tr {
       background-color: #009879;
       color: #ffffff;
@@ -51,8 +54,7 @@
       background-color: white;
       }
    </style>
-   </head>
-<body>
+   <body>
     <!--Sidebars-->
     <?php require_once "functions/sidebar.php" ?>
   
@@ -87,12 +89,16 @@
                                 <div class="card-header">
                   <div class="row">
                     <div class="col">
-                              
 
+                       <select name="classification" id="classification" class="form-control">
+                           <option value="">Classification</option>
+                          <?php while( $row = mysqli_fetch_array($res) ){ ?>
+                           <?php     echo '<option value="'.$row["classification_id"].'">'.$row["cl_name"].'</option>';
+                           } ?>
+                        </select>       
 
-
-                                        </div>
-                  </div>
+                    </div>
+                   </div>
                                 </div>
                                 <div class="card-content">
                                     <!-- table strip dark -->
@@ -103,24 +109,9 @@
                                                   <th>Year</th>
                                                   <th>Total Value</th>
                                                   <th>Classification</th>
-                                                </tr>    </thead>
-   
-        <tfoot>
-              <tr>
-              <td><input type="text" placeholder="Search Year" data-column="0"  class="search-input-text"></td>
-              <th><input type="text" placeholder="Search Total Value" data-column="1"  class="search-input-text"></td>
-              <td>
-                <select data-column="2"  class="search-input-select">
-                  <option value="">All Equipment</option>
-                  <option value="0">Office Equipment</option>
-                  <option value="1">IT Equipment</option>
-                  <option value="2">Laboratory Equipment</option>
-                </select>
-              </td>
-            </tr>
-        </tfoot>
-     
-                                    </table>
+                                                </tr>    
+                                            </thead>   
+                                        </table>
                                                                 <div>
                                                                 <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>
                                                               </div>
@@ -211,8 +202,8 @@
     </div>
 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-
 <script src="assets/js/main.js"></script>
+
    <!--############################################################################################################################################################################################## -->
       <!-- DELETE component MODAL -->
       <div class="modal fade" id="rst" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -241,45 +232,51 @@
          <!-- /.modal-dialog -->
       </div>
       <!--############################################################################################################################################################################################## -->
+  <!-- JQuery and DataTable Plugin-->
+   <script type = "text/javascript" src="Datatable/jquery-3.5.1.js"></script>
+   <script type = "text/javascript"  src="Datatable/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" >
+
+$(document).ready(function(){
+ 
+ load_data();
+
+ function load_data(is_classification)
+ {
+  var dataTable = $('#summary').DataTable({
+   "processing":true,
+   "serverSide":true,
+   "order":[],
+   "ajax":{
+    url:"backend/summary.php",
+    type:"POST",
+    data:{is_classification:is_classification}
+   },
+   "columnDefs":[
+    {
+     "targets":[2],
+     "orderable":false,
+    },
+   ],
+  });
+ }
+
+ $(document).on('change', '#classification', function(){
+  var classification = $(this).val();
+  $('#summary').DataTable().destroy();
+  if(classification != '')
+  {
+   load_data(classification);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
 </body>
-
 </html>
-<script type="text/javascript" language="javascript" src="assets/js/jquery.js"></script>
-    <script type="text/javascript" language="javascript" src="assets/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" language="javascript" >
-
-      $(document).ready(function() {
-        var dataTable = $('#summary').DataTable( {
-          "processing": true,
-          "serverSide": true,
-          "ajax":{
-            url :"backend/summary.php", // json datasource
-            type: "post",  // method  , by default get
-            error: function(){  // error handling
-              $(".summary-error").html("");
-              $("#summary").append('<tbody class="summary-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-              $("#summary_processing").css("display","none");
-              
-            }
-          }
-        } );
-        $("#summary_filter").css("display","none");  // hiding global search box
-        $('.search-input-text').on( 'keyup click', function () {   // for text boxes
-          var i =$(this).attr('data-column');  // getting column index
-          var v =$(this).val();  // getting search input value
-          dataTable.columns(i).search(v).draw();
-        } );
-        $('.search-input-select').on( 'change', function () {   // for select box
-          var i =$(this).attr('data-column');  
-          var v =$(this).val();  
-          dataTable.columns(i).search(v).draw();
-        } );
-        
-        
-        
-      } );
-    </script>
-
 
 
 
