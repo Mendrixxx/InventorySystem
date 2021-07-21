@@ -32,7 +32,7 @@
 	  
       <script type="text/javascript">
          $(document).ready(function(){
-
+          load_data();
         function format ( d ) {
             // `d` is the original data object for the row
           if(d.hasOwnProperty(0)){
@@ -74,80 +74,82 @@
           }
             return strTable;
         }
-
-        var table = $("#table1").DataTable({
-            "processing":true,
-            "serverside":true,
-			      "autoWidth":false,
-            "ajax":{
-                url: "backend/itemTable.php",
-                dataType: "json"
-            },
-            "columns":[
-            {
-                "className":      'details-control',
-                "orderable":      false,
-                "data":           null,
-                "defaultContent": ''
-            },
-            {
-              "data":"item_name",
-              "defaultContent":" "
-            },
-            {
-              "data":"item_desc",
-              "defaultContent":" "
-            },
-            {
-              "data":"property_num",
-              "defaultContent":" "
-            },
-            {
-              "data":"date_aq",
-              "defaultContent":" "
-            },
-            {
-              "data":"unit_meas",
-              "defaultContent":" "
-            },
-            {
-              "data":"unit_val",
-              "defaultContent":" "
-            },
-            {
-              "data":"total_val",
-              "defaultContent":" "
-            },
-            {
-              "data":"quant_propcar",
-              "defaultContent":" "
-            },
-            {
-              "data":"quant_phycou",
-              "defaultContent":" "
-            },
-            {
-              "data":"SO_quant",
-              "defaultContent":" "
-            },
-            {
-              "data":"SO_val",
-              "defaultContent": " " 
-            },
-            {
-              "data":"cl_name",
-              "defaultContent":" "
-            },
-            {
-              "data":"last_name",
-              "defaultContent":" "
-            },
-            {
-              "data":"button",
-              "defaultContent":" "
-            }]
-       });
-	   
+        function load_data(category){
+          table = $("#table1").DataTable({
+              "processing":true,
+              "serverside":true,
+  			      "autoWidth":false,
+              "ajax":{
+                  url: "backend/itemTable.php",
+                  data:{category:category},
+                  type:"POST"
+              },
+              "columns":[
+              {
+                  "className":      'details-control',
+                  "orderable":      false,
+                  "data":           null,
+                  "defaultContent": ''
+              },
+              {
+                "data":"item_name",
+                "defaultContent":" "
+              },
+              {
+                "data":"item_desc",
+                "defaultContent":" "
+              },
+              {
+                "data":"property_num",
+                "defaultContent":" "
+              },
+              {
+                "data":"date_aq",
+                "defaultContent":" "
+              },
+              {
+                "data":"unit_meas",
+                "defaultContent":" "
+              },
+              {
+                "data":"unit_val",
+                "defaultContent":" "
+              },
+              {
+                "data":"total_val",
+                "defaultContent":" "
+              },
+              {
+                "data":"quant_propcar",
+                "defaultContent":" "
+              },
+              {
+                "data":"quant_phycou",
+                "defaultContent":" "
+              },
+              {
+                "data":"SO_quant",
+                "defaultContent":" "
+              },
+              {
+                "data":"SO_val",
+                "defaultContent": " " 
+              },
+              {
+                "data":"cl_name",
+                "defaultContent":" "
+              },
+              {
+                "data":"last_name",
+                "defaultContent":" "
+              },
+              {
+                "data":"button",
+                "defaultContent":" "
+              }],
+              
+         });
+	      }
         $('#table1 tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row( this );
@@ -166,6 +168,19 @@
             }
         } );
 
+        $("#select_classi").on('change',function(){
+            var category = $(this).val();
+            console.log(category);
+            $('#table1').DataTable().destroy();
+            if(category != '')
+            {
+             load_data(category);
+            }
+            else
+            {
+             load_data();
+            }
+        });
     });
 
 
@@ -208,6 +223,17 @@
                         <h4 class="card-title">Inventory</h4>
                      </div>
                      <div class="card-content">
+                        <select id="select_classi">
+                          <option value>ALL ITEMS</option>;
+                            <?php
+                              $sqlcl = "SELECT * FROM `classification`";
+                              $resultcl = mysqli_query($conn,$sqlcl);
+
+                              while($row = mysqli_fetch_array($resultcl)){
+                                echo "<option value = ".$row['cl_name'].">".$row['cl_name']."</option>";
+                              }
+                            ?>  
+                          </select>
                         <div class="card-body">
                         </div>
                         <div class="card-body">
@@ -245,7 +271,7 @@
                            </table>
                            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
                            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Add Component</button>
-				
+
                         </div>
                      </div>
                   </div>
