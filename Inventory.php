@@ -370,15 +370,15 @@
                      <div class="modal-body">
                         <label>Name of Item: </label>
                         <div class="form-group">
-                           <input name="iname" type="text" placeholder="Name" class="form-control" Required>
+                           <input name="iname" type="text" class="form-control" Required>
                         </div>
                         <label>Description: </label>
                         <div class="form-group">
-                           <input name="desc" type="text" placeholder="Description" class="form-control" Required>
+                           <input name="desc" type="text" class="form-control" Required>
                         </div>
                         <label>Property Number: </label>
                         <div class="form-group">
-                           <input  name="pnum" type="text" placeholder="Property Number" class="form-control" Required>
+                           <input  name="pnum" type="text" class="form-control" Required>
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
@@ -386,31 +386,31 @@
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                           <input name="umeas" type="text" class="form-control" Required>
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="uvalue"  type="number" min="0" placeholder="Unit Value" class="form-control" Required>
+                           <input name="uvalue"  type="number" min="0"class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="tvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
+                           <input name="tvalue" type="number" min="0" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="qPropCard" type="number"  min="0" class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="qPhysCount" type="number"  min="0" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="qSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="qSO" type="number"  min="0" class="form-control" >
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="vSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="vSO" type="number"  min="0" class="form-control">
                         </div>
                         <label>Remarks: </label>
                         <div class="form-group">
@@ -427,9 +427,9 @@
                         <label>Classification: </label>
                         <div class="form-group">
                            <select name="classification" class="form-control">
-                              <option value="0">IT</option>
-                              <option value="1">LABORATORY</option>
-                              <option value="2">OFFICE</option>
+                              <option value="0">OFFICE</option>
+                              <option value="1">IT</option>
+                              <option value="2">LABORATORY</option>
                            </select>
                         </div>
                      </div>
@@ -478,39 +478,39 @@
                         </div>
                         <label>Name of Component: </label>
                         <div class="form-group">
-                           <input name="cname" type="text" placeholder="Name" class="form-control" Required>
+                           <input name="cname" type="text" class="form-control" Required>
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="cdateaq" type="date" class="form-control" Required>
+                           <input  name="cdateaq" type="date" Required>
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                           <input name="cumeas" type="text" class="form-control" Required>
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="cuvalue"  type="number" min="0" placeholder="Unit Value" class="form-control" Required>
+                           <input name="cuvalue"  type="number" min="0" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="ctvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
+                           <input name="ctvalue" type="number" min="0" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="cqPropCard" type="number"  min="0" class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="cqPhysCount" type="number"  min="0"  class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cqSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="cqSO" type="number"  min="0"  class="form-control">
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cvSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="cvSO" type="number"  min="0" class="form-control">
                         </div>
                      </div>
                      <div class="modal-footer">
@@ -582,30 +582,30 @@
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="qSO" id="qSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="qSO" id="qSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control">
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="vSO" id="vSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="vSO" id="vSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control">
                         </div>
                         <label>Remarks: </label>
                         <div class="form-group">
                            <?php
-                              $sql = "Select * from `employee`";
+                              $sql = "Select employee.id, employee.first_name, employee.last_name from `employee` INNER JOIN `nbc` ON employee.id = nbc.employee_id INNER JOIN `colleges` ON nbc.college_id = colleges.id WHERE colleges.id = '1'";
                               $result = mysqli_query($conn, $sql);
                               ?>
                            <select name="remarks" id="remarks" class="form-control">
                            <?php while($row = mysqli_fetch_array($result)){
-                              echo "<option value = '$row[0]'>$row[4]"." "."$row[2]</option>"; // di ko gets?
+                              echo "<option value = '$row[0]'>$row[2]".", "."$row[1]</option>";
                               }?>
                            </select>
                         </div>
                         <label>Classification: </label>
                         <div class="form-group">
                            <select name="classification" id="classification" class="form-control">
-                              <option value="0">IT</option>
-                              <option value="1">LABORATORY</option>
-                              <option value="2">OFFICE</option>
+                              <option value="0">OFFICE</option>
+                              <option value="1">IT</option>
+                              <option value="2">LABORATORY</option>
                            </select>
                         </div>
                      </div>
@@ -631,22 +631,22 @@
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Component</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Component</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
                </div>
                <div class="modal-body">
-                  <form action="backend/insert.php" method="POST">
+                  <form method="POST" id="editcompform">
                      <div class="modal-body">
-                        <label>Select the Item that will receive this Component: </label>
+                        <label>Item Name: </label>
                         <div class="form-group">
                            <?php
                               $sql = "Select * from `item`";
                               $result = mysqli_query($conn, $sql);
                               
                               ?>
-                           <select name="itmname" class="form-control">
+                           <select name="compname" id="itemcomponent" class="form-control">
                            <?php while($row = mysqli_fetch_array($result)){
                               echo "<option value = '$row[0]'>$row[1]</option>";
                               }?>
@@ -654,39 +654,39 @@
                         </div>
                         <label>Name of Component: </label>
                         <div class="form-group">
-                           <input name="cname" type="text" placeholder="Name" class="form-control" Required>
+                           <input name="cname" id="cname" type="text" placeholder="Name" class="form-control" Required>
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="cdateaq" type="date" class="form-control" Required>
+                           <input  name="cdateaq" id="cdateaq" type="date" class="form-control" Required>
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                           <input name="cumeas" id="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="cuvalue"  type="number" min="0" placeholder="Unit Value" class="form-control" Required>
+                           <input name="cuvalue"  id="cuvalue" type="number" min="0" placeholder="Unit Value" class="form-control" Required>
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="ctvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
+                           <input name="ctvalue" id="ctvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="cqPropCard" id="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="cqPhysCount" id="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cqSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control" Required>
+                           <input name="cqSO" id="cqSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control">
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="cvSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control" Required>
+                           <input name="cvSO" id="cvSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control">
                         </div>
                      </div>
                      <div class="modal-footer">
@@ -694,10 +694,10 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Cancel</span>
                         </button>
-                        <button name = "addc" type="sumbit" class="btn btn-primary ml-1"
+                        <button name = "addcomp" type="sumbit" class="btn btn-primary ml-1"
                            data-bs-dismiss="modal">
                         <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Add Component</span>
+                        <span class="d-none d-sm-block">Update Component</span>
                         </button>
                      </div>
                   </form>
@@ -843,6 +843,78 @@
             $("#vSO").val($(cols[11]).text());
             $("#remarks").val(remarks, true);
             $("#classification").val(classification, true);         
+        }
+
+
+
+
+        $(document).ready(function(){
+          $("#table1").on("click", "#editCompbtn", function(){
+              var comp_id = $(this).attr("editCompId");
+              updatecomponent(comp_id);
+          });  
+
+          function updatecomponent(comp_id){
+            $("#editcompform").submit(function(e){
+                  e.preventDefault();
+                  $("#editcomp").modal("hide");
+                  var temp = true;
+                  var comp_name = $("#cname").val();
+                  var comp_date = $("#cdateaq").val();
+                  var comp_umeas = $("#cumeas").val();
+                  var comp_uvalue = $("#cuvalue").val();
+                  var comp_tvalue = $("#ctvalue").val();
+                  var comp_qPropCard = $("#cqPropCard").val();
+                  var comp_qPhysCount = $("#cqPhysCount").val();
+                  var comp_qSO = $("#cqSO").val();
+                  var comp_cvSO = $("#cvSO").val();
+
+                  $.ajax({
+                    url:"backend/editItem.php",
+                    method:"post",
+                    data: {
+                      cupdatebtn:temp,
+                      cid:comp_id,
+                      name:comp_name,
+                      date:comp_date,
+                      umeasure:comp_umeas,
+                      uvalue:comp_uvalue,
+                      totalvalue:comp_tvalue,
+                      quantity_prop_card:comp_qPropCard,
+                      quantity:comp_qPhysCount,
+                      quantity_shortage:comp_qSO,
+                      total_shortage:comp_cvSO,
+                    },    
+                    success:function(response){
+                           // $("#updatecomp-btn").on("click", RefreshTable());
+                            alert(response);
+                    }
+                  });
+            });
+          } 
+
+        //function RefreshTable() {
+        //  $("#table1").load("Inventory.php #table1");
+        //}
+
+        });
+
+      
+        function comdisplay(ctl){
+            editRow = $(ctl).parents("tr");
+            var cols = editRow.children("td");
+            var iid = $("#editCompbtn").attr("compParent");
+            var cid = $("#editCompbtn").attr("editCompId");
+            $("#itemcomponent").attr("disabled", true);
+            $("#cname").val($(cols[0]).text());
+            $("#cdateaq").val($(cols[1]).text());
+            $("#cumeas").val($(cols[2]).text());
+            $("#cuvalue").val($(cols[3]).text());
+            $("#ctvalue").val($(cols[4]).text());
+            $("#cqPropCard").val($(cols[5]).text());
+            $("#cqPhysCount").val($(cols[6]).text());
+            $("#cqSO").val($(cols[7]).text());
+            $("#cvSO").val($(cols[8]).text());
         }
     </script> 
    </body>
