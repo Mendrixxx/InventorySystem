@@ -91,14 +91,14 @@
                     <div class="col">
 
                        <select name="classification" id="classification" class="form-control">
-                           <option value="">Classification</option>
+                           <option value="">All Classification</option>
                           <?php while( $row = mysqli_fetch_array($res) ){ ?>
                            <?php     echo '<option value="'.$row["classification_id"].'">'.$row["cl_name"].'</option>';
                            } ?>
                         </select>       
 
                     </div>
-                   </div>
+                  </div>
                                 </div>
                                 <div class="card-content">
                                     <!-- table strip dark -->

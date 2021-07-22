@@ -33,7 +33,9 @@ $data = array();
 while($row = mysqli_fetch_array($result)){
  $sub_array = array();
  $sub_array[] = $row["ayear"];
- $sub_array[] = $row["total"];
+ $total=$row["total"];
+ $total=number_format($total,2);
+ $sub_array[] = $total;
  $sub_array[] = $row["cl_name"];
  $data[] = $sub_array;
 }
