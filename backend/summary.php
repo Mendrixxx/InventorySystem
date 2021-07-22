@@ -1,34 +1,19 @@
 <?php
 	session_start();
 	include "conn.php";
-$column = array('archive.ayear', 'archive.total', 'classification.cl_name');
+
 $query = "
  SELECT * FROM archive 
  INNER JOIN classification 
  ON classification.classification_id = archive.classification ";
-$query .= " WHERE ";
-if(isset($_POST["is_classification"]))
-{
- $query .= "archive.classification = '".$_POST["is_classification"]."' AND ";
-}
-if(isset($_POST["search"]["value"]))
-{
- $query .= '(archive.ayear LIKE "%'.$_POST["search"]["value"].'%" ';
- $query .= 'or archive.total LIKE "%'.$_POST["search"]["value"].'%") ';
- $query .= 'or classification.cl_name LIKE "%'.$_POST["search"]["value"].'%" ';
-}
-if(isset($_POST["order"])){
- $query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' ';
-}
-else{
- $query .= 'ORDER BY archive.ayear DESC ';
-}
-$query1 = '';
-if($_POST["length"] != 1){
- $query1 .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-}
-$number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
-$result = mysqli_query($conn, $query . $query1);
+	if(isset($_POST['is_classification'])){
+		$category = $_POST['is_classification'];
+		$query .= "WHERE `cl_name` = '".$category."'";
+	}
+	
+	$result = mysqli_query($conn,$query );
+	$numRows = mysqli_num_rows($result);
+
 $data = array();
 while($row = mysqli_fetch_array($result)){
  $sub_array = array();
@@ -43,9 +28,9 @@ function get_all_data($conn)
  $result = mysqli_query($conn, $query);
  return mysqli_num_rows($result);}
 $output = array(
- "draw"    => intval($_POST["draw"]),
+ "draw"    => "",
  "recordsTotal"  =>  get_all_data($conn),
- "recordsFiltered" => $number_filter_row,
+ "recordsFiltered" => $numRows,
  "data"    => $data
 );
 echo json_encode($output);
