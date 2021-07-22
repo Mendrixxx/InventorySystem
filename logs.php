@@ -106,6 +106,8 @@ if (isset($_SESSION['pass'])) {
 	//Datatable
     $(document).ready(function(){
        $("#logs").DataTable({
+			"processing": true,
+			"serverSide": true,
             "ajax":{
                 "url": "backend/logData.php",
                 "dataSrc":"",
