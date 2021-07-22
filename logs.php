@@ -106,8 +106,6 @@ if (isset($_SESSION['pass'])) {
 	//Datatable
     $(document).ready(function(){
        $("#logs").DataTable({
-			"processing": true,
-			"serverSide": true,
             "ajax":{
                 "url": "backend/logData.php",
                 "dataSrc":"",
@@ -118,7 +116,7 @@ if (isset($_SESSION['pass'])) {
                 {"data":"item_name"},
                 {"data":"date_action"},
             ],
-			"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+		"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
        });
     });
 </script>

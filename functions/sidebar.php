@@ -4,14 +4,14 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                           <div class="logo">
-                        <a href="index.html"><img src="assets/images/logo/BU.gif" style="width: 120px; height: 120px"></img>Inventory System </a>
+                        <a href="inventory.php"><img src="assets/images/logo/BU.gif" style="width: 120px; height: 120px"></img>Inventory System </a>
                      </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="sidebar-menu">
+					<div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-item">
                             <a href="Inventory.php" class='sidebar-link'>
@@ -49,6 +49,7 @@
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
         </div>
+		
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
