@@ -80,7 +80,7 @@ if (isset($_SESSION['pass'])) {
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Item ID</th>
-                                                        <th scope="col">Personel ID</th>
+                                                        <th scope="col">Personel Name</th>
                                                         <th scope="col">Item Name</th>
                                                         <th scope="col">Item Description</th>
                                                         <th scope="col">Property Number</th>
@@ -135,7 +135,7 @@ if (isset($_SESSION['pass'])) {
                 // console.log(personelName);
                 invPerPersonel
                     .column(1)
-                    .search(personelName, true, false, false)
+                    .search(personelName, false, true, true)
                     .draw();
             });
 
@@ -154,7 +154,13 @@ if (isset($_SESSION['pass'])) {
                 },
                 "columns":[
                     {"data":"item_id", visible:false},
-                    {"data":"remarks"},
+                    {
+                        "data": null,
+                        render : function(row) {
+                            let employeeName = row.first_name + " " + row.last_name;
+                            return employeeName;
+                        }
+                    },
                     {"data":"item_name"},
                     {"data":"item_desc"},
                     {"data":"property_num"},
@@ -187,7 +193,7 @@ if (isset($_SESSION['pass'])) {
                 let firstName = sortVal.first_name;
                 let lastName = sortVal.last_name;
                 $('#personelName').append(
-                    $("<option></option>").val(sortVal.id).html(`${firstName} ${lastName}`)
+                    $("<option></option>").val(`${firstName} ${lastName}`).html(`${firstName} ${lastName}`)
                 );
             }
         }

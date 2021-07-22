@@ -12,11 +12,16 @@
 
     function getData($conn) {
         
-        $query = "SELECT * FROM item";
+        $query = "  SELECT * 
+                    FROM `item`
+                    INNER JOIN `employee` 
+                    ON employee.id = item.remarks";
+
         $result = mysqli_query($conn, $query);
 
         $dataArr = getRowsFrmDB($result);
-        return json_encode($dataArr);
+        // print_r($dataArr);
+        return json_encode(utf8ize($dataArr));
     };
 
     function getRowsFrmDB($result) {
@@ -26,7 +31,17 @@
             return [];
         }
     }
-    
+
+    function utf8ize( $mixed ) {
+        if (is_array($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed[$key] = utf8ize($value);
+            }
+        } elseif (is_string($mixed)) {
+            return mb_convert_encoding($mixed, "UTF-8", "UTF-8");
+        }
+        return $mixed;
+    }
     
 
 

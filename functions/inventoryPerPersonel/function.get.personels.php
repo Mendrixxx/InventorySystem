@@ -9,13 +9,14 @@
         $arr = array_unique(array_column($employeeID, 'remarks'));
         
         $query = "  SELECT *
-                    FROM `employee` 
+                    FROM `employee`
                     WHERE `id` 
                     IN (". implode (',', array_map('strval', $arr)) .")";
         
 
         $result = mysqli_query($conn, $query);
         $employee = getRowsFrmDB($result);
+        // print_r($employee);
         echo json_encode(utf8ize($employee));
     }
 
