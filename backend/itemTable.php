@@ -63,7 +63,7 @@
 				$datum['c_quan_phycou'] = $temp['c_quan_phycou'];
 				$datum['c_SO_quan'] = $temp['c_SO_quan'];
 				$datum['c_SO_val'] = $temp['c_SO_val'];
-				$datum['button'] = '<a href="#" editCompId="'.$temp['comp_id'].'" class="btn btn-primary">Edit</a> <button id ="dtbnc" class="btn btn-danger btn-xs" data-assigned-id ='.$temp['comp_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
+				$datum['button'] = '<a href="#" id="editCompbtn" editCompId="'.$temp['comp_id'].'" compParent="'.$temp['item_id'].'" data-toggle="modal" data-placement="top" data-target="#editcomp" class="btn btn-primary" onclick="comdisplay(this)">Edit</a> <button id ="dtbnc" class="btn btn-danger btn-xs" data-assigned-id ='.$temp['comp_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
 				$datarow[] = $datum;
 			}
 		}

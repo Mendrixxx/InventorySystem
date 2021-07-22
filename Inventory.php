@@ -851,10 +851,11 @@
         $(document).ready(function(){
           $("#table1").on("click", "#editCompbtn", function(){
               var comp_id = $(this).attr("editCompId");
-              updatecomponent(comp_id);
+              var iid = $(this).attr("compParent");
+              updatecomponent(comp_id, iid);
           });  
 
-          function updatecomponent(comp_id){
+          function updatecomponent(comp_id, iid){
             $("#editcompform").submit(function(e){
                   e.preventDefault();
                   $("#editcomp").modal("hide");
@@ -874,6 +875,7 @@
                     method:"post",
                     data: {
                       cupdatebtn:temp,
+                      id:iid,
                       cid:comp_id,
                       name:comp_name,
                       date:comp_date,

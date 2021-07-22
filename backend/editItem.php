@@ -55,7 +55,6 @@ if(isset($_POST['updatebtn'])){
                 echo "Property Number cannot be duplicated!";
             }
             else{
-            	//checks if the remarks is from CS and the item is above 15k
             	if(equipment_check($unit_value)){
             		if(total_value($total_value, $unit_value, $quantity_physical_count)){
             			$sql = "UPDATE item SET item_name = '$iname', item_desc = '$ides', property_num = '$prop_no', date_aq = '$date', unit_meas = '$unit_measure', unit_val = '$unit_value', total_val = '$total_value', quant_propcar = '$quantity_prop_card', quant_phycou = '$quantity_physical_count', remarks = '$remarks_no', classification = '$classification', SO_quant = '$quantity_shortage', SO_val = '$total_shortage' WHERE item_id = '$iid'";
@@ -84,6 +83,7 @@ if(isset($_POST['updatebtn'])){
 
 //update component
 if(isset($_POST['cupdatebtn'])){
+	$iid = sanitize(mysqli_real_escape_string($conn,trim($_POST['id'])));
 	$cid = sanitize(mysqli_real_escape_string($conn,trim($_POST['cid'])));
     $cname = sanitize(mysqli_real_escape_string($conn,trim($_POST['name'])));
 	$cdate = sanitize(mysqli_real_escape_string($conn,trim($_POST['date'])));
@@ -95,11 +95,11 @@ if(isset($_POST['cupdatebtn'])){
 	$cquantity_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity_shortage'])));
 	$ctotal_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['total_shortage'])));
 
-	$total = $cquantity * $cuvalue;
-	if($total != $ctotalvalue){
-		echo "Total Value Error!";
-	}
-	else{
+	$sql = "SELECT item_name FROM item WHERE item_id = '$iid'";
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($result);
+	if($result){
+			$iname = $row['item_name'];
 			$compupdate = "UPDATE component SET comp_name = '$cname', c_date_aq = '$cdate', c_unit_meas = '$cumeasure', c_unit_val = '$cuvalue', c_total_val = '$ctotalvalue', c_quan_propcar = '$cquantity_prop_card', c_quan_phycou = '$cquantity', c_SO_quan = '$cquantity_shortage', c_SO_val = '$ctotal_shortage' WHERE comp_id = '$cid'";
 			$updateresult = mysqli_query($conn, $compupdate);
 			
@@ -114,7 +114,6 @@ if(isset($_POST['cupdatebtn'])){
 				echo "Component Update Failed!";
 			}
 	}
-
 }
 ?>
 
