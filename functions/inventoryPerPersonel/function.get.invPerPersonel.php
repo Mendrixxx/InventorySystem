@@ -21,7 +21,7 @@
 
         $dataArr = getRowsFrmDB($result);
         // print_r($dataArr);
-        return json_encode(utf8ize($dataArr));
+        return json_encode($dataArr, JSON_UNESCAPED_UNICODE);
     };
 
     function getRowsFrmDB($result) {

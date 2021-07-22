@@ -17,7 +17,7 @@
         $result = mysqli_query($conn, $query);
         $employee = getRowsFrmDB($result);
         // print_r($employee);
-        echo json_encode(utf8ize($employee));
+        echo json_encode($employee, JSON_UNESCAPED_UNICODE);
     }
 
 
@@ -36,15 +36,4 @@
         } else {
             return [];
         }
-    }
-
-    function utf8ize( $mixed ) {
-        if (is_array($mixed)) {
-            foreach ($mixed as $key => $value) {
-                $mixed[$key] = utf8ize($value);
-            }
-        } elseif (is_string($mixed)) {
-            return mb_convert_encoding($mixed, "UTF-8", "UTF-8");
-        }
-        return $mixed;
     }
