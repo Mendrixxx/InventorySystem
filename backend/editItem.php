@@ -7,7 +7,7 @@
 	$edited_component = "Edit Component";
 
 	function sanitize($variables){
-        $sanitized_variables = filter_var($variables, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+        $sanitized_variables = filter_var($variables, FILTER_SANITIZE_STRING);
         	return $sanitized_variables;
     }
 
@@ -95,10 +95,15 @@ if(isset($_POST['cupdatebtn'])){
 	$cquantity_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity_shortage'])));
 	$ctotal_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['total_shortage'])));
 
-	$sql = "SELECT item_name FROM item WHERE item_id = '$iid'";
-	$result = mysqli_query($conn, $sql);
-	$row = mysqli_fetch_array($result);
-	if($result){
+	$total = $cuvalu * $cquantity;
+	if($ctotalvalue != $total){
+		echo "Total Value Error";
+	}
+	else{	
+		$sql = "SELECT item_name FROM item WHERE item_id = '$iid'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_array($result);
+		if($result){
 			$iname = $row['item_name'];
 			$compupdate = "UPDATE component SET comp_name = '$cname', c_date_aq = '$cdate', c_unit_meas = '$cumeasure', c_unit_val = '$cuvalue', c_total_val = '$ctotalvalue', c_quan_propcar = '$cquantity_prop_card', c_quan_phycou = '$cquantity', c_SO_quan = '$cquantity_shortage', c_SO_val = '$ctotal_shortage' WHERE comp_id = '$cid'";
 			$updateresult = mysqli_query($conn, $compupdate);
@@ -113,6 +118,7 @@ if(isset($_POST['cupdatebtn'])){
 			else{
 				echo "Component Update Failed!";
 			}
+		}
 	}
 }
 ?>

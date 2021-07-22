@@ -261,8 +261,8 @@
                                  </tr>
                               </thead>
                               <tbody>
-                                 <td>
-                                    <!--    <a href="#" class="btn btn-primary">Edit</a>
+                                 <!--<td>
+                                        <a href="#" class="btn btn-primary">Edit</a>
                                        </td>
                                        <td>
                                            <a href="#" class="btn btn-primary">Delete</a>
@@ -853,12 +853,13 @@
               var comp_id = $(this).attr("editCompId");
               var iid = $(this).attr("compParent");
               updatecomponent(comp_id, iid);
+              //$("#editcomp").modal("hide");
           });  
 
           function updatecomponent(comp_id, iid){
             $("#editcompform").submit(function(e){
                   e.preventDefault();
-                  $("#editcomp").modal("hide");
+                  //$("#editcomp").modal("hide");
                   var temp = true;
                   var comp_name = $("#cname").val();
                   var comp_date = $("#cdateaq").val();
@@ -889,7 +890,11 @@
                     },    
                     success:function(response){
                            // $("#updatecomp-btn").on("click", RefreshTable());
-                            alert(response);
+                          alert(response);
+                          //$("#table1").DataTable().destroy();
+                          //$("#table1").load(load_data());
+                          //$("#table1").DataTable().draw();
+                                                       
                     }
                   });
             });
