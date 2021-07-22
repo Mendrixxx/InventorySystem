@@ -116,7 +116,7 @@ if (isset($_SESSION['pass'])) {
                 {"data":"item_name"},
                 {"data":"date_action"},
             ],
-
+			"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
        });
     });
 </script>

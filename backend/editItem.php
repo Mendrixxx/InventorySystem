@@ -103,7 +103,7 @@ if(isset($_POST['cupdatebtn'])){
 			$compupdate = "UPDATE component SET comp_name = '$cname', c_date_aq = '$cdate', c_unit_meas = '$cumeasure', c_unit_val = '$cuvalue', c_total_val = '$ctotalvalue', c_quan_propcar = '$cquantity_prop_card', c_quan_phycou = '$cquantity', c_SO_quan = '$cquantity_shortage', c_SO_val = '$ctotal_shortage' WHERE comp_id = '$cid'";
 			$updateresult = mysqli_query($conn, $compupdate);
 			
-			$enter_logComp = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$edited_component', NOW())";//
+			$enter_logComp = "INSERT into log(item_name, action, date_action) VALUES ('$cname', '$edited_component', NOW())";//
             $query_logComp = mysqli_query($conn, $enter_logComp);//
 
 			if($updateresult && $query_logComp){
