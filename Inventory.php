@@ -726,7 +726,7 @@
          return $(this).text();
          }).get();
          
-         console.log(data_logsItem);
+         //console.log(data_logsItem);
          
          $('#item_name').val(data_logsItem[1]);
          /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -751,7 +751,7 @@
          return $(this).text();
          }).get();
          
-         console.log(data_logsComp);
+         //console.log(data_logsComp);
          
          $('#comp_name').val(data_logsComp[0]);
          /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

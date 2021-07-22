@@ -16,7 +16,7 @@
                         <li class="sidebar-item">
                             <a href="Inventory.php" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>INVENTORY</span>
+                                <span>Inventory</span>
                             </a>
                         </li>
 						<li class="sidebar-item">
