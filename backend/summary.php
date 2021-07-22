@@ -15,7 +15,7 @@ if(isset($_POST["search"]["value"]))
 {
  $query .= '(archive.ayear LIKE "%'.$_POST["search"]["value"].'%" ';
  $query .= 'or archive.total LIKE "%'.$_POST["search"]["value"].'%") ';
- $query .= 'or classification.cl_name LIKE "%'.$_POST["search"]["value"].'%" ';
+
 }
 if(isset($_POST["order"])){
  $query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' ';
