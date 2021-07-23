@@ -366,7 +366,7 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <form action="backend/insert.php" method="POST">
+                  <form autocomplete="off" action="backend/insert.php" method="POST">
                      <div class="modal-body">
                         <label>Name of Item: </label>
                         <div class="form-group">
@@ -461,7 +461,7 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <form action="backend/insert.php" method="POST">
+                  <form autocomplete="off" action="backend/insert.php" method="POST">
                      <div class="modal-body">
                         <label>Select the Item that will receive this Component: </label>
                         <div class="form-group">
@@ -482,7 +482,7 @@
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="cdateaq" type="date" Required>
+                           <input  name="cdateaq" type="date" class="form-control" Required>
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
@@ -490,19 +490,19 @@
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="cuvalue"  type="number" min="0" class="form-control" Required>
+                           <input name="cuvalue"  type="number" min="0" class="form-control">
                         </div>
                         <label>Total Value: </label>
                         <div class="form-group">
-                           <input name="ctvalue" type="number" min="0" class="form-control" Required>
+                           <input name="ctvalue" type="number" min="0" class="form-control">
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="cqPropCard" type="number"  min="0" class="form-control" Required>
+                           <input  name="cqPropCard" type="number"  min="0" class="form-control">
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="cqPhysCount" type="number"  min="0"  class="form-control" Required>
+                           <input name="cqPhysCount" type="number"  min="0"  class="form-control">
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
