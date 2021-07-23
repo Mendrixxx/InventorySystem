@@ -95,15 +95,26 @@ if (isset($_SESSION['pass'])) {
 	//Datatable
     $(document).ready(function(){
        $("#logs").DataTable({
+		   "processing":true,
+           "serverside":true,
             "ajax":{
                 "url": "backend/logData.php",
                 "dataSrc":"",
            },
 		    "ordering": false,
             "columns":[
-				{"data":"action"},
-                {"data":"item_name"},
-                {"data":"date_action"},
+			  {
+                "data":"action",
+                "defaultContent":" "
+              },
+			  {
+                "data":"item_name",
+                "defaultContent":" "
+              },
+			  {
+                "data":"date_action",
+                "defaultContent":" "
+              },
             ],
 		"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
        });
