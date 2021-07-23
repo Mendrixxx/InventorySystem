@@ -857,8 +857,8 @@
           });  
 
           function updatecomponent(comp_id, iid){
-            $("#editcompform").submit(function(e){
-                  e.preventDefault();
+            $("#editcompform").submit(function(){
+                  //e.preventDefault();
                   //$("#editcomp").modal("hide");
                   var temp = true;
                   var comp_name = $("#cname").val();
