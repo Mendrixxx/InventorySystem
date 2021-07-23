@@ -68,6 +68,8 @@ class PDF_MC_Table extends FPDF{
 
 $pdf = new PDF_MC_Table();
 
+require 'tryPDF.php';
+
 $pdf->AliasNbPages();
 $pdf->AddPage('L', 'Legal', 0);
 		
@@ -79,28 +81,24 @@ $pdf->AddPage('L', 'Legal', 0);
 	
 		$stmt = $db->query('SELECT * from item order by classification');
 		
-		while($data = $stmt->fetch(PDO::FETCH_OBJ)){
+		foreach($summary as $val){
 			
-			if($i != $max){
-		
-						$pdf->Cell(25, 10, $data->item_name,1,0,'L');
-						$pdf->Cell(40, 10, $data->item_desc,1,0,'L');
-						$pdf->Cell(35, 10, $data->property_num,1,0,'L');
-						$pdf->Cell(30, 10, $data->date_aq,1,0,'L');
-						$pdf->Cell(25, 10, $data->unit_meas,1,0,'L');
-						$pdf->Cell(20, 10, $data->unit_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->total_val,1,0,'L');
-						$pdf->Cell(37, 10, $data->quant_propcar,1,0,'L');
-						$pdf->Cell(37, 10, $data->quant_phycou,1,0,'L');
-						$pdf->Cell(15, 10, $data->SO_quant,1,0,'L');
-						$pdf->Cell(15, 10, $data->SO_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->remarks,1,0,'L');
+						$pdf->Cell(25, 10, $val['year'],1,0,'L');
+						$pdf->Cell(40, 10, "" ,1,0,'L');
+						$pdf->Cell(35, 10, "",1,0,'L');
+						$pdf->Cell(30, 10, "",1,0,'L');
+						$pdf->Cell(25, 10, "",1,0,'L');
+						$pdf->Cell(20, 10, "",1,0,'L');
+						$pdf->Cell(30, 10, $val['total'],1,0,'L');
+						$pdf->Cell(37, 10, "",1,0,'L');
+						$pdf->Cell(37, 10, "",1,0,'L');
+						$pdf->Cell(15, 10,"" ,1,0,'L');
+						$pdf->Cell(15, 10, "",1,0,'L');
+						$pdf->Cell(30, 10, "",1,0,'L');
 						$pdf->Ln();
-						$amount = $amount+$data->total_val;
+						$amount = $amount+$val['total'];
 						$total = $amount;
-							
-					}	$i += 1;
-							
+					
 		}
 		
 		$pdf->Cell(175, 10, 'SUBTOTAL: ', 1, 0, 'L');
