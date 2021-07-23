@@ -3,8 +3,7 @@
 session_start();
 include "conn.php";
 
- if (isset($_POST['reset'])) {
-
+ if (isset($_POST['reset'])) {      
         $sql = "SELECT * FROM classification" ;
         $run = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_assoc($run)){
@@ -24,7 +23,7 @@ include "conn.php";
         $sql4 = "DELETE FROM yearcosting";
         $run4 = mysqli_query($conn, $sql4);
         if($run && $run2 && $run4){
-            header("location: ../summary.php");
+            echo "<script>alert('Year ".Date("Y")." Inventory has successfully been Archived');window.location.href=' ../summary.php';</script>";
         }
            
     }

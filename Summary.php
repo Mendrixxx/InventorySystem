@@ -4,6 +4,7 @@
     $sql = " SELECT * from classification";
     $res = mysqli_query($conn,$sql);
     if (isset($_SESSION['pass'])) {
+    include "backend/conn.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +114,17 @@
                                             </thead>   
                                         </table>
                                                                 <div>
-                                                                <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>
+                                                                 <?php
+                                                                 $chkdt = "SELECT * from archive Where ayear =".Date("Y");
+                                                                 $chk = mysqli_query($conn, $chkdt);
+                                                                 if(mysqli_num_rows($chk)==0){
+                                                                    echo '<button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>';
+                                                                 }
+                                                                 else{
+                                                                    echo '<button disabled type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#rst">Save to Archive </button>';
+                                                                 }
+                                                                 ?>   
+                                                                
                                                               </div>
 
                                 </div>
@@ -205,18 +216,20 @@
 <script src="assets/js/main.js"></script>
 
    <!--############################################################################################################################################################################################## -->
-      <!-- DELETE component MODAL -->
+      <!-- Save to Archive MODAL -->
       <div class="modal fade" id="rst" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
-                  <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
+                  <h4 class="modal-title custom_align" id="Heading"> Are you sure
+                        you want to archive this years inventory?</h4>
                   <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>
                </div>
                <form action="backend/total.php" method="POST">
                   <div class="modal-body">
-                     <div class="alert alert-default"><span class="fa fa-exclamation-triangle"></span> Are you sure
-                        you want to archive this years inventory?</br>(This will compute for the total cost of this year.)
+                     <div class="alert alert-default"><span class="fa fa-exclamation-triangle"></span>Year: <?php echo date("Y")?> </br><li>This will compute for the total cost of this year's Inventory.
+                     </br><li>Items Added after the process will be computed for the following year.
+                     </br><li>This process is irreversible.
                      </div>
                   </div>
                   <div class="modal-footer ">
