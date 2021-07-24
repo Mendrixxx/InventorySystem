@@ -281,16 +281,22 @@
          <div class="footer clearfix mb-0 text-muted">
          <div class="float-start">
          <p>2021 &copy; Bachelor of Science 3 - B</p>
+
          </div>
          <div class="float-end">
          </div>
          </div>
          </footer>
+         
          </div>
+         
       </div>
       <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       <script src="assets/js/main.js"></script>
+      
+
+
       <!--############################################################################################################################################################################################## -->
       <!-- DELETE item MODAL -->
       <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -368,6 +374,7 @@
                <div class="modal-body">
                   <form autocomplete="off" action="backend/insert.php" method="POST">
                      <div class="modal-body">
+                        NOTE: Total Value will automatically be computed based on the Unit Value and Quantity Per Physical Count.</li></br></br>
                         <label>Name of Item: </label>
                         <div class="form-group">
                            <input name="iname" type="text" class="form-control" Required>
@@ -387,18 +394,14 @@
                         <label>Unit of Measure: </label>
                         <div class="form-group">
                            <input name="umeas" type="text" class="form-control" Required>
-                        </div>
+                        </div>   
                         <label>Unit Value: </label>
-                        <div class="form-group">
-                           <input name="uvalue"  type="number" min="0"class="form-control" Required>
-                        </div>
-                        <label>Total Value: </label>
-                        <div class="form-group">
-                           <input name="tvalue" type="number" min="0" class="form-control" Required>
+                        <div class="form-group"> 
+                           <input name="uvalue"  type="number" min="15000"class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" type="number"  min="0" class="form-control" Required>
+                           <input  name="qPropCard" type="number"  min="0" class="form-control" >
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
@@ -479,10 +482,6 @@
                         <label>Name of Component: </label>
                         <div class="form-group">
                            <input name="cname" type="text" class="form-control" Required>
-                        </div>
-                        <label>Date Acquired: </label>
-                        <div class="form-group">
-                           <input  name="cdateaq" type="date" class="form-control" Required>
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
@@ -706,6 +705,8 @@
          </div>
       </div>
       <!--Add Item Modal END-->
+             
+
       <script>
          //DELETE item SCRIPT
          $('#table1').on('click', '#dtbn', function() {
