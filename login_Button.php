@@ -9,7 +9,8 @@ if (isset($_POST['password'])) {
     $data = htmlspecialchars($data);
     return $data;
   }
-
+	$logged_in = "Logged in"; //LOGS
+	
   $pass = validate($_POST['password']);
 
   if (empty($pass)){
@@ -17,12 +18,14 @@ if (isset($_POST['password'])) {
 
   }else{
     $sql = "SELECT * FROM `auth` WHERE `pass` = '$pass'";
+	$user_log = "INSERT into log(action,date_action) VALUES('$logged_in',NOW())"; //LOGS
 
     $result = mysqli_query($conn ,$sql);
+	$log_result = mysqli_query($conn,$user_log);  //LOGS
 
     if (mysqli_num_rows($result) === 1) {
       $row = mysqli_fetch_assoc($result);
-      if ($row['pass'] === $pass) {
+      if ($row['pass'] === $pass && $log_result) {  //LOGS
         $_SESSION['pass'] = $row['pass'];
         header("Location: Inventory.php");
         exit();
