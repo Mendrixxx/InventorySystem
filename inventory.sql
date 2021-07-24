@@ -318,7 +318,6 @@ INSERT INTO `item` (`item_id`, `item_name`, `item_desc`, `property_num`, `date_a
 
 CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
-  `item_name` varchar(200) DEFAULT NULL,
   `action` varchar(50) DEFAULT NULL,
   `date_action` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -326,32 +325,6 @@ CREATE TABLE `log` (
 --
 -- Dumping data for table `log`
 --
-
-INSERT INTO `log` (`log_id`, `item_name`, `action`, `date_action`) VALUES
-(1, 'Laptop', 'Add', '2021-07-01 00:00:00'),
-(2, 'PC', 'Add', '2021-07-01 00:00:00'),
-(3, 'Sound Sytem', 'Add', '2021-07-01 00:00:00'),
-(4, '213', 'Added Item', '2021-07-15 00:00:00'),
-(5, '213', 'Added Item', '2021-07-15 00:00:00'),
-(6, '213', 'Added Item', '2021-07-15 00:00:00'),
-(7, 'a', 'Added Item', '2021-07-15 00:00:00'),
-(8, '213', 'Deleted It', '2021-07-16 00:00:00'),
-(9, '', 'Deleted It', '2021-07-16 00:00:00'),
-(10, '', 'Deleted It', '2021-07-16 00:00:00'),
-(11, '', 'Deleted It', '2021-07-16 00:00:00'),
-(12, '', 'Deleted It', '2021-07-16 00:00:00'),
-(13, '', 'Deleted It', '2021-07-16 00:00:00'),
-(14, '', 'Deleted It', '2021-07-16 00:00:00'),
-(15, '', 'Deleted It', '2021-07-16 00:00:00'),
-(16, '123', 'Added Item', '2021-07-16 00:00:00'),
-(17, '1231231', 'Added Item', '2021-07-16 00:00:00'),
-(18, '1', 'Added Item', '2021-07-16 00:00:00'),
-(19, '2', 'Added Item', '2021-07-16 00:00:00'),
-(20, '1', 'Deleted It', '2021-07-16 00:00:00'),
-(21, '2', 'Deleted It', '2021-07-16 00:00:00'),
-(22, '1', 'Deleted It', '2021-07-16 00:00:00'),
-(23, '1', 'Deleted It', '2021-07-16 00:00:00'),
-(24, '1', 'Deleted It', '2021-07-16 00:00:00');
 
 -- --------------------------------------------------------
 
