@@ -152,7 +152,7 @@
 }
 </style>
 
-<a id="button" class= "btn btn-primary" href ="genPDF.php">Equipment</a>
+<a id="button" class= "btn btn-primary" href ="genPDFsum.php">Office</a>
 <!-- Generate PDF button -->
 <style type="text/css">
 
@@ -172,7 +172,7 @@
 }
 </style>
 
-<a id="button" class= "btn btn-primary" href ="genPDF1.php">IT</a>
+<a id="button" class= "btn btn-primary" href ="genPDFsum1.php">IT</a>
 <!-- Generate PDF button -->
 <style type="text/css">
 
@@ -192,7 +192,7 @@
 }
 </style>
 
-<a id="button" class= "btn btn-primary" href ="genPDF2.php">Laboratory</a>
+<a id="button" class= "btn btn-primary" href ="genPDFsum2.php">Laboratory</a>
 </div>
 </div>
 </div>
