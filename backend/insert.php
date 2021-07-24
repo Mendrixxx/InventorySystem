@@ -3,8 +3,6 @@
 	include "conn.php";
 
 //Wag po tangallin yung mga lines na may comment symbol. For logs po ito.
-	$added_item = "Added Item";//
-	$added_component = "Added Component";
 
 
 if(isset($_POST['add'])){
@@ -25,11 +23,12 @@ if(isset($_POST['add'])){
 
     $additem = "INSERT into item(item_name, item_desc, property_num, date_aq, unit_meas, unit_val, total_val, quant_propcar, quant_phycou, remarks, classification, SO_quant, SO_val) values ('$iname', '$desc', '$pnum', '$dateaq', '$umeas', '$uvalue', '$tvalue', '$qPropCard', '$qPhysCount', '$remarks', '$classif', '$qSO', '$vSO')";   
     $query_run = mysqli_query($conn, $additem);
+	$added_item = "Add Item  <b>" .$iname. " </b> to the inventory.";//LOGS
     $lastid = $conn->insert_id;
     $addtocost = "INSERT into yearcosting(item_id, cost, classification) values ('$lastid', '$tvalue', '$classif')";
     $query_run = mysqli_query($conn, $addtocost);
 
-    $enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$added_item', NOW())";//
+    $enter_logItem = "INSERT into log(action, date_action) VALUES ('$added_item', NOW())";//
 	$query_logItem = mysqli_query($conn, $enter_logItem);//
     if ($query_run &&  $query_logItem && $addtocost)  {
         header("location: ../Inventory.php");
@@ -48,7 +47,16 @@ if(isset($_POST['addc'])){
     $cvSO = $_POST['cvSO'];
 
     $addcomp = "INSERT into component(item_id, comp_name, c_date_aq, c_unit_meas, c_unit_val, c_total_val, c_quan_propcar, c_quan_phycou, c_SO_quan, c_SO_val) values ('$itmname', '$cname', '$cdateaq', '$cumeas', '$cuvalue', '$ctvalue', '$cqPropCard', '$cqPhysCount', '$cqSO', '$cvSO')";
-	$enter_logComp = "INSERT into log(item_name, action, date_action) VALUES ('$cname', '$added_component', NOW())";//
+	$for_item = "SELECT * FROM item WHERE item_id = $itmname";//
+	if($fetch_item = mysqli_query($conn,$for_item)){//
+		while($roww = mysqli_fetch_row($fetch_item)){//
+			$itemm_name = $roww['1'];//
+		}
+		mysqli_free_result($fetch_item);//
+	}
+	
+	$added_component = "Add Component  <b>" .$cname. " </b> to the item <b>" .$itemm_name. " </b>.";//LOGS
+	$enter_logComp = "INSERT into log(action, date_action) VALUES ('$added_component', NOW())";//LOGS
     $query_run = mysqli_query($conn, $addcomp);
 	$query_logComp = mysqli_query($conn, $enter_logComp);//
     if ($query_run && $query_logComp)  {
