@@ -3,8 +3,6 @@
 	include "conn.php";
 	
 	//Wag po tanggalin yung mga lines na may comment symbol. For logs po ito.
-	$edited_item = "Edit Item";//
-	$edited_component = "Edit Component";
 
 	function sanitize($variables){
         $sanitized_variables = filter_var($variables, FILTER_SANITIZE_STRING);
@@ -59,8 +57,9 @@ if(isset($_POST['updatebtn'])){
             		if(total_value($total_value, $unit_value, $quantity_physical_count)){
             			$sql = "UPDATE item SET item_name = '$iname', item_desc = '$ides', property_num = '$prop_no', date_aq = '$date', unit_meas = '$unit_measure', unit_val = '$unit_value', total_val = '$total_value', quant_propcar = '$quantity_prop_card', quant_phycou = '$quantity_physical_count', remarks = '$remarks_no', classification = '$classification', SO_quant = '$quantity_shortage', SO_val = '$total_shortage' WHERE item_id = '$iid'";
                 		$updateresult = mysqli_query($conn, $sql);
-
-                		$enter_logItem = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$edited_item', NOW())";//
+						
+						$edited_item = "Update Item <b>" .$iname. " </b>.";//
+                		$enter_logItem = "INSERT into log(action, date_action) VALUES ('$edited_item', NOW())";//
                 		$query_logItem = mysqli_query($conn, $enter_logItem);//
 
                 		if($updateresult && $query_logItem){
@@ -108,7 +107,15 @@ if(isset($_POST['cupdatebtn'])){
 			$compupdate = "UPDATE component SET comp_name = '$cname', c_date_aq = '$cdate', c_unit_meas = '$cumeasure', c_unit_val = '$cuvalue', c_total_val = '$ctotalvalue', c_quan_propcar = '$cquantity_prop_card', c_quan_phycou = '$cquantity', c_SO_quan = '$cquantity_shortage', c_SO_val = '$ctotal_shortage' WHERE comp_id = '$cid'";
 			$updateresult = mysqli_query($conn, $compupdate);
 			
-			$enter_logComp = "INSERT into log(item_name, action, date_action) VALUES ('$iname', '$edited_component', NOW())";//
+			$for_item = "SELECT * FROM item WHERE item_id = $iname";//
+				if($fetch_item = mysqli_query($conn,$for_item)){//
+					while($roww = mysqli_fetch_row($fetch_item)){//
+						$itemm_name = $roww['1'];//
+					}
+					mysqli_free_result($fetch_item);//
+				}
+			$edited_component = "Update Component <b>" .$cname. " </b> of the item <b>" .$iname. " </b>.";
+			$enter_logComp = "INSERT into log(action, date_action) VALUES ('$edited_component', NOW())";//
             $query_logComp = mysqli_query($conn, $enter_logComp);//
 
 			if($updateresult && $query_logComp){

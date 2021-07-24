@@ -71,7 +71,6 @@ if (isset($_SESSION['pass'])) {
 									<thead>
 										<tr>
 											<th>Action</th>
-											<th>Item/Component Name</th>
 											<th>Date of Action</th>
 										</tr>
 									</thead>
@@ -105,10 +104,6 @@ if (isset($_SESSION['pass'])) {
             "columns":[
 			  {
                 "data":"action",
-                "defaultContent":" "
-              },
-			  {
-                "data":"item_name",
                 "defaultContent":" "
               },
 			  {

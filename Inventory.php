@@ -347,6 +347,7 @@
                      </div>
                      <input type="hidden" name="Delete_IDc" id="Delete_IDc">
                      <input type="hidden" name="comp_name" id="comp_name"> <!-- For logs -->
+					
                   </div>
                   <div class="modal-footer ">
                      <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span

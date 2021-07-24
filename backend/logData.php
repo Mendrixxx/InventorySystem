@@ -9,7 +9,6 @@
 	while($row = mysqli_fetch_array($result)){
 		$datarow = array();
 		$datarow['action'] = $row['action'];
-		$datarow['item_name'] = $row['item_name'];
 		$datarow['date_action'] = $row['date_action'];
 		
 		$rows[] = $row;
