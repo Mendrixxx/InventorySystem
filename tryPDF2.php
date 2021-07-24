@@ -15,7 +15,7 @@
       // functions
     function getData($conn) {
         $query = "  SELECT * 
-                    FROM `item` WHERE classification = '0' ";
+                    FROM `item` WHERE classification = '2' ";
         $result = mysqli_query($conn, $query);
         $dataArr = getRowsFrmDB($result);
         return $dataArr;
