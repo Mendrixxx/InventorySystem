@@ -74,7 +74,64 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                  <a href="#" class="btn btn-danger" >Generate PDF</a>
+                <!-- Generate PDF button -->
+          <style type="text/css">
+
+#button{
+
+    display: inline-block;
+    background-color: lightgreen;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-family: verdana;
+    text-decoration: none;
+    height: 38px;
+    width: 200px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+}
+</style>
+
+<a id="button" class= "btn btn-primary" href ="genPDFsum.php">Office</a>
+<!-- Generate PDF button -->
+<style type="text/css">
+
+#button{
+
+    display: inline-block;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-family: verdana;
+    text-decoration: none;
+    height: 38px;
+    width: 100px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+}
+</style>
+
+<a id="button" class= "btn btn-primary" href ="genPDFsum1.php">IT</a>
+<!-- Generate PDF button -->
+<style type="text/css">
+
+#button{
+
+    display: inline-block;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-family: verdana;
+    text-decoration: none;
+    height: 38px;
+    width: 110px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+}
+</style>
                                 </ol>
                             </nav>
                         </div>
@@ -133,64 +190,7 @@
                     </div>
                 </div>
             </section>
-<!-- Generate PDF button -->
-          <style type="text/css">
 
-#button{
-
-    display: inline-block;
-    background-color: lightgreen;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 200px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
-
-<a id="button" class= "btn btn-primary" href ="genPDFsum.php">Office</a>
-<!-- Generate PDF button -->
-<style type="text/css">
-
-#button{
-
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 100px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
-
-<a id="button" class= "btn btn-primary" href ="genPDFsum1.php">IT</a>
-<!-- Generate PDF button -->
-<style type="text/css">
-
-#button{
-
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 110px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
 
 <a id="button" class= "btn btn-primary" href ="genPDFsum2.php">Laboratory</a>
 </div>
