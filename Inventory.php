@@ -544,6 +544,8 @@
                <div class="modal-body">
                   <form action="" method="POST" autocomplete = "off" id="editform">
                      <div class="modal-body">
+                      NOTE: <i>Total Value will automatically be computed based on the Unit Value and Quantity Per Physical Count.</i></br>
+                        </br>
                         <label>Name of Item: </label>
                         <div class="form-group">
                            <input name="iname" id="iname" type="text" placeholder="Name" class="form-control" Required>
@@ -558,27 +560,23 @@
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="dateaq" id="dateaq" type="date" class="form-control" Required>
+                           <input  name="dateaq" id="dateaq" type="date" class="form-control">
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="umeas" id="umeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                           <input name="umeas" id="umeas" type="text" placeholder="Unit Measured" class="form-control">
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="uvalue"  id="uvalue" type="number" min="0" placeholder="Unit Value" class="form-control" Required>
-                        </div>
-                        <label>Total Value: </label>
-                        <div class="form-group">
-                           <input name="tvalue" id="tvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
+                           <input name="uvalue"  id="uvalue" type="number" min="0" placeholder="Unit Value" class="form-control">
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" id="qPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="qPropCard" id="qPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control">
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" id="qPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="qPhysCount" id="qPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control">
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
@@ -658,27 +656,23 @@
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="cdateaq" id="cdateaq" type="date" class="form-control" Required>
+                           <input  name="cdateaq" id="cdateaq" type="date" class="form-control">
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="cumeas" id="cumeas" type="text" placeholder="Unit Measured" class="form-control" Required>
+                           <input name="cumeas" id="cumeas" type="text" placeholder="Unit Measured" class="form-control">
                         </div>
                         <label>Unit Value: </label>
                         <div class="form-group">
-                           <input name="cuvalue"  id="cuvalue" type="number" min="0" placeholder="Unit Value" class="form-control" Required>
-                        </div>
-                        <label>Total Value: </label>
-                        <div class="form-group">
-                           <input name="ctvalue" id="ctvalue" type="number" min="0" placeholder="Total Value" class="form-control" Required>
+                           <input name="cuvalue"  id="cuvalue" type="number" min="0" placeholder="Unit Value" class="form-control">
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="cqPropCard" id="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control" Required>
+                           <input  name="cqPropCard" id="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control">
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="cqPhysCount" id="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control" Required>
+                           <input name="cqPhysCount" id="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control">
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
@@ -783,7 +777,6 @@
                   var item_date = $("#dateaq").val();
                   var item_umeasure = $("#umeas").val();
                   var item_uvalue = $("#uvalue").val();
-                  var item_totalvalue = $("#tvalue").val();
                   var item_quantity_prop_card = $("#qPropCard").val();
                   var item_quantity = $("#qPhysCount").val();
                   var item_quantity_shortage = $("#qSO").val();
@@ -803,7 +796,6 @@
                             date:item_date,
                             umeasure:item_umeasure,
                             uvalue:item_uvalue,
-                            totalvalue:item_totalvalue,
                             quantity_prop_card:item_quantity_prop_card,
                             quantity:item_quantity,
                             quantity_shortage:item_quantity_shortage,
@@ -838,7 +830,6 @@
             $("#dateaq").val($(cols[4]).text());
             $("#umeas").val($(cols[5]).text());
             $("#uvalue").val($(cols[6]).text());
-            $("#tvalue").val($(cols[7]).text());
             $("#qPropCard").val($(cols[8]).text());
             $("#qPhysCount").val($(cols[9]).text());
             $("#qSO").val($(cols[10]).text());
@@ -867,7 +858,6 @@
                   var comp_date = $("#cdateaq").val();
                   var comp_umeas = $("#cumeas").val();
                   var comp_uvalue = $("#cuvalue").val();
-                  var comp_tvalue = $("#ctvalue").val();
                   var comp_qPropCard = $("#cqPropCard").val();
                   var comp_qPhysCount = $("#cqPhysCount").val();
                   var comp_qSO = $("#cqSO").val();
@@ -884,7 +874,6 @@
                       date:comp_date,
                       umeasure:comp_umeas,
                       uvalue:comp_uvalue,
-                      totalvalue:comp_tvalue,
                       quantity_prop_card:comp_qPropCard,
                       quantity:comp_qPhysCount,
                       quantity_shortage:comp_qSO,
@@ -919,7 +908,6 @@
             $("#cdateaq").val($(cols[1]).text());
             $("#cumeas").val($(cols[2]).text());
             $("#cuvalue").val($(cols[3]).text());
-            $("#ctvalue").val($(cols[4]).text());
             $("#cqPropCard").val($(cols[5]).text());
             $("#cqPhysCount").val($(cols[6]).text());
             $("#cqSO").val($(cols[7]).text());

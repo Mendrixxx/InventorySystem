@@ -19,13 +19,12 @@
 			}
 	}
 
-	function total_value($total_value, $unit_value, $quantity_physical_count){
-		$product = $quantity_physical_count * $unit_value;
-		if($total_value != $product){
-			return false;
+	function total_check($quantity, $value){
+		if($quantity == 0 || $quantity == NULL){
+			return $value;
 		}
 		else{
-			return true;
+			return $value * $quantity;
 		}
 	}
 
@@ -37,7 +36,7 @@ if(isset($_POST['updatebtn'])){
         $date = sanitize(mysqli_real_escape_string($conn,trim($_POST['date'])));
         $unit_measure = sanitize(mysqli_real_escape_string($conn,trim($_POST['umeasure'])));
         $unit_value = sanitize(mysqli_real_escape_string($conn,trim($_POST['uvalue'])));
-        $total_value = sanitize(mysqli_real_escape_string($conn,trim($_POST['totalvalue'])));
+        $total_value = 0;
         $quantity_prop_card = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity_prop_card'])));
         $quantity_physical_count = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity'])));
         $quantity_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity_shortage'])));
@@ -54,25 +53,26 @@ if(isset($_POST['updatebtn'])){
             }
             else{
             	if(equipment_check($unit_value)){
-            		if(total_value($total_value, $unit_value, $quantity_physical_count)){
+            		$total_value = total_check($quantity_physical_count, $unit_value);
             			$sql = "UPDATE item SET item_name = '$iname', item_desc = '$ides', property_num = '$prop_no', date_aq = '$date', unit_meas = '$unit_measure', unit_val = '$unit_value', total_val = '$total_value', quant_propcar = '$quantity_prop_card', quant_phycou = '$quantity_physical_count', remarks = '$remarks_no', classification = '$classification', SO_quant = '$quantity_shortage', SO_val = '$total_shortage' WHERE item_id = '$iid'";
                 		$updateresult = mysqli_query($conn, $sql);
-						
+
+    					//logs
 						$edited_item = "Update Item <b>" .$iname. " </b>.";//
                 		$enter_logItem = "INSERT into log(action, date_action) VALUES ('$edited_item', NOW())";//
                 		$query_logItem = mysqli_query($conn, $enter_logItem);//
 
-                		if($updateresult && $query_logItem){
-                    		echo "Updated Successfully!"; 
-                		}
+                		//yearcosting
+                		$addtocost = "UPDATE yearcosting SET item_id = '$iid', cost = '$total_value', classification = '$classification' WHERE item_id = '$iid'";
+    					$query_run = mysqli_query($conn, $addtocost);
+
+                		if($updateresult && $query_logItem && $query_run){						  							
+    						echo "Updated Successfully!";
+						}
                 		else{
                     	    echo "Update Failed";
                 		}
             		}
-            		else{
-            			echo "Total Value Error!";
-            		}
-            	}
             	else{
             		echo "Item unit value should be 15k above!";
             	}
@@ -88,17 +88,13 @@ if(isset($_POST['cupdatebtn'])){
 	$cdate = sanitize(mysqli_real_escape_string($conn,trim($_POST['date'])));
 	$cumeasure = sanitize(mysqli_real_escape_string($conn,trim($_POST['umeasure'])));
 	$cuvalue = sanitize(mysqli_real_escape_string($conn,trim($_POST['uvalue'])));
-	$ctotalvalue = sanitize(mysqli_real_escape_string($conn,trim($_POST['totalvalue'])));
+	$ctotalvalue = 0;
 	$cquantity_prop_card = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity_prop_card'])));
 	$cquantity = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity'])));
 	$cquantity_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['quantity_shortage'])));
 	$ctotal_shortage = sanitize(mysqli_real_escape_string($conn,trim($_POST['total_shortage'])));
 
-	$total = $cuvalue * $cquantity;
-	if($ctotalvalue != $total){
-		echo "Total Value Error";
-	}
-	else{	
+		$ctotalvalue = total_check($cquantity, $cuvalue);
 		$sql = "SELECT item_name FROM item WHERE item_id = '$iid'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_array($result);
@@ -128,7 +124,6 @@ if(isset($_POST['cupdatebtn'])){
 				//header("location: ../Inventory.php");
 			}
 		}
-	}
 }
 ?>
 
