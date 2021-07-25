@@ -210,6 +210,15 @@
       .table tbody tr:nth-of-type(odd) {
       background-color: white;
       }
+	   .card {
+position: relative;
+top: -0.5rem;
+float: left;
+min-width: 4rem;
+margin-left: 0;
+margin-right: 1rem;
+text-align: left;
+}
    </style>
    <body>
    <!--Sidebars-->
