@@ -132,6 +132,8 @@
     margin-bottom: 1px;
 }
 </style>
+<a id="button" class= "btn btn-primary" href ="genPDFsum2.php">Laboratory</a>
+                                    
                                 </ol>
                             </nav>
                         </div>
@@ -192,7 +194,6 @@
             </section>
 
 
-<a id="button" class= "btn btn-primary" href ="genPDFsum2.php">Laboratory</a>
 </div>
 </div>
 </div>
