@@ -86,7 +86,9 @@ foreach($items as $val){
 	if($data1 == $val['item_name']) {
 			
 		
-		$pdf->Cell(100, 10, $val['comp_name'],1,0,'L');
+		$pdf->Cell(25, 10, $val['comp_name'],1,0,'L');
+		$pdf->Cell(40, 10, "",1,0,'L');
+		$pdf->Cell(35, 10, "",1,0,'L');
 		$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
 		$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
 		$pdf->Cell(20, 10, $val['c_unit_val'],1,0,'L');
@@ -114,7 +116,9 @@ foreach($items as $val){
 		$pdf->Cell(30, 10, $val['last_name'],1,0,'L');
 		$pdf->Ln();	
 
-		$pdf->Cell(100, 10, $val['comp_name'],1,0,'L');
+		$pdf->Cell(25, 10, $val['comp_name'],1,0,'L');
+		$pdf->Cell(40, 10, "",1,0,'L');
+		$pdf->Cell(35, 10, "",1,0,'L');
 		$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
 		$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
 		$pdf->Cell(20, 10, $val['c_unit_val'],1,0,'L');
