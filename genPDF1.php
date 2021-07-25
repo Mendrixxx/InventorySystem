@@ -128,6 +128,7 @@ foreach($items as $val){
 		$data1 = $val['item_name'];
 	}
 				$amount = $amount+$val['total_val'];
+				$amount = $amount+$val['c_total_val'];
 				$total = $amount;
 			
 }
