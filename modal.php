@@ -20,9 +20,11 @@ if (!isset($_SESSION['pass'])) {
        		<p class="error"><?php echo $_GET['error']; ?></p>
        <?php } ?>
 
-       <?php if (isset($_GET['success'])) { ?>
-              <p class="success"><?php echo $_GET['success']; ?></p>
-       <?php } ?>
+       <?php if (isset($_GET['success'])) {
+        echo "<script>alert('Password Changed Successfully!');
+        window.location.href='login.php';
+        </script>";
+            } ?>
 
         <div class="txt_field">
           <input type="password" name = "op" required>
@@ -54,7 +56,7 @@ if (!isset($_SESSION['pass'])) {
 
 <?php
 }else{
-      header("Location: kapagalan.php");
+      header("Location: Inventory.php");
       exit();
 }
 ?>
