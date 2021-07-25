@@ -1,7 +1,7 @@
 <?php
 	
 	require "fpdf.php";
-	$db = new PDO('mysql:host=localhost;dbname=inventory','root','');
+	include './backend/conn.php';
 
 class PDF_MC_Table extends FPDF{
 	
@@ -67,63 +67,74 @@ class PDF_MC_Table extends FPDF{
 
 $pdf = new PDF_MC_Table();
 
+require 'try.php';
+
 $pdf->AliasNbPages();
 $pdf->AddPage('L', 'Legal', 0);
 		
-		$pdf->SetFont('Times','',10);
-		$amount = 0;
-		$total = 0;
-		$max = 11; 
-		$i = 0;
+$pdf->SetFont('Times','',10);
+$amount = 0;
+$total = 0;
+$max = 11; 
+$i = 0;
+
+$data1 = [];
+	$data1 = "";
+foreach($items as $val){
 	
-		$stmt = $db->query('SELECT
-		*
-	FROM
-		item AS i
-		LEFT JOIN employee AS e ON (i.remarks = e.id)
-	LEFT JOIN component AS c ON (i.item_id=c.item_id) order by i.item_id asc
-	');
-		
-		while($data = $stmt->fetch(PDO::FETCH_OBJ)){
+
+	if($data1 == $val['item_name']) {
 			
-			if($i != $max){
-					
-						$pdf->Cell(25, 10, $data->item_name,1,0,'L');
-						$pdf->Cell(40, 10, $data->item_desc,1,0,'L');
-						$pdf->Cell(35, 10, $data->property_num,1,0,'L');
-						$pdf->Cell(30, 10, $data->date_aq,1,0,'L');
-						$pdf->Cell(25, 10, $data->unit_meas,1,0,'L');
-						$pdf->Cell(20, 10, $data->unit_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->total_val,1,0,'L');
-						$pdf->Cell(37, 10, $data->quant_propcar,1,0,'L');
-						$pdf->Cell(37, 10, $data->quant_phycou,1,0,'L');
-						$pdf->Cell(15, 10, $data->SO_quant,1,0,'L');
-						$pdf->Cell(15, 10, $data->SO_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->last_name,1,0,'L');
-						$pdf->Ln();
-						$pdf->Cell(25, 10, $data->comp_name, 1,0, 'L');
-						$pdf->Cell(40, 10, '', 1,0, 'L');
-						$pdf->Cell(35, 10, '', 1, 0, 'L');
-						$pdf->Cell(30, 10, $data->c_date_aq, 1, 0, 'L');
-						$pdf->Cell(25, 10, $data->c_unit_meas, 1, 0, 'L');
-						$pdf->Cell(20, 10, $data->c_unit_val, 1, 0, 'L');
-						$pdf->Cell(30, 10, $data->c_total_val, 1, 0, 'L');
-						$pdf->Cell(37, 10, $data->c_quan_propcar, 1, 0, 'L');
-						$pdf->Cell(37, 10, $data->c_quan_phycou,1,0,'L');
-						$pdf->Cell(15, 10, $data->c_SO_quan,1,0,'L');
-						$pdf->Cell(15, 10, $data->c_SO_val,1,0,'L');
-						$pdf->Cell(30, 10, $data->last_name,1,0,'L');
-						$pdf->Ln();
-						$amount = $amount+$data->total_val;
-						$total = $amount;
-							
-					}	$i += 1;
-							
-		}
 		
-		$pdf->Cell(175, 10, 'SUBTOTAL: ', 1, 0, 'L');
+		$pdf->Cell(100, 10, $val['comp_name'],1,0,'L');
+		$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
+		$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
+		$pdf->Cell(20, 10, $val['c_unit_val'],1,0,'L');
+		$pdf->Cell(30, 10, $val['c_total_val'],1,0,'L');
+		$pdf->Cell(37, 10, $val['c_quan_propcar'],1,0,'L');
+		$pdf->Cell(37, 10, $val['c_quan_phycou'],1,0,'L');
+		$pdf->Cell(15, 10,$val['c_SO_quan'] ,1,0,'L');
+		$pdf->Cell(15, 10, $val['c_SO_val'],1,0,'L');
+		$pdf->Cell(30, 10, "",1,0,'L');
+		$pdf->Ln();
+		$data1 = $val['item_name'];
+	} else {
+		
+		$pdf->Cell(25, 10, $val['item_name'],1,0,'L');
+		$pdf->Cell(40, 10, $val['item_desc'],1,0,'L');
+		$pdf->Cell(35, 10, $val['property_num'],1,0,'L');
+		$pdf->Cell(30, 10, $val['date_aq'],1,0,'L');
+		$pdf->Cell(25, 10, $val['unit_meas'],1,0,'L');
+		$pdf->Cell(20, 10, $val['unit_val'],1,0,'L');
+		$pdf->Cell(30, 10, $val['total_val'],1,0,'L');
+		$pdf->Cell(37, 10, $val['quant_propcar'],1,0,'L');
+		$pdf->Cell(37, 10, $val['quant_phycou'],1,0,'L');
+		$pdf->Cell(15, 10,$val['SO_quant'] ,1,0,'L');
+		$pdf->Cell(15, 10, $val['SO_val'],1,0,'L');
+		$pdf->Cell(30, 10, $val['last_name'],1,0,'L');
+		$pdf->Ln();	
+
+		$pdf->Cell(100, 10, $val['comp_name'],1,0,'L');
+		$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
+		$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
+		$pdf->Cell(20, 10, $val['c_unit_val'],1,0,'L');
+		$pdf->Cell(30, 10, $val['c_total_val'],1,0,'L');
+		$pdf->Cell(37, 10, $val['c_quan_propcar'],1,0,'L');
+		$pdf->Cell(37, 10, $val['c_quan_phycou'],1,0,'L');
+		$pdf->Cell(15, 10,$val['c_SO_quan'] ,1,0,'L');
+		$pdf->Cell(15, 10, $val['c_SO_val'],1,0,'L');
+		$pdf->Cell(30, 10, "",1,0,'L');
+		$pdf->Ln();
+		$data1 = $val['item_name'];
+	}
+				$amount = $amount+$val['total_val'];
+				$total = $amount;
+			
+}
+$pdf->Cell(175, 10, 'SUBTOTAL: ', 1, 0, 'L');
 		$pdf->SetFont('Times','B',10);
 		$pdf->Cell(30, 10, $total, 1, 0, 'L');
+		$pdf->Ln();
 		$total = 0;
 		$i = 0;
 
