@@ -233,7 +233,7 @@ text-align: left;
                         <h4 class="card-title">Inventory</h4>
                      </div>
                      <div class="card-content">
-                        <select id="select_classi">
+                        <select id="select_classi"style="margin-left: 30px;">
                           <option value>ALL ITEMS</option>;
                             <?php
                               $sqlcl = "SELECT * FROM `classification`";
