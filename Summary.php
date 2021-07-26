@@ -161,6 +161,8 @@
                   </div>
                                 </div>
                                 <div class="card-content">
+                                     <div class="card">
+                                       <div class="card-header">
                                     <!-- table strip dark -->
                                     <div class="table-responsive">
                                         <table id = "summary" class="table table-striped">
