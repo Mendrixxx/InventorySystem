@@ -130,41 +130,7 @@
                                                                  ?>   
                                                                 
                                                               </div>
-                                        
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-<!-- Generate PDF button -->
-          <style type="text/css">
-
-#button{
-
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 200px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
-
-
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<div class="modal fade" id="addcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="addcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
@@ -291,6 +257,22 @@
                         </style>
 
                         <a id="button" class= "btn btn-primary" href ="genPDF1.php">Generate PDF</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
 
         <footer>
             <div class="footer clearfix mb-0 text-muted">
