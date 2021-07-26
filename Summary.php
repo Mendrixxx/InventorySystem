@@ -74,66 +74,9 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                <!-- Generate PDF button -->
-          <style type="text/css">
-
-#button{
-
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 200px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
-
-<a id="button" class= "btn btn-primary" href ="genPDFsum.php">Office</a>
-<!-- Generate PDF button -->
-<style type="text/css">
-
-#button{
-
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 100px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
-
-<a id="button" class= "btn btn-primary" href ="genPDFsum1.php">IT</a>
-<!-- Generate PDF button -->
-<style type="text/css">
-
-#button{
-
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    font-family: verdana;
-    text-decoration: none;
-    height: 38px;
-    width: 110px;
-    margin-left: 1px;
-    margin-bottom: 1px;
-}
-</style>
-<a id="button" class= "btn btn-primary" href ="genPDFsum2.php">Laboratory</a>
-                                    
+      
+                                <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Generate PDF</button>
+                      
                                 </ol>
                             </nav>
                         </div>
@@ -214,14 +157,140 @@
 }
 </style>
 
-<a id="button" class= "btn btn-primary" href ="genPDF1.php">Generate PDF</a>
+
 
 </div>
 </div>
 </div>
 </div>
 </section>
+<div class="modal fade" id="addcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Generate PDF</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <form autocomplete="off" action="backend/insert.php" method="POST">
+                     <div class="modal-body">
+                        <label>Select the PDF to be generated:  </label>
+                        <div class="form-group">
+                        <label> </label>
+                        </div>
+                        <div class="form-group">
 
+                        <label>Office Summary </label>
+
+                        </div>
+                        <div class="form-group">
+                         <!-- Generate PDF button -->
+                         <style type="text/css">
+
+                            #button{
+
+                                display: inline-block;
+                                background-color: green;
+                                color: white;
+                                padding: 5px;
+                                text-align: center;
+                                font-family: verdana;
+                                text-decoration: none;
+                                height: 38px;
+                                width: 100px;
+                                margin-left: 1px;
+                                margin-bottom: 1px;
+                            }
+                            </style>
+
+                            <a id="button" class= "btn btn-primary" href ="genPDFsum.php">Office</a>
+                            </div>
+                        <div class="form-group">
+
+                        <label>IT Summary </label>
+
+                        </div>
+                        <div class="form-group">
+                         <!-- Generate PDF button -->
+                         <style type="text/css">
+
+                            #button{
+
+                                display: inline-block;
+                                background-color: green;
+                                color: white;
+                                padding: 5px;
+                                text-align: center;
+                                font-family: verdana;
+                                text-decoration: none;
+                                height: 38px;
+                                width: 100px;
+                                margin-left: 1px;
+                                margin-bottom: 1px;
+                            }
+                            </style>
+
+                            <a id="button" class= "btn btn-primary" href ="genPDFsum1.php">IT</a>
+                            </div>
+                            <div class="form-group">
+
+                            <label>Laboratory Summary </label>
+
+                            </div>
+                            <div class="form-group">
+                            <!-- Generate PDF button -->
+                            <style type="text/css">
+
+                                #button{
+
+                                    display: inline-block;
+                                    background-color: green;
+                                    color: white;
+                                    padding: 5px;
+                                    text-align: center;
+                                    font-family: verdana;
+                                    text-decoration: none;
+                                    height: 38px;
+                                    width: 100px;
+                                    margin-left: 1px;
+                                    margin-bottom: 1px;
+                                }
+                                </style>
+
+                                <a id="button" class= "btn btn-primary" href ="genPDFsum2.php">Laboratory</a>
+                                
+                                <div class="form-group">
+
+                                <label> </label>
+
+                                </div>
+                                <div class="form-group">
+
+                                <label>Items in Inventory</label>
+
+                                </div>
+                               <!-- Generate PDF button -->
+                                <style type="text/css">
+
+                             #button{
+
+                            display: inline-block;
+                            background-color: green;
+                            color: white;
+                            padding: 5px;
+                            text-align: center;
+                            font-family: verdana;
+                            text-decoration: none;
+                            height: 38px;
+                            width: 200px;
+                            margin-left: 1px;
+                            margin-bottom: 1px;
+                        }
+                        </style>
+
+                        <a id="button" class= "btn btn-primary" href ="genPDF1.php">Generate PDF</a>
 
         <footer>
             <div class="footer clearfix mb-0 text-muted">
