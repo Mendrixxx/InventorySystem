@@ -259,14 +259,7 @@
                         <a id="button" class= "btn btn-primary" href ="genPDF1.php">Generate PDF</a>
 
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
+                    
 </div>
 </div>
 </div>
