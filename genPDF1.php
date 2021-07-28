@@ -99,9 +99,10 @@ foreach($items as $val){
 		$pdf->Cell(15, 10, $val['c_SO_val'],1,0,'L');
 		$pdf->Cell(30, 10, "",1,0,'L');
 		$pdf->Ln();
+		$amount = $amount-$val['total_val'];
 		$data1 = $val['item_name'];
 	} else {
-		
+		$lname = utf8_decode($val['last_name']);
 		$pdf->Cell(25, 10, $val['item_name'],1,0,'L');
 		$pdf->Cell(40, 10, $val['item_desc'],1,0,'L');
 		$pdf->Cell(35, 10, $val['property_num'],1,0,'L');
@@ -113,23 +114,26 @@ foreach($items as $val){
 		$pdf->Cell(37, 10, $val['quant_phycou'],1,0,'L');
 		$pdf->Cell(15, 10,$val['SO_quant'] ,1,0,'L');
 		$pdf->Cell(15, 10, $val['SO_val'],1,0,'L');
-		$pdf->Cell(30, 10, $val['last_name'],1,0,'L');
+		$pdf->Cell(30, 10, $lname,1,0,'L');
 		$pdf->Ln();	
-
-		$pdf->Cell(25, 10, $val['comp_name'],1,0,'L');
-		$pdf->Cell(40, 10, "",1,0,'L');
-		$pdf->Cell(35, 10, "",1,0,'L');
-		$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
-		$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
-		$pdf->Cell(20, 10, $val['c_unit_val'],1,0,'L');
-		$pdf->Cell(30, 10, $val['c_total_val'],1,0,'L');
-		$pdf->Cell(37, 10, $val['c_quan_propcar'],1,0,'L');
-		$pdf->Cell(37, 10, $val['c_quan_phycou'],1,0,'L');
-		$pdf->Cell(15, 10,$val['c_SO_quan'] ,1,0,'L');
-		$pdf->Cell(15, 10, $val['c_SO_val'],1,0,'L');
-		$pdf->Cell(30, 10, "",1,0,'L');
-		$pdf->Ln();
-		$data1 = $val['item_name'];
+			if($val['comp_name']!=NULL){
+				$pdf->Cell(25, 10, $val['comp_name'],1,0,'L');
+					$pdf->Cell(40, 10, "",1,0,'L');
+					$pdf->Cell(35, 10, "",1,0,'L');
+					$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
+					$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
+					$pdf->Cell(20, 10, $val['c_unit_val'],1,0,'L');
+					$pdf->Cell(30, 10, $val['c_total_val'],1,0,'L');
+					$pdf->Cell(37, 10, $val['c_quan_propcar'],1,0,'L');
+					$pdf->Cell(37, 10, $val['c_quan_phycou'],1,0,'L');
+					$pdf->Cell(15, 10,$val['c_SO_quan'] ,1,0,'L');
+					$pdf->Cell(15, 10, $val['c_SO_val'],1,0,'L');
+					$pdf->Cell(30, 10, "",1,0,'L');
+					$pdf->Ln();
+					$data1 = $val['item_name'];
+			}
+			       
+			
 	}
 				$amount = $amount+$val['total_val'];
 				$amount = $amount+$val['c_total_val'];
