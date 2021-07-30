@@ -413,11 +413,11 @@ text-align: left;
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" type="number"  min="0" class="form-control" >
+                           <input  name="qPropCard" type="number"  min="1" class="form-control" >
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" type="number"  min="0" class="form-control" Required>
+                           <input name="qPhysCount" type="number"  min="1" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
