@@ -140,7 +140,7 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <form autocomplete="off" action="backend/insert.php" method="POST">
+                  <form autocomplete="off" action="backend/total.php" method="POST">
                      <div class="modal-body">
                         <label>Select the PDF to be generated:  </label>
                         <div class="form-group">
