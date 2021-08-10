@@ -27,8 +27,8 @@ class PDF_MC_Table extends FPDF{
 		$this->Ln();
 		$this->Ln();
 		$this->SetFont('Times','B',10);
-			$this->Cell(25, 15, 'Name',1,0,'C');
-			$this->Cell(40, 15, 'Description',1,0,'C');
+			$this->Cell(10, 15, 'Art',1,0,'C');
+			$this->Cell(55, 15, 'Description',1,0,'C');
 			$this->Cell(35, 15, 'Property Number',1,0,'C');
 			$this->Cell(30, 15, 'Date Acquired',1,0,'C');
 			$this->SetFont('Times', 'B', 8);
@@ -45,8 +45,8 @@ class PDF_MC_Table extends FPDF{
 			$this->Cell(30, 15, 'Remarks',1,0,'C');
 			$this->Ln();
 			$this->SetFont('Times','B',10);
-			$this->Cell(25, 0, '',0,0,'C');
-			$this->Cell(40, 0, '',1,0,'C');
+			$this->Cell(10, 0, '',0,0,'C');
+			$this->Cell(55, 0, '',1,0,'C');
 			$this->Cell(35, 0, '',1,0,'C');
 			$this->Cell(30, 0, '',1,0,'C');
 			$this->Cell(25, 0, '',1,0,'C');
@@ -80,14 +80,15 @@ $i = 0;
 
 $data1 = [];
 	$data1 = "";
+	$count = 0;
 foreach($items as $val){
 	
-
+	$count = $count + 1;
 	if($data1 == $val['item_name']) {
 			
-		
-		$pdf->Cell(25, 10, $val['comp_name'],1,0,'L');
-		$pdf->Cell(40, 10, "",1,0,'L');
+	
+		$pdf->Cell(10, 10, '',1,0,'L');
+		$pdf->Cell(55, 10, $val['comp_name'],1,0,'L');
 		$pdf->Cell(35, 10, "",1,0,'L');
 		$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
 		$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
@@ -101,10 +102,12 @@ foreach($items as $val){
 		$pdf->Ln();
 		$amount = $amount-$val['total_val'];
 		$data1 = $val['item_name'];
+		$count = $count - 1;
 	} else {
+		
 		$lname = utf8_decode($val['last_name']);
-		$pdf->Cell(25, 10, $val['item_name'],1,0,'L');
-		$pdf->Cell(40, 10, $val['item_desc'],1,0,'L');
+		$pdf->Cell(10, 10, $count,1,0,'L');
+		$pdf->Cell(55, 10, $val['item_name'],1,0,'L');
 		$pdf->Cell(35, 10, $val['property_num'],1,0,'L');
 		$pdf->Cell(30, 10, $val['date_aq'],1,0,'L');
 		$pdf->Cell(25, 10, $val['unit_meas'],1,0,'L');
@@ -117,8 +120,8 @@ foreach($items as $val){
 		$pdf->Cell(30, 10, $lname,1,0,'L');
 		$pdf->Ln();	
 			if($val['comp_name']!=NULL){
-				$pdf->Cell(25, 10, $val['comp_name'],1,0,'L');
-					$pdf->Cell(40, 10, "",1,0,'L');
+				$pdf->Cell(10, 10, '',1,0,'L');
+					$pdf->Cell(55, 10, $val['comp_name'],1,0,'L');
 					$pdf->Cell(35, 10, "",1,0,'L');
 					$pdf->Cell(30, 10, $val['c_date_aq'],1,0,'L');
 					$pdf->Cell(25, 10, $val['c_unit_meas'],1,0,'L');
@@ -131,6 +134,7 @@ foreach($items as $val){
 					$pdf->Cell(30, 10, "",1,0,'L');
 					$pdf->Ln();
 					$data1 = $val['item_name'];
+				
 			}
 			       
 			
@@ -140,9 +144,21 @@ foreach($items as $val){
 				$total = $amount;
 			
 }
-$pdf->Cell(175, 10, 'SUBTOTAL: ', 1, 0, 'L');
+$pdf->Cell(10, 10, '', 1, 0, 'L');
+$pdf->SetFont('Times','B',10);
+$pdf->Cell(55, 10, 'SUB TOTAL ', 1, 0, 'L');
 		$pdf->SetFont('Times','B',10);
-		$pdf->Cell(30, 10, $total, 1, 0, 'L');
+		
+		$pdf->Cell(35, 10, '',1,0,'C');
+			$pdf->Cell(30, 10, '',1,0,'C');
+			$pdf->Cell(25, 10, '',1,0,'C');
+			$pdf->Cell(20, 10, '',1,0,'C');
+			$pdf->Cell(30, 10, $total, 1, 0, 'L');
+			$pdf->Cell(37, 10, "",1,0,'C');
+			$pdf->Cell(37, 10, '',1,0,'C');
+			$pdf->Cell(15, 10, '',1,0,'');
+			$pdf->Cell(15, 10, '',1,0,'');
+			$pdf->Cell(30, 10, '',1,0,'C');
 		$pdf->Ln();
 		$total = 0;
 		$i = 0;
