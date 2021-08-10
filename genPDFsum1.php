@@ -2,7 +2,7 @@
 	
 	require "fpdf.php";
 	$db = new PDO('mysql:host=localhost;dbname=inventory','root','');
-
+	
 class PDF_MC_Table extends FPDF{
 	
 	function header(){
@@ -27,8 +27,8 @@ class PDF_MC_Table extends FPDF{
 		$this->Ln();
 		$this->Ln();
 		$this->SetFont('Times','B',10);
-			$this->Cell(25, 15, 'Name',1,0,'C');
-			$this->Cell(40, 15, 'Description',1,0,'C');
+			$this->Cell(10, 15, 'Art',1,0,'C');
+			$this->Cell(55, 15, 'Description',1,0,'C');
 			$this->Cell(35, 15, 'Property Number',1,0,'C');
 			$this->Cell(30, 15, 'Date Acquired',1,0,'C');
 			$this->SetFont('Times', 'B', 8);
@@ -81,27 +81,40 @@ $pdf->AddPage('L', 'Legal', 0);
 	
 		
 		foreach($summary as $val){
-			
-            $pdf->Cell(65, 10, "IT EQUIPMENT - ".$val['year'],1,0,'L');
-            $pdf->Cell(35, 10, "",1,0,'L');
-            $pdf->Cell(30, 10, "",1,0,'L');
-            $pdf->Cell(25, 10, "",1,0,'L');
-            $pdf->Cell(20, 10, "",1,0,'L');
-            $pdf->Cell(30, 10, $val['total'],1,0,'L');
-            $pdf->Cell(37, 10, "",1,0,'L');
-            $pdf->Cell(37, 10, "",1,0,'L');
-            $pdf->Cell(15, 10,"" ,1,0,'L');
-            $pdf->Cell(15, 10, "",1,0,'L');
-            $pdf->Cell(30, 10, "",1,0,'L');
-            $pdf->Ln();
+			$pdf->Cell(10, 10, "",1,0,'L');
+			$pdf->Cell(55, 10, "IT EQUIPMENT - ".$val['year'],1,0,'L');
+			$pdf->Cell(35, 10, "",1,0,'L');
+			$pdf->Cell(30, 10, "",1,0,'L');
+			$pdf->Cell(25, 10, "",1,0,'L');
+			$pdf->Cell(20, 10, "",1,0,'L');
+			$pdf->Cell(30, 10, $val['total'],1,0,'L');
+			$pdf->Cell(37, 10, "",1,0,'L');
+			$pdf->Cell(37, 10, "",1,0,'L');
+			$pdf->Cell(15, 10,"" ,1,0,'L');
+			$pdf->Cell(15, 10, "",1,0,'L');
+			$pdf->Cell(30, 10, "",1,0,'L');
+			$pdf->Ln();
 						$amount = $amount+$val['total'];
 						$total = $amount;
 					
 		}
 		
-		$pdf->Cell(175, 10, 'SUBTOTAL: ', 1, 0, 'L');
+		$pdf->Cell(10, 10, '', 1, 0, 'L');
+$pdf->SetFont('Times','B',10);
+$pdf->Cell(55, 10, 'SUB TOTAL ', 1, 0, 'L');
 		$pdf->SetFont('Times','B',10);
-		$pdf->Cell(30, 10, $total, 1, 0, 'L');
+		
+		$pdf->Cell(35, 10, '',1,0,'C');
+			$pdf->Cell(30, 10, '',1,0,'C');
+			$pdf->Cell(25, 10, '',1,0,'C');
+			$pdf->Cell(20, 10, '',1,0,'C');
+			$pdf->Cell(30, 10, $total, 1, 0, 'L');
+			$pdf->Cell(37, 10, "",1,0,'C');
+			$pdf->Cell(37, 10, '',1,0,'C');
+			$pdf->Cell(15, 10, '',1,0,'');
+			$pdf->Cell(15, 10, '',1,0,'');
+			$pdf->Cell(30, 10, '',1,0,'C');
+		$pdf->Ln();
 		$pdf->Ln();
 		$total = 0;
 		$i = 0;
