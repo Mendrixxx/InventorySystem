@@ -33,7 +33,8 @@
       <script type="text/javascript">
          $(document).ready(function(){
           load_data();
-        function format ( d ) {
+          load_dropdown();
+        /*function format ( d ) {
             // `d` is the original data object for the row
           if(d.hasOwnProperty(0)){
             var strTable =  '<table class="table" >'+
@@ -73,8 +74,27 @@
             return "This Item has <a style='color:red;'>No Component</a>.";
           }
             return strTable;
+        }*/
+
+        function load_dropdown(){
+          $.ajax({
+            url:'backend/loadDropdown.php',
+            dataType:'json',
+            success:function(response){
+              $("#select_classi").empty();
+              var len = response.length;
+              $("#select_classi").append("<option value>ALL ITEMS</option>");
+              for(var i = 0;i<len; i++){
+                var name  =  response[i]['name'];
+                $("#select_classi").append("<option value='"+name+"'>"+name+"</option>");
+              }
+            }
+          });
         }
+
         function load_data(category){
+          var GlobalEditNum;
+
           table = $("#table1").DataTable({
               "processing":true,
               "serverside":true,
@@ -85,12 +105,12 @@
                   type:"POST"
               },
               "columns":[
-              {
+              /*{
                   "className":      'details-control',
                   "orderable":      false,
                   "data":           null,
                   "defaultContent": ''
-              },
+              },*/
               {
                 "data":"item_name",
                 "defaultContent":" "
@@ -150,7 +170,7 @@
               
          });
 	      }
-        $('#table1 tbody').on('click', 'td.details-control', function () {
+        /*$('#table1 tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row( this );
 
@@ -166,11 +186,10 @@
                 row.child( format(row.data()) ).show();
                 tr.addClass('shown');
             }
-        } );
+        } );*/
 
         $("#select_classi").on('change',function(){
             var category = $(this).val();
-            console.log(category);
             $('#table1').DataTable().destroy();
             if(category != '')
             {
@@ -181,6 +200,110 @@
              load_data();
             }
         });
+
+        $(document).on('click','#addC',function(){
+          var newClassi = $("#addClassi").val();
+          var manage = $.trim($("#addC").html());                     
+          if(manage === "Add"){// add classification
+            if(newClassi != null && newClassi !== ''){
+              $.ajax({
+                url:"backend/addClassification.php",
+                method:"POST",
+                data:{newC:newClassi},
+                success:function(response){
+                  if(response == "1"){
+                    $("#addClassi").val("");
+                    loadClassiTable();
+                    load_dropdown();
+                  }else if(response == "0"){
+                    alert("Something wrong occured. Please try again.");
+                    $("#addClassi").val("");
+                  }else if(response == "3"){
+                    alert("Classification already exists.");
+                    $("#addClassi").val("");
+                  }
+                } 
+              });
+            }else{
+              alert("Please enter a value in the text field.");
+            }
+          }else if(manage==="Edit"){//edit classification
+            var clnumber = GlobalEditNum;
+            if(newClassi != null && newClassi !== ''){  
+              $.ajax({
+                url:"backend/editClassification.php",
+                method:"POST",
+                data:{clnum:clnumber,newC:newClassi},
+                success:function(response){
+                  if(response === "success"){
+                    $("#addClassi").val("");
+                    $("#addC").removeClass("btn btn-warning");
+                    $("#addC").addClass("btn btn-success");
+                    $("#addC").html("Add");
+                    loadClassiTable();
+                    load_dropdown();
+                  }else if(response ==="query fail"){
+                    alert("Something wrong occured. Please try again.");
+                    $("#addClassi").val("");
+                  }else if(response ==="duplicate"){
+                    alert("Classification already exists.");
+                    $("#addClassi").val("");
+                  }
+                }
+              });
+            }else{
+              alert("Please enter a value in the text field.");
+            }
+          }
+        });
+
+        $(document).on('click','#editC',function(){
+            var cl_num = $(this).attr("editClassi");
+            var toEdit = $(this).closest('td').siblings().html();
+            GlobalEditNum = cl_num;
+            
+            $("#addClassi").val(toEdit);
+            $("#addC").removeClass("btn btn-success");
+            $("#addC").addClass("btn btn-warning");
+            $("#addC").html("Edit");
+            $("#cancelEd").show();
+        });
+
+        $(document).on('click','#cancelEd',function(){
+          $("#cancelEd").hide();
+          $("#addClassi").val("");
+          $("#addC").removeClass("btn btn-warning");
+          $("#addC").addClass("btn btn-success");
+          $("#addC").html("Add");
+        });
+
+        $(document).on('click','#deleteC',function(){
+          var cl_num = $(this).attr("deleteClassi");
+          
+          $.ajax({
+            url:"backend/deleteClassification.php",
+            method:"POST",
+            data:{clnum:cl_num},
+            success:function(response){
+              console.log(response);
+              if(response === "delete error"){
+                alert("Cannot delete classification. Please delete all items before deleting classification.");
+                $("#addClassi").val("");
+                $("#addC").removeClass("btn btn-warning");
+                $("#addC").addClass("btn btn-success");
+              }else if (response == "success"){
+                loadClassiTable();
+                load_dropdown();
+                $("#addClassi").val("");
+                $("#addC").removeClass("btn btn-warning");
+                $("#addC").addClass("btn btn-success");
+                $("#addC").html("Add");
+              }
+              
+            }  
+          });
+        });
+
     });
 
 
@@ -211,14 +334,14 @@
       background-color: white;
       }
 	   .card {
-position: relative;
-top: -0.5rem;
-float: left;
-min-width: 4rem;
-margin-left: 0;
-margin-right: 1rem;
-text-align: left;
-}
+        position: relative;
+        top: -0.5rem;
+        float: left;
+        min-width: 4rem;
+        margin-left: 0;
+        margin-right: 1rem;
+        text-align: left;
+      }
    </style>
    <body>
    <!--Sidebars-->
@@ -233,24 +356,19 @@ text-align: left;
                         <h4 class="card-title">Inventory</h4>
                      </div>
                      <div class="card-content">
-                        <select id="select_classi"style="margin-left: 30px;">
-                          <option value>ALL ITEMS</option>;
-                            <?php
-                              $sqlcl = "SELECT * FROM `classification`";
-                              $resultcl = mysqli_query($conn,$sqlcl);
+                        <div class="card-classi">
+                          <select id="select_classi" style="margin-left: 30px;margin-right: 20px;">
 
-                              while($row = mysqli_fetch_array($resultcl)){
-                                echo "<option value = ".$row['cl_name'].">".$row['cl_name']."</option>";
-                              }
-                            ?>  
-                          </select>
+                            </select>
+                            <button type="button" class="btn btn-primary" onclick="loadClassiTable()" data-backdrop="static" data-toggle="modal" data-target="#classimodal">Update Classification</button>
+                          </div>
                         <div class="card-body">
                         </div>
                         <div class="card-body">
                            <table class="table" id="table1">
                               <thead>
                                  <tr>
-                                    <th rowspan="2">View Component</th>
+                                    <!-- <th rowspan="2">View Component</th> -->
                                     <th rowspan="2">Name</th>
                                     <th rowspan="2">Description</th>
                                     <th rowspan="2">Property Number</th>
@@ -307,6 +425,41 @@ text-align: left;
       <script src="assets/js/main.js"></script>
       
 
+      <div class="modal fade" id="classimodal" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title custom_align" id="Heading">Classification</h4>
+                  <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                  <table id="classiTable">
+                    <thead>
+                      <tr>
+                        <th>Classification</th>
+                        <th>Manage</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- load table here  -->
+                    </tbody>
+                  </table>
+
+                  <div class="form-group">
+                     <input id="addClassi" name="classification_name" type="text" class="form-control" autocomplete="off" Required>
+                  </div>
+                  <button type="button" name="continuec" class="btn btn-success" id="addC"> Add</button>
+                  <button type="button" name="continuec" class="btn btn-danger" id="cancelEd"> Cancel Editing</button>
+                </div>
+                <div class="modal-footer ">
+                   <button type="button" class="btn btn-secondary" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
+                      class="fa fa-times-circle"></span> Cancel</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+         </div>
+         <!-- /.modal-dialog -->
+      </div>
 
       <!--############################################################################################################################################################################################## -->
       <!-- DELETE item MODAL -->
@@ -713,8 +866,20 @@ text-align: left;
       <!--Add Item Modal END-->
              
 
-      <script>
-         //DELETE item SCRIPT
+      <script> 
+        // classification table
+        function loadClassiTable(){
+          $.ajax({
+            url:"backend/classiTable.php",
+            success: function(response){
+              $("#classiTable tbody").html(response);
+              $("#cancelEd").hide();
+            }
+          });
+        }
+
+
+        //DELETE item SCRIPT
          $('#table1').on('click', '#dtbn', function() {
              $('#delete').modal({
          backdrop: 'static',

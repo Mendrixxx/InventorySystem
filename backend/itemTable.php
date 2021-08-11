@@ -11,7 +11,7 @@
 	$result = mysqli_query($conn,$sql);
 	$numRows = mysqli_num_rows($result);
 
-	$sqlCompItem = "SELECT * FROM component";
+	/*$sqlCompItem = "SELECT * FROM component";
 	$resultCompItem = mysqli_query($conn,$sqlCompItem);
 	$components = array();
 	while($rowComp = mysqli_fetch_array($resultCompItem)){
@@ -29,7 +29,7 @@
 		$temp['c_SO_val'] = $rowComp['c_SO_val'];
 		$components[] = $temp;
 	}
-
+*/
 	$rows = array();
 	while($row = mysqli_fetch_array($result)){
 		$datarow = array();
@@ -48,8 +48,8 @@
 		$datarow['cl_name'] = $row['cl_name'];
 		$datarow['last_name'] = $row['last_name'];
 		$datarow['button'] = '<a href="#" id="editbtn" data-toggle="modal" data-title="Edit" data-placement="top" data-target="#edititem" editId="'.$row['item_id'].'" classId="'.$row['classification_id'].'" employeeId="'.$row['id'].'" class="btn btn-primary" onclick="itemdisplay(this)">Edit</a> <button id ="dtbn" class="btn btn-danger btn-xs" data-assigned-id ='.$row['item_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
-		foreach($components as $temp){
-			/*echo "<b>item_id</b> = ".$temp['item_id']."=== <b>row['item_id']</b>".$row['item_id']."<br>";*/
+		/*foreach($components as $temp){
+			/*echo "<b>item_id</b> = ".$temp['item_id']."=== <b>row['item_id']</b>".$row['item_id']."<br>";
 			if($temp['item_id']==$row['item_id']){
 				$datum = array();
 				$datum['comp_id'] = $temp['comp_id'];
@@ -66,7 +66,7 @@
 				$datum['button'] = '<a href="#" id="editCompbtn" editCompId="'.$temp['comp_id'].'" compParent="'.$temp['item_id'].'" data-toggle="modal" data-placement="top" data-target="#editcomp" class="btn btn-primary" onclick="comdisplay(this)">Edit</a> <button id ="dtbnc" class="btn btn-danger btn-xs" data-assigned-id ='.$temp['comp_id'].' data-title="Delete" data-toggle="modal" data-placement="top" data-toggle="tooltip" title="Delete"><span class="fa fa-trash-alt"></span> DELETE</button>';
 				$datarow[] = $datum;
 			}
-		}
+		}*/
 
 		$rows[] = $datarow;
 	}
