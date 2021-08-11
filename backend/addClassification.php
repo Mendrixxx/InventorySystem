@@ -11,7 +11,13 @@
 	if($numrows<=0){
 		$sql = "INSERT INTO `classification` (`classification_id`, `cl_name`) VALUES (NULL, '$classification')";
 		$result = mysqli_query($conn,$sql);
-		if($result){
+		
+		//For Logs
+		$addedClassi ="Add Classification  <b>" .$classification. " </b> to the inventory.";//LOGS
+		$addClassi_log = "INSERT into log(action, date_action) VALUES ('$addedClassi', NOW())";
+		$result1 = mysqli_query($conn,$addClassi_log);
+		//
+		if($result && $result1){
 			echo "1";
 		}
 		else{
