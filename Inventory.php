@@ -398,7 +398,6 @@
                               </tbody>
                            </table>
                            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
-                           <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#addcomp">Add Component</button>
 				                   
 
                         </div>
@@ -496,36 +495,6 @@
       </div>
       <!--############################################################################################################################################################################################## -->
       <!--############################################################################################################################################################################################## -->
-      <!-- DELETE component MODAL -->
-      <div class="modal fade" id="deletec" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h4 class="modal-title custom_align" id="Heading">Notice!</h4>
-                  <button type="button" class="close" onclick="CloseModalPopup();" data-dismiss="modal" aria-hidden="true">×</button>
-               </div>
-               <form action="backend/deletec.php" method="POST">
-                  <div class="modal-body">
-                     <div class="alert alert-danger"><span class="fa fa-exclamation-triangle"></span> Are you sure
-                        you want to delete this Component?
-                     </div>
-                     <input type="hidden" name="Delete_IDc" id="Delete_IDc">
-                     <input type="hidden" name="comp_name" id="comp_name"> <!-- For logs -->
-					
-                  </div>
-                  <div class="modal-footer ">
-                     <button type="button" class="btn btn-default" onclick="CloseModalPopup();" id="cancel" data-dismiss="modal"><span
-                        class="fa fa-times-circle"></span> Cancel</button>
-                     <button type="submit" name="continuec" class="btn btn-success" id="continuec"><span
-                        class="fa fa-check-circle"></span> Continue</button>
-                  </div>
-               </form>
-            </div>
-            <!-- /.modal-content -->
-         </div>
-         <!-- /.modal-dialog -->
-      </div>
-      <!--############################################################################################################################################################################################## -->
       <!--Add Item Modal -->
       <div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog" role="document">
@@ -618,82 +587,6 @@
          </div>
       </div>
       <!--Add Item Modal END-->
-      <!--Add Component Modal -->
-      <div class="modal fade" id="addcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Component</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <form autocomplete="off" action="backend/insert.php" method="POST">
-                     <div class="modal-body">
-                        <label>Select the Item that will receive this Component: </label>
-                        <div class="form-group">
-                           <?php
-                              $sql = "Select * from `item`";
-                              $result = mysqli_query($conn, $sql);
-                              
-                              ?>
-                           <select name="itmname" class="form-control">
-                           <?php while($row = mysqli_fetch_array($result)){
-                              echo "<option value = '$row[0]'>$row[1]</option>";
-                              }?>
-                           </select>
-                        </div>
-                        <label>Name of Component: </label>
-                        <div class="form-group">
-                           <input name="cname" type="text" class="form-control" Required>
-                        </div>
-                        <label>Unit of Measure: </label>
-                        <div class="form-group">
-                           <input name="cumeas" type="text" class="form-control" Required>
-                        </div>
-                        <label>Unit Value: </label>
-                        <div class="form-group">
-                           <input name="cuvalue"  type="number" min="0" class="form-control">
-                        </div>
-                        <label>Total Value: </label>
-                        <div class="form-group">
-                           <input name="ctvalue" type="number" min="0" class="form-control">
-                        </div>
-                        <label>Quantity Per Property Card: </label>
-                        <div class="form-group">
-                           <input  name="cqPropCard" type="number"  min="0" class="form-control">
-                        </div>
-                        <label>Quantity Per Physical Count: </label>
-                        <div class="form-group">
-                           <input name="cqPhysCount" type="number"  min="0"  class="form-control">
-                        </div>
-                        <label>Quantity of Shortage/Overage: </label>
-                        <div class="form-group">
-                           <input name="cqSO" type="number"  min="0"  class="form-control">
-                        </div>
-                        <label>Total value of Shortage/Overage: </label>
-                        <div class="form-group">
-                           <input name="cvSO" type="number"  min="0" class="form-control">
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Cancel</span>
-                        </button>
-                        <button name = "addc" type="sumbit" class="btn btn-primary ml-1"
-                           data-bs-dismiss="modal">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Add Component</span>
-                        </button>
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!--Add Component Modal END-->
       <!--############################################################################################################################################################################################## -->
       <!--Edit Item Modal -->
       <div class="modal fade" id="edititem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
