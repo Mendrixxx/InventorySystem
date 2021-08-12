@@ -599,7 +599,7 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <form action="" method="POST" autocomplete = "off" id="editform">
+                  <form method="POST" autocomplete = "off" id="editform">
                      <div class="modal-body">
                       NOTE: <i>Total Value will automatically be computed based on the Unit Value and Quantity Per Physical Count.</i></br>
                         </br>
@@ -655,12 +655,17 @@
                               }?>
                            </select>
                         </div>
+                        <!-- load classification from database -->
                         <label>Classification: </label>
                         <div class="form-group">
+                          <?php
+                              $sql = "select * from classification";
+                              $result = mysqli_query($conn, $sql);
+                          ?>
                            <select name="classification" id="classification" class="form-control">
-                              <option value="0">OFFICE</option>
-                              <option value="1">IT</option>
-                              <option value="2">LABORATORY</option>
+                              <?php while($row = mysqli_fetch_array($result)){
+                              echo "<option value = '$row[0]'>$row[1]</option>";
+                              }?>
                            </select>
                         </div>
                      </div>
@@ -681,82 +686,7 @@
          </div>
       </div>
       <!--Edit Item Modal END-->
-      <!--Edit Component Modal -->
-      <div class="modal fade" id="editcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Edit Component</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <form method="POST" id="editcompform">
-                     <div class="modal-body">
-                        <label>Item Name: </label>
-                        <div class="form-group">
-                           <?php
-                              $sql = "Select * from `item`";
-                              $result = mysqli_query($conn, $sql);
-                              
-                              ?>
-                           <select name="compname" id="itemcomponent" class="form-control">
-                           <?php while($row = mysqli_fetch_array($result)){
-                              echo "<option value = '$row[0]'>$row[1]</option>";
-                              }?>
-                           </select>
-                        </div>
-                        <label>Name of Component: </label>
-                        <div class="form-group">
-                           <input name="cname" id="cname" type="text" placeholder="Name" class="form-control" Required>
-                        </div>
-                        <label>Date Acquired: </label>
-                        <div class="form-group">
-                           <input  name="cdateaq" id="cdateaq" type="date" class="form-control">
-                        </div>
-                        <label>Unit of Measure: </label>
-                        <div class="form-group">
-                           <input name="cumeas" id="cumeas" type="text" placeholder="Unit Measured" class="form-control">
-                        </div>
-                        <label>Unit Value: </label>
-                        <div class="form-group">
-                           <input name="cuvalue"  id="cuvalue" type="number" min="0" placeholder="Unit Value" class="form-control">
-                        </div>
-                        <label>Quantity Per Property Card: </label>
-                        <div class="form-group">
-                           <input  name="cqPropCard" id="cqPropCard" type="number"  min="0" placeholder="Quantity Per Property Card"class="form-control">
-                        </div>
-                        <label>Quantity Per Physical Count: </label>
-                        <div class="form-group">
-                           <input name="cqPhysCount" id="cqPhysCount" type="number"  min="0" placeholder="Quantity Per Physical Count" class="form-control">
-                        </div>
-                        <label>Quantity of Shortage/Overage: </label>
-                        <div class="form-group">
-                           <input name="cqSO" id="cqSO" type="number"  min="0" placeholder="Quanity of Shortage/Overage" class="form-control">
-                        </div>
-                        <label>Total value of Shortage/Overage: </label>
-                        <div class="form-group">
-                           <input name="cvSO" id="cvSO" type="number"  min="0" placeholder="Total value of Shortage/Overage" class="form-control">
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Cancel</span>
-                        </button>
-                        <button name = "addcomp" type="sumbit" class="btn btn-primary ml-1"
-                           data-bs-dismiss="modal">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Update Component</span>
-                        </button>
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!--Add Item Modal END-->
+     
              
 
       <script> 
@@ -838,7 +768,6 @@
             //get values from the inputs
           function submitform(itemid){
             $("#editform").submit(function(){
-                  //e.preventDefault();
                   var temp = true;
                   var item_name = $("#iname").val();
                   var item_des = $("#desc").val();
@@ -874,8 +803,6 @@
                         },
                         success:function(response){
                             alert(response);
-                            //table.destroy
-                            //reloadTable
                         }
                     });
                     
@@ -890,97 +817,21 @@
             editRow = $(ctl).parents("tr");
             var cols = editRow.children("td");
             var id = $("#editbtn").attr("editId");
-            var remarks = $(cols[14]).children("a").attr("employeeId");
-            var classification = $(cols[14]).children("a").attr("classId");
+            var remarks = $(cols[13]).children("a").attr("employeeId");
+            var classification = $(cols[13]).children("a").attr("classId");
             console.log(classification);
-            $("#iname").val($(cols[1]).text());
-            $("#desc").val($(cols[2]).text());
-            $("#pnum").val($(cols[3]).text());
-            $("#dateaq").val($(cols[4]).text());
-            $("#umeas").val($(cols[5]).text());
-            $("#uvalue").val($(cols[6]).text());
-            $("#qPropCard").val($(cols[8]).text());
-            $("#qPhysCount").val($(cols[9]).text());
-            $("#qSO").val($(cols[10]).text());
-            $("#vSO").val($(cols[11]).text());
+            $("#iname").val($(cols[0]).text());
+            $("#desc").val($(cols[1]).text());
+            $("#pnum").val($(cols[2]).text());
+            $("#dateaq").val($(cols[3]).text());
+            $("#umeas").val($(cols[4]).text());
+            $("#uvalue").val($(cols[5]).text());
+            $("#qPropCard").val($(cols[7]).text());
+            $("#qPhysCount").val($(cols[8]).text());
+            $("#qSO").val($(cols[9]).text());
+            $("#vSO").val($(cols[10]).text());
             $("#remarks").val(remarks, true);
-            $("#classification").val(classification, true);         
-        }
-
-
-
-
-        $(document).ready(function(){
-          $("#table1").on("click", "#editCompbtn", function(){
-              var comp_id = $(this).attr("editCompId");
-              var iid = $(this).attr("compParent");
-              updatecomponent(comp_id, iid);
-              //$("#editcomp").modal("hide");
-          });  
-
-          function updatecomponent(comp_id, iid){
-            $("#editcompform").submit(function(){
-                  //e.preventDefault();
-                  //$("#editcomp").modal("hide");
-                  var temp = true;
-                  var comp_name = $("#cname").val();
-                  var comp_date = $("#cdateaq").val();
-                  var comp_umeas = $("#cumeas").val();
-                  var comp_uvalue = $("#cuvalue").val();
-                  var comp_qPropCard = $("#cqPropCard").val();
-                  var comp_qPhysCount = $("#cqPhysCount").val();
-                  var comp_qSO = $("#cqSO").val();
-                  var comp_cvSO = $("#cvSO").val();
-
-                  $.ajax({
-                    url:"backend/editItem.php",
-                    method:"post",
-                    data: {
-                      cupdatebtn:temp,
-                      id:iid,
-                      cid:comp_id,
-                      name:comp_name,
-                      date:comp_date,
-                      umeasure:comp_umeas,
-                      uvalue:comp_uvalue,
-                      quantity_prop_card:comp_qPropCard,
-                      quantity:comp_qPhysCount,
-                      quantity_shortage:comp_qSO,
-                      total_shortage:comp_cvSO,
-                    },    
-                    success:function(response){
-                           // $("#updatecomp-btn").on("click", RefreshTable());
-                          alert(response);
-                          //$("#table1").DataTable().destroy();
-                          //$("#table1").load(load_data());
-                          //$("#table1").DataTable().draw();
-                                                       
-                    }
-                  });
-            });
-          } 
-
-        //function RefreshTable() {
-        //  $("#table1").load("Inventory.php #table1");
-        //}
-
-        });
-
-      
-        function comdisplay(ctl){
-            editRow = $(ctl).parents("tr");
-            var cols = editRow.children("td");
-            var iid = $("#editCompbtn").attr("compParent");
-            var cid = $("#editCompbtn").attr("editCompId");
-            $("#itemcomponent").attr("disabled", true);
-            $("#cname").val($(cols[0]).text());
-            $("#cdateaq").val($(cols[1]).text());
-            $("#cumeas").val($(cols[2]).text());
-            $("#cuvalue").val($(cols[3]).text());
-            $("#cqPropCard").val($(cols[5]).text());
-            $("#cqPhysCount").val($(cols[6]).text());
-            $("#cqSO").val($(cols[7]).text());
-            $("#cvSO").val($(cols[8]).text());
+            $("#classification").val(classification, true);       
         }
     </script> 
    </body>
