@@ -658,14 +658,8 @@
                         <!-- load classification from database -->
                         <label>Classification: </label>
                         <div class="form-group">
-                          <?php
-                              $sql = "select * from classification";
-                              $result = mysqli_query($conn, $sql);
-                          ?>
                            <select name="classification" id="classification" class="form-control">
-                              <?php while($row = mysqli_fetch_array($result)){
-                              echo "<option value = '$row[0]'>$row[1]</option>";
-                              }?>
+                              
                            </select>
                         </div>
                      </div>
@@ -763,6 +757,8 @@
         $(document).ready(function(){
           $("#table1").on("click", "#editbtn", function(){
             var itemid = $(this).attr("editId");
+            var classi = $(this).attr("classId");
+            load_editdropdown(classi);
             submitform(itemid);
           });
             //get values from the inputs
@@ -813,13 +809,14 @@
 
 
         //
+
         function itemdisplay(ctl){
             editRow = $(ctl).parents("tr");
             var cols = editRow.children("td");
             var id = $("#editbtn").attr("editId");
             var remarks = $(cols[13]).children("a").attr("employeeId");
-            var classification = $(cols[13]).children("a").attr("classId");
-            console.log(classification);
+            //var classification_id = $(cols[13]).children("a").attr("classId");
+            //console.log(classification);
             $("#iname").val($(cols[0]).text());
             $("#desc").val($(cols[1]).text());
             $("#pnum").val($(cols[2]).text());
@@ -831,7 +828,25 @@
             $("#qSO").val($(cols[9]).text());
             $("#vSO").val($(cols[10]).text());
             $("#remarks").val(remarks, true);
-            $("#classification").val(classification, true);       
+            //$("#classification").val(classification, true);       
+        }
+
+        function load_editdropdown(classi){
+          $.ajax({
+            url:'backend/loadEditButtonDropDown.php',
+            dataType:'json',
+            success:function(response){
+              $("#classification").empty();
+              var len = response.length;
+              for(var i = 0;i<len; i++){
+                var name  =  response[i]['name'];
+                if(i == classi)
+                  $("#classification").append("<option value='"+i+"' selected>"+name+"</option>");
+                else
+                  $("#classification").append("<option value='"+i+"'>"+name+"</option>");
+              }
+            }
+          });
         }
     </script> 
    </body>
