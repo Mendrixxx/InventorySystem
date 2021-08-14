@@ -84,6 +84,7 @@ if (isset($_SESSION['pass'])) {
                                                         <th scope="col">Personel Name</th>
                                                         <th scope="col">Item Name</th>
                                                         <th scope="col">Item Description</th>
+                                                        <th scope="col">Classification</th>
                                                         <th scope="col">Property Number</th>
                                                         <th scope="col">Date Acquired</th>
                                                     </tr>
@@ -164,6 +165,7 @@ if (isset($_SESSION['pass'])) {
                     },
                     {"data":"item_name"},
                     {"data":"item_desc"},
+                    {"data":"cl_name"},
                     {"data":"property_num"},
                     {"data":"date_aq"}
                 ],

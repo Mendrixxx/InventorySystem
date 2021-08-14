@@ -13,7 +13,9 @@
     function getData($conn) {
         
         $query = "  SELECT * 
-                    FROM `item`
+                    FROM (item 
+                        INNER JOIN classification 
+                        ON item.classification = classification.classification_id)
                     INNER JOIN `employee` 
                     ON employee.id = item.remarks";
 
