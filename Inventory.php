@@ -397,7 +397,7 @@
                                        </td> -->
                               </tbody>
                            </table>
-                           <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
+                           <button id="additm" type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#additem">Add Item</button>
 				                   
 
                         </div>
@@ -506,48 +506,48 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <form autocomplete="off" action="backend/insert.php" method="POST">
+                  <form  method="POST" autocomplete="off" id="addform">
                      <div class="modal-body">
                         NOTE: Total Value will automatically be computed based on the Unit Value and Quantity Per Physical Count.</li></br></br>
                         <label>Name of Item: </label>
                         <div class="form-group">
-                           <input name="iname" type="text" class="form-control" Required>
+                           <input name="iname" id="ainame" type="text" class="form-control" Required>
                         </div>
                         <label>Description: </label>
                         <div class="form-group">
-                           <input name="desc" type="text" class="form-control" Required>
+                           <input name="desc" id="adesc" type="text" class="form-control" Required>
                         </div>
                         <label>Property Number: </label>
                         <div class="form-group">
-                           <input  name="pnum" type="text" class="form-control" Required>
+                           <input  name="pnum"  id="apnum"type="text" class="form-control" Required>
                         </div>
                         <label>Date Acquired: </label>
                         <div class="form-group">
-                           <input  name="dateaq" type="date" class="form-control" Required>
+                           <input  name="dateaq" id="adateaq"type="date" class="form-control" Required>
                         </div>
                         <label>Unit of Measure: </label>
                         <div class="form-group">
-                           <input name="umeas" type="text" class="form-control" Required>
+                           <input name="umeas" id="aumeas" type="text" class="form-control" Required>
                         </div>   
                         <label>Unit Value: </label>
                         <div class="form-group"> 
-                           <input name="uvalue"  type="number" min="15000"class="form-control" Required>
+                           <input name="uvalue" id="auvalue" type="number" min="15000"class="form-control" Required>
                         </div>
                         <label>Quantity Per Property Card: </label>
                         <div class="form-group">
-                           <input  name="qPropCard" type="number"  min="1" class="form-control" >
+                           <input  name="qPropCard" id="aqPropCard" type="number"  min="1" class="form-control" >
                         </div>
                         <label>Quantity Per Physical Count: </label>
                         <div class="form-group">
-                           <input name="qPhysCount" type="number"  min="1" class="form-control" Required>
+                           <input name="qPhysCount" id="aqPhysCount" type="number"  min="1" class="form-control" Required>
                         </div>
                         <label>Quantity of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="qSO" type="number"  min="0" class="form-control" >
+                           <input name="qSO" id="aqSO" type="number"  min="0" class="form-control" >
                         </div>
                         <label>Total value of Shortage/Overage: </label>
                         <div class="form-group">
-                           <input name="vSO" type="number"  min="0" class="form-control">
+                           <input name="vSO" id="avSO" type="number"  min="0" class="form-control">
                         </div>
                         <label>Remarks: </label>
                         <div class="form-group">
@@ -555,7 +555,7 @@
                               $sql = "Select employee.id, employee.first_name, employee.last_name from `employee` INNER JOIN `nbc` ON employee.id = nbc.employee_id INNER JOIN `colleges` ON nbc.college_id = colleges.id WHERE colleges.id = '1'";
                               $result = mysqli_query($conn, $sql);
                               ?>
-                           <select name="remarks" class="form-control">
+                           <select name="remarks" id="aremarks" class="form-control">
                            <?php while($row = mysqli_fetch_array($result)){
                               echo "<option value = '$row[0]'>$row[2]".", "."$row[1]</option>";
                               }?>
@@ -563,10 +563,8 @@
                         </div>
                         <label>Classification: </label>
                         <div class="form-group">
-                           <select name="classification" class="form-control">
-                              <option value="0">OFFICE</option>
-                              <option value="1">IT</option>
-                              <option value="2">LABORATORY</option>
+                           <select name="classification2" id="classification2" class="form-control">
+                  
                            </select>
                         </div>
                      </div>
@@ -844,6 +842,75 @@
                   $("#classification").append("<option value='"+i+"' selected>"+name+"</option>");
                 else
                   $("#classification").append("<option value='"+i+"'>"+name+"</option>");
+              }
+            }
+          });
+        }
+        </script> 
+      <!--############################################################################################################################################################################################## -->
+      <!-- Load Class in Add SCRIPT -->
+        <script>
+        $("#additm").on("click", function(){
+         load_adddropdown();   
+         setvaltoadd();
+          });
+                //get values from the inputs
+            function setvaltoadd(){
+            $("#addform").submit(function(){
+                  var temp = true;
+                  var item_name = $("#ainame").val();
+                  var item_des = $("#adesc").val();
+                  var item_prop_no = $("#apnum").val();
+                  var item_date = $("#adateaq").val();
+                  var item_umeasure = $("#aumeas").val();
+                  var item_uvalue = $("#auvalue").val();
+                  var item_quantity_prop_card = $("#aqPropCard").val();
+                  var item_quantity = $("#aqPhysCount").val();
+                  var item_quantity_shortage = $("#aqSO").val();
+                  var item_total_shortage = $("#avSO").val();
+                  var remarks = $("#aremarks option:selected").val();
+                  var classification = $("#classification2 option:selected").val();
+                  
+                    $.ajax({
+                        url:"backend/insert.php",
+                        method:"post",
+                        data: {
+                            addbtn:temp,
+                            iname:item_name,
+                            desc:item_des,
+                            pnum:item_prop_no,
+                            dateaq:item_date,
+                            umeas:item_umeasure,
+                            uvalue:item_uvalue,
+                            qPropCard:item_quantity_prop_card,
+                            qPhysCount:item_quantity,
+                            remarks:remarks,
+                            classification2:classification,
+                            qSO:item_quantity_shortage,
+                            vSO:item_total_shortage, 
+                        },
+                        success:function(response){
+                            alert(response);
+                        }
+                    });
+                    
+                    
+            });
+          }
+      
+        function load_adddropdown(){
+          $.ajax({
+            url:'backend/loadAddButtonDropDown.php',
+            dataType:'json',
+            success:function(response){
+              $("#classification2").empty();
+              var len = response.length;
+              for(var i = 0;i<len; i++){
+                var name  =  response[i]['name'];
+                var id = response[i]['id'];
+                $("#classification2").append("<option value="+id+">"+name+"</option>");
+               
+                  
               }
             }
           });

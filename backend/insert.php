@@ -5,7 +5,7 @@
 //Wag po tangallin yung mga lines na may comment symbol. For logs po ito.
 
 
-if(isset($_POST['add'])){
+if(isset($_POST['addbtn'])){
     $iname = $_POST['iname'];
     $desc = $_POST['desc'];
     $pnum = $_POST['pnum'];
@@ -15,7 +15,7 @@ if(isset($_POST['add'])){
     $qPropCard = $_POST['qPropCard'];
     $qPhysCount = $_POST['qPhysCount'];
     $remarks = $_POST['remarks'];
-    $classif = $_POST['classification'];
+    $classif = $_POST['classification2'];
     $qSO = $_POST['qSO'];
     $vSO = $_POST['vSO'];
     // Compute for Total Value
@@ -31,7 +31,7 @@ if(isset($_POST['add'])){
     $enter_logItem = "INSERT into log(action, date_action) VALUES ('$added_item', NOW())";//
 	$query_logItem = mysqli_query($conn, $enter_logItem);//
     if ($query_run &&  $query_logItem && $addtocost)  {
-        header("location: ../Inventory.php");
+       echo "Record Successfully Added";
     }
 }
 ?>
