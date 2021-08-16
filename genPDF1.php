@@ -84,9 +84,8 @@ $data1 = [];
 foreach($items as $val){
 	
 	$count = $count + 1;
-	if($data1 == $val['item_name']) {
+	/*if($data1 == $val['item_name']) {
 			
-	
 		$pdf->Cell(10, 10, '',1,0,'L');
 		$pdf->Cell(55, 10, $val['comp_name'],1,0,'L');
 		$pdf->Cell(35, 10, "",1,0,'L');
@@ -103,7 +102,7 @@ foreach($items as $val){
 		$amount = $amount-$val['total_val'];
 		$data1 = $val['item_name'];
 		$count = $count - 1;
-	} else {
+	} else {*/
 		
 		$lname = utf8_decode($val['last_name']);
 		$pdf->Cell(10, 10, $count,1,0,'L');
@@ -119,7 +118,20 @@ foreach($items as $val){
 		$pdf->Cell(15, 10, $val['SO_val'],1,0,'L');
 		$pdf->Cell(30, 10, $lname,1,0,'L');
 		$pdf->Ln();	
-			if($val['comp_name']!=NULL){
+		$pdf->Cell(10, 10, '',1,0,'L');
+		$pdf->Cell(55, 10, $val['item_desc'],1,0,'L');
+		$pdf->Cell(35, 10, '',1,0,'L');
+		$pdf->Cell(30, 10, '',1,0,'L');
+		$pdf->Cell(25, 10, '',1,0,'L');
+		$pdf->Cell(20, 10,'' ,1,0,'L');
+		$pdf->Cell(30, 10,'' ,1,0,'L');
+		$pdf->Cell(37, 10, '',1,0,'L');
+		$pdf->Cell(37, 10, '',1,0,'L');
+		$pdf->Cell(15, 10,'',1,0,'L');
+		$pdf->Cell(15, 10, '',1,0,'L');
+		$pdf->Cell(30, 10, '',1,0,'L');
+		$pdf->Ln();	
+			/*if($val['comp_name']!=NULL){
 				$pdf->Cell(10, 10, '',1,0,'L');
 					$pdf->Cell(55, 10, $val['comp_name'],1,0,'L');
 					$pdf->Cell(35, 10, "",1,0,'L');
@@ -135,15 +147,14 @@ foreach($items as $val){
 					$pdf->Ln();
 					$data1 = $val['item_name'];
 				
-			}
-			       
+			}*/
+			$amount = $amount+$val['total_val'];
+			$total = $amount;
+			
 			
 	}
-				$amount = $amount+$val['total_val'];
-				$amount = $amount+$val['c_total_val'];
-				$total = $amount;
 			
-}
+
 $pdf->Cell(10, 10, '', 1, 0, 'L');
 $pdf->SetFont('Times','B',10);
 $pdf->Cell(55, 10, 'SUB TOTAL ', 1, 0, 'L');
