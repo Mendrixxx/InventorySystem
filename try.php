@@ -20,7 +20,7 @@
    FROM
        item AS i
        LEFT JOIN employee AS e ON (i.remarks = e.id)
-   LEFT JOIN component AS c ON (i.item_id=c.item_id) order by i.date_aq";
+  ORDER BY i.date_aq";
        $result = mysqli_query($conn, $query);
        $dataArr = getRowsFrmDB($result);
        return $dataArr;
