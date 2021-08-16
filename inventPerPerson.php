@@ -174,8 +174,8 @@ if (isset($_SESSION['pass'])) {
 			        "info": "_START_-_END_ of _TOTAL_ entries",
 			        searchPlaceholder: "Search",
                     paginate: {
-                        next: '<i class="ion-chevron-right"></i>',
-                        previous: '<i class="ion-chevron-left"></i>'
+                        next: 'Next',
+                        previous: 'Previous'
                     }
 	        	},
             });
